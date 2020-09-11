@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+
+  form(action="./summonerInfo", method="get")
+    input(type="text" name='summonerName')
+    button(type="submit") 버튼
