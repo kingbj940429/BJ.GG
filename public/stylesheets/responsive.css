@@ -1,0 +1,51 @@
+
+/* col - 공통 */
+[class*="col-"] {
+    box-sizing: border-box;
+    position: relative;
+    float: left;
+}
+
+[class*="col-"] img {
+    max-width: 100%;
+}
+
+[class*="ion-"]:before {vertical-align: middle;}
+
+.col-0 {width: auto;}
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+.col-20 {width: 20%;}
+
+
+.col-0i {width: auto !important;}
+.col-1i {width: 8.33% !important;}
+.col-2i {width: 16.66% !important;}
+.col-3i {width: 25% !important;}
+.col-4i {width: 33.33% !important;}
+.col-5i {width: 41.66% !important;}
+.col-6i {width: 50% !important;}
+.col-7i {width: 58.33% !important;}
+.col-8i {width: 66.66% !important;}
+.col-9i {width: 75% !important;}
+.col-10i {width: 83.33% !important;}
+.col-11i {width: 91.66% !important;}
+.col-12i {width: 100% !important;}
+.col-20i {width: 20% !important;}
+
+.col-center {float: none; margin-left:auto; margin-right: auto;}
+
+
+.mw-1200{max-width: 1200px;}
+
+[class*="mw-"] {overflow: hidden;}

@@ -1,0 +1,27 @@
+/*매치 기록*/
+.gameRecord_wrap{background-color: cornflowerblue;}
+.gameRecord_con{}
+.gameRecord_inner{}
+.gameRecord_inner > div{float: left;}
+.gameRecord_info{margin-right: 30px;}
+.gameRecord_info_winlose{}
+.gameRecord_info_time{}
+.gameRecord_champ{margin-right: 100px;}
+.gameRecord_champ_img{}
+.gameRecord_spells{float: left;}
+.gameRecord_spell01{}
+.gameRecord_spell02{}
+.gameRecord_KDA{margin-right: 30px;}
+.gameRecord_kda{}
+.gameRecord_average{}
+.gameRecord_levelCS{margin-right: 30px;}
+.gameRecord_level{}
+.gameRecord_CS{}
+.gameRecord_items{margin-right: 30px;}
+.gameRecord_items_top{}
+.gameRecord_items_top > div{float: left;}
+.gameRecord_items_bottom{}
+.gameRecord_items_bottom > div{float: left;}
+.gameRecord_otherSummoners{margin-right: 30px;}
+.gameRecord_team01{margin-right: 30px;}
+.gameRecord_team02{}
