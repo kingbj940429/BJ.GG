@@ -5,10 +5,10 @@ var getSummonerId = require('../axios/summonerId');
 var getGameId = require('../axios/getGameId');
 var matchDto = require('../axios/matchDto');
 
-var test = require('../routerJS/test.js');
+var matchDto_JS = require('../routerJS/matchDto.js');
 /* GET users listing. */
 router.get('/', function (req, res, next) {
-    var participantList =[];
+    
     const getSummoner_information = async () => {
         try {
             const searchedName = req.query.summonerName;//소환사 이름 ex) 여의도 한량이
@@ -19,21 +19,21 @@ router.get('/', function (req, res, next) {
 
             const summoner_getGameId = await getGameId(searchedSummonerId.data.accountId); //gameId : summoner_getGameId.data.matches[0].gameId
             
-            //test(searchedName);
+            const participantList = await matchDto_JS(summoner_getGameId, searchedName);//소환사 10명 모두 가져옴
 
-            const MatchDto = [];
-            for(i=0;i<5;i++){//총 5개의 나타내기 위함
-                 MatchDto[i] = await matchDto(summoner_getGameId.data.matches[i].gameId);
-            }
-            for(k=0;k<5;k++){
-                participantList[k] = [];
-                for(i=0; i<MatchDto[k].data.participantIdentities.length;i++){
-                    participantList[k].push(MatchDto[k].data.participantIdentities[i].player.summonerName);
-                }
-            }
-            console.log(participantList);
+            const MatchDto = await matchDto(summoner_getGameId.data.matches[0].gameId);
+            // const participant_game_info = {
+            //     gameTime : Math.round(MatchDto.data.gameDuration/60),
+            //     gameWinFail : MatchDto.data.teams[0].win,
+            //     championId : MatchDto.data.participants[0].championId,
+            //     kills : MatchDto.data.participants[0].stats.kills,
+            //     deaths : MatchDto.data.participants[0].stats.deaths,
+            //     assists : MatchDto.data.participants[0].stats.assists,
+            // }
+            // console.log(participant_game_info);
+          
             
-                res.render('summonerInfo.pug', 
+            res.render('summonerInfo.pug', 
                 {
                     summonername: summoner.data[0].summonerName,
                     queueType: summoner.data[0].queueType,

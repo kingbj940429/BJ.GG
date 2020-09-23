@@ -5,15 +5,15 @@ matchInfo
                 .gameRecord_con.col-12
                     .gameRecord_inner.col-12
                         .gameRecord_info
-                            .gameRecord_info_winlose &#xD328;&#xBC30;
-                            .gameRecord_info_time 14&#xBD84;31&#xCD08;
+                            .gameRecord_info_winlose #{result[i+5].gameWinFail}
+                            .gameRecord_info_time #{result[i+5].gameTime}분
                         .gameRecord_champ
                             .gameRecord_champ_img &#xC9C8;&#xB9AC;&#xC5B8;
                             .gameRecord_spells
                                 .gameRecord_spell01 &#xC810;&#xBA78;
                                 .gameRecord_spell02 &#xD0C8;&#xC9C4;
                         .gameRecord_KDA
-                            .gameRecord_kda 7 / 7/ 11
+                            .gameRecord_kda #{result[i+5].kills}/ #{result[i+5].deaths}/ #{result[i+5].assists}
                             .gameRecord_average 2.51:1 &#xD3C9;&#xC810;
                         .gameRecord_levelCS
                             .gameRecord_level 14&#xB808;&#xBCA8;

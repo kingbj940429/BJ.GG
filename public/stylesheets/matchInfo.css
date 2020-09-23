@@ -1,5 +1,5 @@
 /*매치 기록*/
-.gameRecord_wrap{background-color: cornflowerblue;margin-bottom: 25px;}
+.gameRecord_wrap{border-radius: 5px;background-color: cornflowerblue;margin-bottom: 25px;}
 .gameRecord_con{}
 .gameRecord_inner{}
 .gameRecord_inner > div{float: left;}
