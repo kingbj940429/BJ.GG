@@ -10,16 +10,13 @@ MATCH-V4
             "lane": "TOP"
         },
 
-SUMMONER-V4
 {
-    "id": "zyL9uBqQNmszOwivjfd--CY1T-jCRMKv_EIWg_-47paEpQ",
-    "accountId": "RjzRRyXA_eBp7CTR3Lif_GLaI-rmvMtT26NbkgchoVKj",
-    "puuid": "T5SMQuHZxYwpuWtteNwca7_p6ZjdZGBHDWL8kMqI7jH2s5EhJQxpACeBUlgxnOu5915xWIX21lyKng",
-    "name": "하하하호호호",
-    "profileIconId": 3879,
-    "revisionDate": 1600074581000,
-    "summonerLevel": 366
+    "id": "sGzBoszBga3xz6yrrd6vFcARRUVgG7Pxfvym_hzXbg6L5A",
+    "accountId": "sNPpNDaO-TzbbLCbA-efNprsSsAqDiZqGFLbm2DmUgmM",
+    "puuid": "KvXh1kBFmgarI6gheuHuORUp7r7VPHOri1ijzK-5ofRxies32LfZYlwjCyLCDC8JzYNmebjSPVPWyA",
+    "name": "Hide on bush",
+    "profileIconId": 6,
+    "revisionDate": 1600666767000,
+    "summonerLevel": 349
 }
-
-
 1. 소환사 검색시 밑에 최근 전적 보여주기 한 5개정도 우선 게임 전적을 불러와보자!!
