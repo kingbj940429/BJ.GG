@@ -6,7 +6,15 @@ html
     link(rel='stylesheet', href='/stylesheets/matchInfo.css')
     link(rel='stylesheet', href='/stylesheets/responsive.css')
     script(src='https://code.jquery.com/jquery-3.5.1.slim.js')
-   
-      
+    script.
+      $(()=>{
+        for(var i=0;i<5;i++){
+          if( $(`.win_fail_check${i}`).text() === 'Fail'){
+            $(`.gameRecord_wrap${i}`).css("background-color","#f46573");
+          }else{
+            $(`.gameRecord_wrap${i}`).css("background-color","cornflowerblue");
+          }
+        }
+      })  
   body
     block content

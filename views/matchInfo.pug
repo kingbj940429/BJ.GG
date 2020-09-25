@@ -1,11 +1,16 @@
 matchInfo
     -for(var i=0;i<5;i++)
+        div(class="Win_Fail_COUNT" style="display:none;") #{i}
         .content_wrap.col-12
             .gameRecord_wrap.col-12.mw-1200.col-center
                 .gameRecord_con.col-12
                     .gameRecord_inner.col-12
                         .gameRecord_info
-                            .gameRecord_info_winlose #{result[i+5].gameWinFail}
+                            .gameRecord_info_win_fail_check #{result[i+5].gameWinFail}
+                            script.
+                                var win_fail_number = #{i};
+                                $(`.gameRecord_info_win_fail_check`).attr("class","win_fail_check"+ #{i});
+                                $(`.gameRecord_wrap`).attr("class","gameRecord_wrap"+ #{i} +" col-12" + " mw-1200" + " col-center"+ " gameRecord_wrap_css");
                             .gameRecord_info_time #{result[i+5].gameTime}분
                         .gameRecord_champ
                             .gameRecord_champ_img &#xC9C8;&#xB9AC;&#xC5B8;

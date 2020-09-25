@@ -1,6 +1,6 @@
 /*매치 기록*/
-.gameRecord_wrap{border-radius: 5px;background-color: cornflowerblue;margin-bottom: 25px;}
-.gameRecord_con{}
+.gameRecord_wrap_css{border-radius: 5px;margin-bottom: 25px;}
+.gameRecord_con{margin: 15px;}
 .gameRecord_inner{}
 .gameRecord_inner > div{float: left;}
 .gameRecord_info{margin-right: 30px;}
