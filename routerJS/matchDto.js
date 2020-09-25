@@ -29,13 +29,17 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
 
         var team_number_count = 0;
         for (i = 0; i < searchedName_eachGame_number.length; i++) {
+            var participants = MatchDto[i].data.participants[searchedName_eachGame_number[i]];
+            var kill = participants.stats.kills, death = participants.stats.deaths, assist = participants.stats.assists,kda =(kill+assist)/death;
+            
             participantList[game_of_times] = {
                 gameTime: Math.round(MatchDto[i].data.gameDuration / 60),
                 gameWinFail: MatchDto[i].data.teams[team_number[team_number_count]].win, //이거 어느 팀이냐에 따라 다르게 나와야함
-                championId: MatchDto[i].data.participants[searchedName_eachGame_number[i]].championId,
-                kills: MatchDto[i].data.participants[searchedName_eachGame_number[i]].stats.kills,
-                deaths: MatchDto[i].data.participants[searchedName_eachGame_number[i]].stats.deaths,
-                assists: MatchDto[i].data.participants[searchedName_eachGame_number[i]].stats.assists,
+                championId: participants.championId,
+                kills: kill,
+                deaths: death,
+                assists: assist,
+                kda : Math.round(kda * 100) / 100,
             }
             game_of_times++;
             team_number_count++;
