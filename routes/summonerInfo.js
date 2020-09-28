@@ -3,8 +3,8 @@ var router = express.Router();
 var getSummonerInfo = require('../axios/summonerInfo');
 var getSummonerId = require('../axios/summonerId');
 var getGameId = require('../axios/getGameId');
-var matchDto = require('../axios/matchDto');
 
+//var champDataDragon = require('../routerJS/champDataDragon.js');
 var matchDto_JS = require('../routerJS/matchDto.js');
 /* GET users listing. */
 router.get('/', function (req, res, next) {
@@ -21,8 +21,8 @@ router.get('/', function (req, res, next) {
 
             const participantList = await matchDto_JS(summoner_getGameId, searchedName); //소환사 10명 모두 가져옴
 
-            const MatchDto = await matchDto(summoner_getGameId.data.matches[0].gameId);
-
+            //const MatchDto = await matchDto(summoner_getGameId.data.matches[0].gameId);
+            //console.log(champ_list);
             res.render('summonerInfo.pug', {
                 summonername: summoner.data[0].summonerName,
                 queueType: summoner.data[0].queueType,

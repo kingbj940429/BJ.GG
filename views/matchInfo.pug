@@ -1,25 +1,26 @@
 matchInfo
     -for(var i=0;i<5;i++)
+        -var game_times = 5;
         div(class="Win_Fail_COUNT" style="display:none;") #{i}
         .content_wrap.col-12
             .gameRecord_wrap.col-12.mw-1200.col-center
                 .gameRecord_con.col-12
                     .gameRecord_inner.col-12
                         .gameRecord_info
-                            .gameRecord_info_win_fail_check #{result[i+5].gameWinFail}
+                            .gameRecord_info_win_fail_check #{result[i+game_times].gameWinFail}
                             script.
                                 var win_fail_number = #{i};
                                 $(`.gameRecord_info_win_fail_check`).attr("class","win_fail_check"+ #{i});
                                 $(`.gameRecord_wrap`).attr("class","gameRecord_wrap"+ #{i} +" col-12" + " mw-1200" + " col-center"+ " gameRecord_wrap_css");
-                            .gameRecord_info_time #{result[i+5].gameTime}분
+                            .gameRecord_info_time #{result[i+game_times].gameTime}분
                         .gameRecord_champ
-                            .gameRecord_champ_img &#xC9C8;&#xB9AC;&#xC5B8;
+                            .gameRecord_champ_img #{result[i+game_times].champ_name[i]}
                             .gameRecord_spells
                                 .gameRecord_spell01 &#xC810;&#xBA78;
                                 .gameRecord_spell02 &#xD0C8;&#xC9C4;
                         .gameRecord_KDA
-                            .gameRecord_kda #{result[i+5].kills}/ #{result[i+5].deaths}/ #{result[i+5].assists}
-                            .gameRecord_average #{result[i+5].kda}:1 평점
+                            .gameRecord_kda #{result[i+game_times].kills}/ #{result[i+game_times].deaths}/ #{result[i+game_times].assists}
+                            .gameRecord_average #{result[i+game_times].kda}:1 평점
                         .gameRecord_levelCS
                             .gameRecord_level 14&#xB808;&#xBCA8;
                             .gameRecord_CS 22CS
