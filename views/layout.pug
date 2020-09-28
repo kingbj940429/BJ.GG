@@ -4,11 +4,13 @@ html
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel='stylesheet', href='/stylesheets/matchInfo.css')
+    link(rel='stylesheet', href='/stylesheets/summonerInfo.css')
     link(rel='stylesheet', href='/stylesheets/responsive.css')
     script(src='https://code.jquery.com/jquery-3.5.1.slim.js')
     script.
       $(()=>{
-        for(var i=0;i<5;i++){
+        var game_times = 10;
+        for(var i=0;i<game_times;i++){
           if( $(`.win_fail_check${i}`).text() === 'Fail'){
             $(`.gameRecord_wrap${i}`).css("background-color","#f46573");
           }else{

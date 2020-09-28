@@ -1,12 +1,14 @@
 extends layout
 
 block content
-  div #{summonername}님 환영합니다.
-  div 큐 타입 : #{queueType}
-  div 티어 : #{tier}
-  div 리그 포인트 : #{leaguePoints} 
-  div 승리 : #{wins}
-  div 패배 : #{losses}
-
+  .summoner_basic_wrap.col-12
+    .summoner_basic_con.col-12.col-center.mw-1200
+      .summoner_basic_inner
+        .summoner_basic_welcome #{summonername}님 환영합니다.
+        .summoner_basic_queType 큐 타입 : #{queueType}
+        .summoner_basic_tier 티어 : #{tier}
+        .summoner_basic_leaguePoint 리그 포인트 : #{leaguePoints} 
+        .summoner_basic_wins 승리 : #{wins}
+        .summoner_basic_losses 패배 : #{losses}
   include matchInfo
   

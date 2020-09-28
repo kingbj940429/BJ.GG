@@ -1,6 +1,6 @@
 matchInfo
-    -for(var i=0;i<5;i++)
-        -var game_times = 5;
+    -for(var i=0;i<10;i++)
+        -var game_times = 10;
         div(class="Win_Fail_COUNT" style="display:none;") #{i}
         .content_wrap.col-12
             .gameRecord_wrap.col-12.mw-1200.col-center
@@ -14,7 +14,9 @@ matchInfo
                                 $(`.gameRecord_wrap`).attr("class","gameRecord_wrap"+ #{i} +" col-12" + " mw-1200" + " col-center"+ " gameRecord_wrap_css");
                             .gameRecord_info_time #{result[i+game_times].gameTime}분
                         .gameRecord_champ
-                            .gameRecord_champ_img #{result[i+game_times].champ_name[i]}
+                            .gameRecord_champ_img
+                                img(src=result[i+game_times].champ_img[i])
+                            .gameRecord_champ_name #{result[i+game_times].champ_name[i]}
                             .gameRecord_spells
                                 .gameRecord_spell01 &#xC810;&#xBA78;
                                 .gameRecord_spell02 &#xD0C8;&#xC9C4;
@@ -27,29 +29,30 @@ matchInfo
                         .gameRecord_items
                             .gameRecord_items_top
                                 div 
-                                    img(src=result[i+game_times].item[0])
+                                    img(src=result[i+game_times].item[0] onerror="this.src='/images/gray-background.jpg';this.style.opacity=0.5;")
                                 div 
-                                    img(src=result[i+game_times].item[1])
+                                    img(src=result[i+game_times].item[1] onerror="this.src='/images/gray-background.jpg';this.style.opacity=0.5;")
                                 div 
-                                    img(src=result[i+game_times].item[2])
+                                    img(src=result[i+game_times].item[2] onerror="this.src='/images/gray-background.jpg';this.style.opacity=0.5;")
                                 div 
-                                    img(src=result[i+game_times].item[3])
+                                    img(src=result[i+game_times].item[3] onerror="this.src='/images/gray-background.jpg';this.style.opacity=0.5;")
                             .gameRecord_items_bottom
                                 div
-                                    img(src=result[i+game_times].item[4])
+                                    img(src=result[i+game_times].item[4] onerror="this.src='/images/gray-background.jpg';this.style.opacity=0.5;")
                                 div
-                                    img(src=result[i+game_times].item[5])
+                                    img(src=result[i+game_times].item[5] onerror="this.src='/images/gray-background.jpg';this.style.opacity=0.5;")
                                 div
-                                    img(src=result[i+game_times].item[6])
-                        .gameRecord_team01 
-                            .gameRecord_row #{result[i][0]}
-                            .gameRecord_row #{result[i][1]}
-                            .gameRecord_row #{result[i][2]}
-                            .gameRecord_row #{result[i][3]}
-                            .gameRecord_row #{result[i][4]}
-                        .gameRecord_team02
-                            .gameRecord_row #{result[i][5]}
-                            .gameRecord_row #{result[i][6]}
-                            .gameRecord_row #{result[i][7]}
-                            .gameRecord_row #{result[i][8]}
-                            .gameRecord_row #{result[i][9]}
+                                    img(src=result[i+game_times].item[6] onerror="this.src='/images/gray-background.jpg';this.style.opacity=0.5;")
+                        .gameRecord_summoner_names            
+                            .gameRecord_team01 
+                                .gameRecord_row #{result[i][0]}
+                                .gameRecord_row #{result[i][1]}
+                                .gameRecord_row #{result[i][2]}
+                                .gameRecord_row #{result[i][3]}
+                                .gameRecord_row #{result[i][4]}
+                            .gameRecord_team02
+                                .gameRecord_row #{result[i][5]}
+                                .gameRecord_row #{result[i][6]}
+                                .gameRecord_row #{result[i][7]}
+                                .gameRecord_row #{result[i][8]}
+                                .gameRecord_row #{result[i][9]}

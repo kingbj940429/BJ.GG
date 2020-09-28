@@ -1,5 +1,4 @@
 var matchDto = require('../axios/matchDto');
-var itemDataDragon = require('../axios/itemDataDragon');
 
 var champDataDragon = require('../routerJS/champDataDragon.js');
 
@@ -10,12 +9,11 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
         const searchedName_eachGame_number = []; //검색된 소환사의 각 게임당 위치를 저장
         const MatchDto = [];
         var team_number = []; //검색된 소환사가 어느 팀이였는지 구별해주는 변수
-        var game_of_times = 5; //게임 횟수
+        var game_of_times = process.env.GAME_TIMES; //게임 횟수
         var champKey = [];//챔피언 키
         var champ_list;//챔피언에 대한 리스트
-        var itemDD = await itemDataDragon();
         var item_url = [];
-        var itemDD_version = itemDD.data.version;//itemDD 버전
+        var champion_img_url = [];
 
         for (i = 0; i < game_of_times; i++) { //최근 5개의 게임만을 나타내기 위함
             MatchDto[i] = await matchDto(summoner_getGameId.data.matches[i].gameId);//최근 5게임의 gameid를 가지고있음
@@ -29,7 +27,7 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
                     searchedName_eachGame_number[k] = i; //검색된 소환사의 이름의 순번. index이므로 0부터 시작
                 }
             }
-            if (searchedName_eachGame_number[k] < game_of_times) {//id가 5 미만은 blue팀
+            if (searchedName_eachGame_number[k] < 5) {//id가 5 미만은 blue팀
                 team_number[k] = 0;
             } else {//id가 5이상은 purple팀
                 team_number[k] = 1;
@@ -41,7 +39,10 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
             champKey.push(MatchDto[i].data.participants[searchedName_eachGame_number[i]].championId);
         }
         champ_list =  await champDataDragon(champKey);
-
+        for(i = 0;i<game_of_times;i++){
+            champ_list.champ_id[i] = `http://ddragon.leagueoflegends.com/cdn/${process.env.CHAMP_VERSION}/img/champion/${champ_list.champ_id[i]}.png`;
+            champion_img_url.push(champ_list.champ_id[i]);
+        }
         //아이템 관련
         for(k=0;k < searchedName_eachGame_number.length; k++){
             var participants = MatchDto[k].data.participants[searchedName_eachGame_number[k]];
@@ -50,7 +51,7 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
             item_url[k] = [];
             for(i= 0 ;i<7;i++){
                 var item = {
-                    version : itemDD_version,
+                    version : `${process.env.ITEM_VERSION}`,
                     items : [stats.item0,stats.item1,stats.item2,stats.item3,stats.item4,stats.item5,stats.item6]
                 };
                  item_url[k].push(`http://ddragon.leagueoflegends.com/cdn/${item.version}/img/item/${item.items[i]}.png`);
@@ -78,7 +79,8 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
                 deaths: death,
                 assists: assist,
                 kda : kda,
-                champ_name : champ_list,
+                champ_name : champ_list.champ_name,
+                champ_img : champion_img_url,
                 total_cs : total_cs,
                 level : level,
                 item : item_url[i],
@@ -86,8 +88,6 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
             game_of_times++;
             team_number_count++;
         }
-
-        console.log(participantList);
 
         return participantList;
     } catch (error) {
