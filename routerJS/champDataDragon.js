@@ -21,7 +21,6 @@ const Champion_Data_Dragon = async (champKey)=>{
             champ_name : champ_name,
             champ_id : champ_id,
         }
-        console.log(champion_data);
 
         return champion_data;
     } catch (error) {
