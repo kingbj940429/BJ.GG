@@ -22,18 +22,25 @@ matchInfo
                             .gameRecord_kda #{result[i+game_times].kills}/ #{result[i+game_times].deaths}/ #{result[i+game_times].assists}
                             .gameRecord_average #{result[i+game_times].kda}:1 평점
                         .gameRecord_levelCS
-                            .gameRecord_level 14&#xB808;&#xBCA8;
-                            .gameRecord_CS 22CS
+                            .gameRecord_level 레벨 #{result[i+game_times].level}
+                            .gameRecord_CS #{result[i+game_times].total_cs} CS
                         .gameRecord_items
                             .gameRecord_items_top
-                                div 1
-                                div 2
-                                div 3
-                                div 4
+                                div 
+                                    img(src=result[i+game_times].item[0])
+                                div 
+                                    img(src=result[i+game_times].item[1])
+                                div 
+                                    img(src=result[i+game_times].item[2])
+                                div 
+                                    img(src=result[i+game_times].item[3])
                             .gameRecord_items_bottom
-                                div 5
-                                div 6
-                                div 7
+                                div
+                                    img(src=result[i+game_times].item[4])
+                                div
+                                    img(src=result[i+game_times].item[5])
+                                div
+                                    img(src=result[i+game_times].item[6])
                         .gameRecord_team01 
                             .gameRecord_row #{result[i][0]}
                             .gameRecord_row #{result[i][1]}

@@ -1,5 +1,8 @@
 var matchDto = require('../axios/matchDto');
+var itemDataDragon = require('../axios/itemDataDragon');
+
 var champDataDragon = require('../routerJS/champDataDragon.js');
+
 
 const participantIdentities = async (summoner_getGameId, searchedName) => {
     try {
@@ -10,6 +13,9 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
         var game_of_times = 5; //게임 횟수
         var champKey = [];//챔피언 키
         var champ_list;//챔피언에 대한 리스트
+        var itemDD = await itemDataDragon();
+        var item_url = [];
+        var itemDD_version = itemDD.data.version;//itemDD 버전
 
         for (i = 0; i < game_of_times; i++) { //최근 5개의 게임만을 나타내기 위함
             MatchDto[i] = await matchDto(summoner_getGameId.data.matches[i].gameId);//최근 5게임의 gameid를 가지고있음
@@ -35,13 +41,34 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
             champKey.push(MatchDto[i].data.participants[searchedName_eachGame_number[i]].championId);
         }
         champ_list =  await champDataDragon(champKey);
-        console.log(champ_list);
+
+        //아이템 관련
+        for(k=0;k < searchedName_eachGame_number.length; k++){
+            var participants = MatchDto[k].data.participants[searchedName_eachGame_number[k]];
+            var stats = participants.stats;
+
+            item_url[k] = [];
+            for(i= 0 ;i<7;i++){
+                var item = {
+                    version : itemDD_version,
+                    items : [stats.item0,stats.item1,stats.item2,stats.item3,stats.item4,stats.item5,stats.item6]
+                };
+                 item_url[k].push(`http://ddragon.leagueoflegends.com/cdn/${item.version}/img/item/${item.items[i]}.png`);
+            }
+        }
 
         //최종적으로 pug에 렌더링 해줄 것들
         var team_number_count = 0;
         for (i = 0; i < searchedName_eachGame_number.length; i++) {
             var participants = MatchDto[i].data.participants[searchedName_eachGame_number[i]];//검색된 소환사의 게임에서의 번호
-            var kill = participants.stats.kills, death = participants.stats.deaths, assist = participants.stats.assists,kda =(kill+assist)/death;
+            var stats = participants.stats;
+            var kill = stats.kills, death = stats.deaths, assist = stats.assists,kda =(kill+assist)/death;
+            var total_cs = stats.totalMinionsKilled + stats.neutralMinionsKilled;
+            var level = stats.champLevel;
+           
+            kda = (Math.round(kda * 100) / 100).toFixed(2);
+
+
 
             participantList[game_of_times] = {
                 gameTime: Math.round(MatchDto[i].data.gameDuration / 60),
@@ -50,15 +77,17 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
                 kills: kill,
                 deaths: death,
                 assists: assist,
-                kda : Math.round(kda * 100) / 100,
+                kda : kda,
                 champ_name : champ_list,
+                total_cs : total_cs,
+                level : level,
+                item : item_url[i],
             }
             game_of_times++;
             team_number_count++;
         }
 
-        //console.log(participantList);
-        
+        console.log(participantList);
 
         return participantList;
     } catch (error) {
