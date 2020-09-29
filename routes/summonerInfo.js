@@ -13,16 +13,14 @@ router.get('/', function (req, res, next) {
         try {
             const searchedName = req.query.summonerName; //소환사 이름 ex) 여의도 한량이
 
-            const searchedSummonerId = await getSummonerId(searchedName); //쿼리스트링의 이름을 axios.getSummonerId에 넣어서 값 받기 AccountId : searchedSummonerId.data.accountId
+            const searchedSummonerId =  await getSummonerId(searchedName); //쿼리스트링의 이름을 axios.getSummonerId에 넣어서 값 받기 AccountId : searchedSummonerId.data.accountId
 
-            const summoner = await getSummonerInfo(searchedSummonerId.data.id); //소환사 기본 정보 콜백함수
+            const summoner =  await getSummonerInfo(searchedSummonerId.data.id); //소환사 기본 정보 콜백함수
 
             const summoner_getGameId = await getGameId(searchedSummonerId.data.accountId); //gameId : summoner_getGameId.data.matches[0].gameId
 
             const participantList = await matchDto_JS(summoner_getGameId, searchedName); //소환사 10명 모두 가져옴
 
-            //const MatchDto = await matchDto(summoner_getGameId.data.matches[0].gameId);
-            //console.log(champ_list);
             res.render('summonerInfo.pug', {
                 summonername: summoner.data[0].summonerName,
                 queueType: summoner.data[0].queueType,
