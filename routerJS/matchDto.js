@@ -43,10 +43,31 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
             champKey.push(MatchDto[i].data.participants[searchedName_eachGame_number[i]].championId);
         }
         champ_list =  await champDataDragon(champKey);
+
         for(i = 0;i<game_of_times;i++){
             champ_list.champ_id[i] = `http://ddragon.leagueoflegends.com/cdn/${process.env.CHAMP_VERSION}/img/champion/${champ_list.champ_id[i]}.png`;
             champion_img_url.push(champ_list.champ_id[i]);
         }
+
+        //검색된 소환사의 다른 소환사들 사진 
+        var other_summoner_champKey = [];
+        var other_summoner_champ_list = [];
+        var other_summoner_champ_url = [];
+        for(var i = 0; i<game_of_times;i++){
+            other_summoner_champKey[i] = [];
+            for(k=0;k<game_of_times;k++){
+                other_summoner_champKey[i].push(MatchDto[i].data.participants[k].championId);
+            }
+            other_summoner_champ_list[i] = await champDataDragon(other_summoner_champKey[i]);
+        }
+        //console.log(other_summoner_champ_list);
+        for(var i=0;i<game_of_times;i++){
+            other_summoner_champ_url[i] = [];
+            for(var k=0;k<game_of_times;k++){
+                other_summoner_champ_url[i].push(`http://ddragon.leagueoflegends.com/cdn/${process.env.CHAMP_VERSION}/img/champion/${other_summoner_champ_list[i].champ_id[k]}.png`);
+            }
+        }
+
         //아이템 관련
         for(k=0;k < searchedName_eachGame_number.length; k++){
             var participants = MatchDto[k].data.participants[searchedName_eachGame_number[k]];
@@ -73,7 +94,7 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
             spell_url[k].spell1 = `http://ddragon.leagueoflegends.com/cdn/${process.env.SPELL_VERSION}/img/spell/${spell_url[k].spell1}.png`;
             spell_url[k].spell2 = `http://ddragon.leagueoflegends.com/cdn/${process.env.SPELL_VERSION}/img/spell/${spell_url[k].spell2}.png`;
         }
-        console.log(spell_url);
+
         //최종적으로 pug에 렌더링 해줄 것들
         var team_number_count = 0;
         for (i = 0; i < searchedName_eachGame_number.length; i++) {
@@ -101,6 +122,7 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
                 level : level,
                 item : item_url[i],
                 spell : spell_url[i],
+                otherChamps : other_summoner_champ_url[i],
             }
             game_of_times++;
             team_number_count++;

@@ -47,14 +47,34 @@ matchInfo
                                     img(src=result[i+game_times].item[6] onerror="this.src='/images/gray-background.jpg';this.style.opacity=0.5;")
                         .gameRecord_summoner_names            
                             .gameRecord_team01 
-                                .gameRecord_row #{result[i][0]}
-                                .gameRecord_row #{result[i][1]}
-                                .gameRecord_row #{result[i][2]}
-                                .gameRecord_row #{result[i][3]}
-                                .gameRecord_row #{result[i][4]}
+                                .gameRecord_row
+                                    img( src=result[i+game_times].otherChamps[0])
+                                    .gameRecord_row_name #{result[i][0]}
+                                .gameRecord_row 
+                                    img( src=result[i+game_times].otherChamps[1])
+                                    .gameRecord_row_name #{result[i][1]}
+                                .gameRecord_row 
+                                    img( src=result[i+game_times].otherChamps[2])
+                                    .gameRecord_row_name #{result[i][2]}
+                                .gameRecord_row 
+                                    img( src=result[i+game_times].otherChamps[3])
+                                    .gameRecord_row_name #{result[i][3]}
+                                .gameRecord_row 
+                                    img( src=result[i+game_times].otherChamps[4])
+                                    .gameRecord_row_name #{result[i][4]}
                             .gameRecord_team02
-                                .gameRecord_row #{result[i][5]}
-                                .gameRecord_row #{result[i][6]}
-                                .gameRecord_row #{result[i][7]}
-                                .gameRecord_row #{result[i][8]}
-                                .gameRecord_row #{result[i][9]}
+                                .gameRecord_row 
+                                    img( src=result[i+game_times].otherChamps[5])
+                                    .gameRecord_row_name #{result[i][5]}
+                                .gameRecord_row 
+                                    img( src=result[i+game_times].otherChamps[6])
+                                    .gameRecord_row_name #{result[i][6]}
+                                .gameRecord_row 
+                                    img( src=result[i+game_times].otherChamps[7])
+                                    .gameRecord_row_name #{result[i][7]}
+                                .gameRecord_row 
+                                    img( src=result[i+game_times].otherChamps[8])
+                                    .gameRecord_row_name #{result[i][8]}
+                                .gameRecord_row 
+                                    img( src=result[i+game_times].otherChamps[9])
+                                    .gameRecord_row_name #{result[i][9]}

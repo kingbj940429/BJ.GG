@@ -17,7 +17,7 @@ const Champion_Data_Dragon = async (champKey)=>{
             }
         }
         
-        const champion_data = {
+        var champion_data = {
             champ_name : champ_name,
             champ_id : champ_id,
         }
