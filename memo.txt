@@ -1,22 +1,23 @@
-MATCH-V4
- {
-            "platformId": "KR",
-            "gameId": 4646773636,
-            "champion": 92, ==> http://ddragon.leagueoflegends.com/cdn/10.19.1/data/ko_KR/champion.json 여기서 "key":"238"(제드) 으로 있음
-            "queue": 450,
-            "season": 13,
-            "timestamp": 1600098385198,
-            "role": "DUO_SUPPORT",
-            "lane": "TOP"
-        },
+{
+    "id": "CQGEqqigoD-eoQ-Dfip6q6zqBjlHRAVU5e75q_CPWnIzNA",
+    "accountId": "kQki9fCyTYXELgxW00UWbW7L5OxLFg7TTTIeFKC3M6ny",
+    "puuid": "s1q6R-VakxKPnGdmgVQgfdAyYrjpM37tk1xnNPOlBgvFFT8n18MvsAqcu2aDjYCbHIeiy0TBC6fEMA",
+    "name": "여의도 한량이",
+    "profileIconId": 584,
+    "revisionDate": 1601727044000,
+    "summonerLevel": 161
+}
 
 {
-    "id": "sGzBoszBga3xz6yrrd6vFcARRUVgG7Pxfvym_hzXbg6L5A",
-    "accountId": "sNPpNDaO-TzbbLCbA-efNprsSsAqDiZqGFLbm2DmUgmM",
-    "puuid": "KvXh1kBFmgarI6gheuHuORUp7r7VPHOri1ijzK-5ofRxies32LfZYlwjCyLCDC8JzYNmebjSPVPWyA",
-    "name": "Hide on bush",
-    "profileIconId": 6,
-    "revisionDate": 1600666767000,
-    "summonerLevel": 349
-}
+    "matches": [
+        {
+            "platformId": "KR",
+            "gameId": 4693226512,
+            "champion": 67,
+            "queue": 440,
+            "season": 13,
+            "timestamp": 1601750260140,
+            "role": "DUO_CARRY",
+            "lane": "BOTTOM"
+        },
 1. 소환사 검색시 밑에 최근 전적 보여주기 한 5개정도 우선 게임 전적을 불러와보자!!

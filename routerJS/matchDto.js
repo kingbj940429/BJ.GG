@@ -75,14 +75,17 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
         for(k=0;k < searchedName_eachGame_number.length; k++){
             var participants = MatchDto[k].data.participants[searchedName_eachGame_number[k]];
             var stats = participants.stats;
-
+            var item = {
+                version : `${process.env.ITEM_VERSION}`,
+                items : [stats.item0,stats.item1,stats.item2,stats.item3,stats.item4,stats.item5,stats.item6]
+            };
             item_url[k] = [];
             for(i= 0 ;i<7;i++){
-                var item = {
-                    version : `${process.env.ITEM_VERSION}`,
-                    items : [stats.item0,stats.item1,stats.item2,stats.item3,stats.item4,stats.item5,stats.item6]
-                };
-                 item_url[k].push(`http://ddragon.leagueoflegends.com/cdn/${item.version}/img/item/${item.items[i]}.png`);
+                if(item.items[i]==0){
+                    item_url[k].push("/images/gray-background.jpg");
+                 }else{
+                    item_url[k].push(`http://ddragon.leagueoflegends.com/cdn/${item.version}/img/item/${item.items[i]}.png`);
+                 }
             }
         }
         //소환사 스펠 관련
