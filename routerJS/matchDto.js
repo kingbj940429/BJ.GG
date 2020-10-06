@@ -23,13 +23,16 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
         }
 
         //검색된 소환사의 게임당 순번 및 팀
+        var count =0;
         for (k = 0; k < game_of_times; k++) {
             participantList[k] = [];
             for (i = 0; i < MatchDto[k].data.participantIdentities.length; i++) {
                 participantList[k].push(MatchDto[k].data.participantIdentities[i].player.summonerName);
                 if (MatchDto[k].data.participantIdentities[i].player.summonerName === searchedName) {
                     searchedName_eachGame_number[k] = i; //검색된 소환사의 이름의 순번. index이므로 0부터 시작
+                    count++;
                 }
+                if(count===10)break;
             }
             if (searchedName_eachGame_number[k] < 5) {//id가 5 미만은 blue팀
                 team_number[k] = 0;
@@ -127,7 +130,7 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
             game_of_times++;
             team_number_count++;
         }
-        console.log(participantList);
+        //console.log(participantList);
         return participantList;
     } catch (error) {
         console.error(error);

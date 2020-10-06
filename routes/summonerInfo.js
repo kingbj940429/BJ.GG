@@ -19,7 +19,7 @@ router.get('/', function (req, res, next) {
 
             const summoner_getGameId = await getGameId(searchedSummonerId.data.accountId); //gameId : summoner_getGameId.data.matches[0].gameId
 
-            const participantList = await matchDto_JS(summoner_getGameId, searchedName); //소환사 10명 모두 가져옴
+            const participantList =  await matchDto_JS(summoner_getGameId, searchedName); //소환사 10명 모두 가져옴
 
             res.render('summonerInfo.pug', {
                 summonername: summoner.data[0].summonerName,
@@ -30,6 +30,10 @@ router.get('/', function (req, res, next) {
                 losses: summoner.data[0].losses,
                 result: participantList,
             });
+            //console.log(participantList);
+            // res.render('test',{
+            //     searchedSummonerId:searchedSummonerId,
+            // });
 
         } catch (error) {
             console.log(error);
