@@ -1,7 +1,7 @@
-var matchDto = require('../axios/matchDto');
+var matchDto = require('../../axios/matchDto');
 
-var champDataDragon = require('../routerJS/champDataDragon.js');
-var spellDataDragon = require('../routerJS/spellDataDragon.js');
+var champDataDragon = require('./champDataDragon.js');
+var spellDataDragon = require('./spellDataDragon.js');
 
 
 const participantIdentities = async (summoner_getGameId, searchedName) => {

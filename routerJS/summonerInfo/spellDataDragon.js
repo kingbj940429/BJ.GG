@@ -1,4 +1,4 @@
-var spellDataDragon = require('../axios/spellDataDragon');
+var spellDataDragon = require('../../axios/spellDataDragon');
 
 const Spell_Data_Dragon = async (spellKey)=>{
     try {

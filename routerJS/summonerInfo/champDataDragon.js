@@ -1,4 +1,4 @@
-var champDataDragon = require('../axios/champDataDragon');
+var champDataDragon = require('../../axios/champDataDragon');
 
 const Champion_Data_Dragon = async (champKey)=>{
     try {

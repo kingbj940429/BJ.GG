@@ -1,4 +1,4 @@
-var itemDataDragon = require('../axios/itemDataDragon');
+var itemDataDragon = require('../../axios/itemDataDragon');
 
 const Item_Data_Dragon = async()=>{
     try {
