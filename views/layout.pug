@@ -6,17 +6,19 @@ html
     link(rel='stylesheet', href='/stylesheets/matchInfo.css')
     link(rel='stylesheet', href='/stylesheets/summonerInfo.css')
     link(rel='stylesheet', href='/stylesheets/responsive.css')
+    link(rel='stylesheet', href='/stylesheets/gnb.css')
     script(src='https://code.jquery.com/jquery-3.5.1.slim.js')
     script.
       $(()=>{
         var game_times = 10;
         for(var i=0;i<game_times;i++){
           if( $(`.win_fail_check${i}`).text() === 'Fail'){
-            $(`.gameRecord_wrap${i}`).css("background-color","#f46573");
+            $(`.gameRecord_wrap${i}`).css("background-color","#ef9a9a ");
           }else{
-            $(`.gameRecord_wrap${i}`).css("background-color","cornflowerblue");
+            $(`.gameRecord_wrap${i}`).css("background-color","#90caf9");
           }
         }
       })  
   body
+    include gnb  
     block content
