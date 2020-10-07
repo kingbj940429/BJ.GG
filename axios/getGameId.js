@@ -4,7 +4,13 @@ const axios = require('axios');
 const getGameId = async (accountId) => {
   try {
     var result = await axios.get(`https://kr.api.riotgames.com/lol/match/v4/matchlists/by-account/${accountId}?api_key=${process.env.API_KEY}`);
-    return result;
+    var game_id=[];
+
+    for(var i=0;i< process.env.GAME_TIMES;i++){
+      game_id.push(result.data.matches[i].gameId);
+    }
+
+    return game_id;
   } catch (error) {
     console.error(error);
   }

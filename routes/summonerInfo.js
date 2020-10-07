@@ -17,11 +17,11 @@ router.get('/', function (req, res, next) {
             const searchedSummonerId = await getSummonerId(searchedName); //쿼리스트링의 이름을 axios.getSummonerId에 넣어서 값 받기 AccountId : searchedSummonerId.data.accountId
 
             var summoner = await getSummonerInfo(searchedSummonerId.data.id); //소환사 기본 정보 콜백함수
-      
+            
             const summoner_getGameId = await getGameId(searchedSummonerId.data.accountId); //gameId : summoner_getGameId.data.matches[0].gameId
-           
+            
             const participantList = await matchDto_JS(summoner_getGameId, searchedName); //소환사 10명 모두 가져옴
-
+            // line 23이 오래걸림
             res.render('summonerInfo.pug', {
                 summoner: summoner,
                 result: participantList,

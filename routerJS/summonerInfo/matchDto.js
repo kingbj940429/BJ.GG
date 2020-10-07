@@ -11,15 +11,15 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
         const MatchDto = [];
         var team_number = []; //검색된 소환사가 어느 팀이였는지 구별해주는 변수
         var game_of_times = process.env.GAME_TIMES; //게임 횟수
-        var champKey = [];//챔피언 키
-        var champ_list;//챔피언에 대한 리스트
+        var my_champKey = [];//챔피언 키
+        var champ_list= [];//챔피언에 대한 리스트
         var item_url = [];
         var champion_img_url = [];
         var spell_list = [];
         var spell_url = [];
 
         for (i = 0; i < game_of_times; i++) { //최근 5개의 게임만을 나타내기 위함
-            MatchDto[i] = await matchDto(summoner_getGameId.data.matches[i].gameId);//최근 5게임의 gameid를 가지고있음
+            MatchDto[i] = await matchDto(summoner_getGameId[i]);//최근 5게임의 gameid를 가지고있음
         }
 
         //검색된 소환사의 게임당 순번 및 팀
@@ -32,7 +32,7 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
                     searchedName_eachGame_number[k] = i; //검색된 소환사의 이름의 순번. index이므로 0부터 시작
                     count++;
                 }
-                if(count===10)break;
+                if(count===11)break;
             }
             if (searchedName_eachGame_number[k] < 5) {//id가 5 미만은 blue팀
                 team_number[k] = 0;
@@ -40,17 +40,12 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
                 team_number[k] = 1;
             }
         }
-
-        //검색된 소환사가 한 각 챔피언들의 key값을 받아냄.
+        console.log(participantList);
+        //검색된 소환사가 한 각 챔피언들의 key값을 받아냄. 내가 플레이한 사진만
         for(i = 0;i<game_of_times;i++){
-            champKey.push(MatchDto[i].data.participants[searchedName_eachGame_number[i]].championId);
+            my_champKey.push(MatchDto[i].data.participants[searchedName_eachGame_number[i]].championId);
         }
-        champ_list =  await champDataDragon(champKey);
-
-        for(i = 0;i<game_of_times;i++){
-            champ_list.champ_id[i] = `http://ddragon.leagueoflegends.com/cdn/${process.env.CHAMP_VERSION}/img/champion/${champ_list.champ_id[i]}.png`;
-            champion_img_url.push(champ_list.champ_id[i]);
-        }
+   
 
         //검색된 소환사의 다른 소환사들 사진 
         var other_summoner_champKey = [];
@@ -61,16 +56,20 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
             for(k=0;k<game_of_times;k++){
                 other_summoner_champKey[i].push(MatchDto[i].data.participants[k].championId);
             }
-            other_summoner_champ_list[i] = await champDataDragon(other_summoner_champKey[i]);
         }
-        //console.log(other_summoner_champ_list);
+        other_summoner_champ_list = await champDataDragon(other_summoner_champKey,my_champKey);
+        //내가 플레이한 챔피언 사진
+        for(i = 0;i<game_of_times;i++){
+            champ_list[i] = `http://ddragon.leagueoflegends.com/cdn/${process.env.CHAMP_VERSION}/img/champion/${other_summoner_champ_list.my_champ_id[i]}.png`;
+            champion_img_url.push(champ_list[i]);
+        }
+        //같이 플레이한 소환사들의 챔피언 사진
         for(var i=0;i<game_of_times;i++){
             other_summoner_champ_url[i] = [];
             for(var k=0;k<game_of_times;k++){
-                other_summoner_champ_url[i].push(`http://ddragon.leagueoflegends.com/cdn/${process.env.CHAMP_VERSION}/img/champion/${other_summoner_champ_list[i].champ_id[k]}.png`);
+                other_summoner_champ_url[i].push(`http://ddragon.leagueoflegends.com/cdn/${process.env.CHAMP_VERSION}/img/champion/${other_summoner_champ_list.champ_id[i][k]}.png`);
             }
         }
-
         //아이템 관련
         for(k=0;k < searchedName_eachGame_number.length; k++){
             var participants = MatchDto[k].data.participants[searchedName_eachGame_number[k]];
@@ -112,8 +111,6 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
            
             kda = (Math.round(kda * 100) / 100).toFixed(2);
 
-
-
             participantList[game_of_times] = {
                 gameTime: Math.round(MatchDto[i].data.gameDuration / 60),
                 gameWinFail: MatchDto[i].data.teams[team_number[team_number_count]].win, //이거 어느 팀이냐에 따라 다르게 나와야함
@@ -122,7 +119,7 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
                 deaths: death,
                 assists: assist,
                 kda : kda,
-                champ_name : champ_list.champ_name,
+                champ_name : other_summoner_champ_list.my_champ_name,
                 champ_img : champion_img_url,
                 total_cs : total_cs,
                 level : level,
@@ -133,7 +130,7 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
             game_of_times++;
             team_number_count++;
         }
-        //console.log(participantList);
+      
         return participantList;
     } catch (error) {
         console.error(error);
