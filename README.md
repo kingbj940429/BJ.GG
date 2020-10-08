@@ -1,11 +1,18 @@
+# 실행 방법
+1) git clone해서 다운받습니다.
+2) 본인 API_KEY를 RIOT developer에서 발급받습니다.
+3) .env 파일을 만들어서 아래와 같은 정보를 넣어줍니다. 
 ```js
-.env은 따로 만들어야 합니다.
+//.env 파일은 따로 만들어야 합니다. 위치는 폴더 가장 상위
 API_KEY = "본인 API_KEY를 넣으세요"
 ITEM_VERSION = 10.19.1 //각 json 버전
 CHAMP_VERSION = 10.19.1
 SPELL_VERSION = 10.19.1
 GAME_TIMES = 10 //검색할 게임 수
 ```
+4) 터미널에서 npm i 명령어로 필요한 npm들을 다운 받습니다.
+5) 터미널에서 npm i -D nodemon로 nodemon를 다운 받습니다.
+6) 터미널에서 npm start 로 실행시켜줍니다.
 # 구현 목표
 1) 소환사 이름 검색시 해당하는 소환사의 정보 보여주기 ex) 티어, 승패수, 숙련도 높은 챔피언 top3 등등
 
