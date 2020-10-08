@@ -43,7 +43,16 @@ KDA 추가
 ### 2020-10-06 
 * 기존에 onerror로 했지만 500ms나 잡아먹어서 예외처리 따로 해줌
 =>구매하지 않은 아이템 이미지 예외 처리 완료
+
+### 2020-10-07
 * 티어에 맞는 이미지 추가 및 정렬
 * gnb.pug 추가하여 모든 페이지에 gnb 가능하도록 구현
 * await champDataDragon(other_summoner_champKey,my_champKey); 를 10번 반복했지만 await가 검색 속도를 느리게 했다
 * 1차 시간 개선전 검색 시간은 5.22초 였다. 하지만 1차 시간 개선후 4.17초를 기록했다 1초 단축시켰다.
+
+### 2020-10-8
+* 검색 시간을 단축 시킬려고 for문을 최소한으로 하고, await도 최소화 했지만 여전히 4초 이하로는 떨어지지 않는다.
+* 원인은 var result = await axios.get(`https://kr.api.riotgames.com/lol/match/v4/matches/${gameId}?api_key=${process.env.API_KEY}`); 이였다.
+* 10게임의 데이터를 불러와야 하므로 총 10번 반복해주는데 한번 하는데 350.000ms 정도 소모된다. 10번이니깐 저기만 3.5초 걸리는 것이다.
+* 총 시간을 4.2초라고 가정하면 나머지는 로직은 0.7초 밖에 걸리지 않는 것이다.
+

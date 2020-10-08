@@ -12,6 +12,7 @@ router.get('/', function (req, res, next) {
 
     const getSummoner_information = async () => {
         try {
+            
             const searchedName = req.query.summonerName; //소환사 이름 ex) 여의도 한량이
 
             const searchedSummonerId = await getSummonerId(searchedName); //쿼리스트링의 이름을 axios.getSummonerId에 넣어서 값 받기 AccountId : searchedSummonerId.data.accountId
@@ -26,6 +27,7 @@ router.get('/', function (req, res, next) {
                 summoner: summoner,
                 result: participantList,
             });
+           
         } catch (error) {
             console.log(error);
         }
