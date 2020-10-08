@@ -1,3 +1,11 @@
+```js
+.env은 따로 만들어야 합니다.
+API_KEY = "본인 API_KEY를 넣으세요"
+ITEM_VERSION = 10.19.1 //각 json 버전
+CHAMP_VERSION = 10.19.1
+SPELL_VERSION = 10.19.1
+GAME_TIMES = 10 //검색할 게임 수
+```
 # 구현 목표
 1) 소환사 이름 검색시 해당하는 소환사의 정보 보여주기 ex) 티어, 승패수, 숙련도 높은 챔피언 top3 등등
 
