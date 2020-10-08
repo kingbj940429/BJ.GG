@@ -15,8 +15,6 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
         var champ_list= [];//챔피언에 대한 리스트
         var item_url = [];
         var champion_img_url = [];
-        var spell_list = [];
-        var spell_url = [];
 
         for (i = 0; i < game_of_times; i++) { //최근 5개의 게임만을 나타내기 위함
             MatchDto[i] = await matchDto(summoner_getGameId[i]);//최근 5게임의 gameid를 가지고있음
@@ -40,18 +38,14 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
                 team_number[k] = 1;
             }
         }
-        console.log(participantList);
-        //검색된 소환사가 한 각 챔피언들의 key값을 받아냄. 내가 플레이한 사진만
-        for(i = 0;i<game_of_times;i++){
-            my_champKey.push(MatchDto[i].data.participants[searchedName_eachGame_number[i]].championId);
-        }
-   
 
+        //검색된 소환사가 한 각 챔피언들의 key값을 받아냄. 내가 플레이한 사진만
         //검색된 소환사의 다른 소환사들 사진 
         var other_summoner_champKey = [];
         var other_summoner_champ_list = [];
         var other_summoner_champ_url = [];
         for(var i = 0; i<game_of_times;i++){
+            my_champKey.push(MatchDto[i].data.participants[searchedName_eachGame_number[i]].championId);
             other_summoner_champKey[i] = [];
             for(k=0;k<game_of_times;k++){
                 other_summoner_champKey[i].push(MatchDto[i].data.participants[k].championId);
@@ -59,12 +53,10 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
         }
         other_summoner_champ_list = await champDataDragon(other_summoner_champKey,my_champKey);
         //내가 플레이한 챔피언 사진
-        for(i = 0;i<game_of_times;i++){
-            champ_list[i] = `http://ddragon.leagueoflegends.com/cdn/${process.env.CHAMP_VERSION}/img/champion/${other_summoner_champ_list.my_champ_id[i]}.png`;
-            champion_img_url.push(champ_list[i]);
-        }
         //같이 플레이한 소환사들의 챔피언 사진
         for(var i=0;i<game_of_times;i++){
+            champ_list[i] = `http://ddragon.leagueoflegends.com/cdn/${process.env.CHAMP_VERSION}/img/champion/${other_summoner_champ_list.my_champ_id[i]}.png`;
+            champion_img_url.push(champ_list[i]);
             other_summoner_champ_url[i] = [];
             for(var k=0;k<game_of_times;k++){
                 other_summoner_champ_url[i].push(`http://ddragon.leagueoflegends.com/cdn/${process.env.CHAMP_VERSION}/img/champion/${other_summoner_champ_list.champ_id[i][k]}.png`);
@@ -88,21 +80,30 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
             }
         }
         //소환사 스펠 관련
-        for(k=0;k < searchedName_eachGame_number.length; k++){
-            var participants = MatchDto[k].data.participants[searchedName_eachGame_number[k]];
-            var spell = {
+        var spell=[];
+        var spell_list = {};
+        var spell_url = {};
+        var spell_result = [];
+        for(i=0;i < searchedName_eachGame_number.length; i++){
+            var participants = MatchDto[i].data.participants[searchedName_eachGame_number[i]];
+            spell[i] = {
                 spell1 : participants.spell1Id,
                 spell2 : participants.spell2Id,
             }
-            spell_list.push(await spellDataDragon(spell));
-            spell_url.push(spell_list[k]);
-            spell_url[k].spell1 = `http://ddragon.leagueoflegends.com/cdn/${process.env.SPELL_VERSION}/img/spell/${spell_url[k].spell1}.png`;
-            spell_url[k].spell2 = `http://ddragon.leagueoflegends.com/cdn/${process.env.SPELL_VERSION}/img/spell/${spell_url[k].spell2}.png`;
+            // spell_url[i].spell1 = `http://ddragon.leagueoflegends.com/cdn/${process.env.SPELL_VERSION}/img/spell/${spell_url[i].spell1}.png`;
+            // spell_url[i].spell2 = `http://ddragon.leagueoflegends.com/cdn/${process.env.SPELL_VERSION}/img/spell/${spell_url[i].spell2}.png`;
         }
-
+        spell_list = await spellDataDragon(spell);
+  
+        for(i=0;i<process.env.GAME_TIMES;i++){
+             spell_url.spell1 = `http://ddragon.leagueoflegends.com/cdn/${process.env.SPELL_VERSION}/img/spell/${spell_list.spell1[i]}.png`;
+             spell_url.spell2 = `http://ddragon.leagueoflegends.com/cdn/${process.env.SPELL_VERSION}/img/spell/${spell_list.spell2[i]}.png`;
+             spell_result.push(spell_url);
+        }
+   
         //최종적으로 pug에 렌더링 해줄 것들
         var team_number_count = 0;
-        for (i = 0; i < searchedName_eachGame_number.length; i++) {
+        for (i = 0; i < process.env.GAME_TIMES; i++) {
             var participants = MatchDto[i].data.participants[searchedName_eachGame_number[i]];//검색된 소환사의 게임에서의 번호
             var stats = participants.stats;
             var kill = stats.kills, death = stats.deaths, assist = stats.assists,kda =(kill+assist)/death;
@@ -124,7 +125,7 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
                 total_cs : total_cs,
                 level : level,
                 item : item_url[i],
-                spell : spell_url[i],
+                spell : spell_result[i],
                 otherChamps : other_summoner_champ_url[i],
             }
             game_of_times++;
