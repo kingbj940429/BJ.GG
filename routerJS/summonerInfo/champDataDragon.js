@@ -18,15 +18,23 @@ const Champion_Data_Dragon = async (champKey, my_champKey)=>{
                         champ_id[i].push(champ.id);
                         count++;
                     }
-                    if(parseInt(champ.key) === my_champKey[i]){
-                        my_champ_id.push(champ.id);
-                        my_champ_name.push(champ.name);
-                        count++;
-                    }
-                    if(count==20)break;
+                    if(count==10)break;
                 }
             }
         }
+
+        for(i=0;i<process.env.GAME_TIMES;i++){
+            count=0;
+            for (let champ of Object.values(champs)) {
+                if(parseInt(champ.key) === my_champKey[i]){
+                    my_champ_id.push(champ.id);
+                    my_champ_name.push(champ.name);
+                    count++;
+                }
+                if(count==10)break;
+            }
+        }
+       
 
         const champion_data = {
             champ_id : champ_id,
