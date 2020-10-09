@@ -1,1 +1,2 @@
-ddd
+env 수정
+matchInfo.pug에서 2,3 라인 수정

@@ -50,7 +50,7 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
         for(var i = 0; i<game_of_times;i++){
             my_champKey.push(MatchDto[i].data.participants[searchedName_eachGame_number[i]].championId);
             other_summoner_champKey[i] = [];
-            for(k=0;k<game_of_times;k++){
+            for(k=0;k<10;k++){
                 other_summoner_champKey[i].push(MatchDto[i].data.participants[k].championId);
             }
         }
@@ -62,7 +62,7 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
             champ_list[i] = `http://ddragon.leagueoflegends.com/cdn/${process.env.CHAMP_VERSION}/img/champion/${other_summoner_champ_list.my_champ_id[i]}.png`;
             champion_img_url.push(champ_list[i]);
             other_summoner_champ_url[i] = [];
-            for(var k=0;k<game_of_times;k++){
+            for(var k=0;k<10;k++){
                 other_summoner_champ_url[i].push(`http://ddragon.leagueoflegends.com/cdn/${process.env.CHAMP_VERSION}/img/champion/${other_summoner_champ_list.champ_id[i][k]}.png`);
             }
         }

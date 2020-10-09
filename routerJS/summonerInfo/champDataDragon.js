@@ -12,7 +12,7 @@ const Champion_Data_Dragon = async (champKey, my_champKey)=>{
         for(i=0;i< process.env.GAME_TIMES;i++){
             champ_id[i]=[];
             count=0;
-            for(j=0;j<process.env.GAME_TIMES;j++){
+            for(j=0;j<10;j++){//소환사가 총 10명이여서 10
                 for (let champ of Object.values(champs)) {
                     if(parseInt(champ.key) === champKey[i][j]){
                         champ_id[i].push(champ.id);
@@ -35,7 +35,7 @@ const Champion_Data_Dragon = async (champKey, my_champKey)=>{
             }
         }
        
-
+        
         const champion_data = {
             champ_id : champ_id,
             my_champ_id : my_champ_id,

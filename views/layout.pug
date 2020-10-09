@@ -11,7 +11,7 @@ html
     script(src='https://code.jquery.com/jquery-3.5.1.slim.js')
     script.
       $(()=>{
-        var game_times = 10;
+        var game_times = $(".game_times").val();
         for(var i=0;i<game_times;i++){
           if( $(`.win_fail_check${i}`).text() === 'Fail'){
             $(`.gameRecord_wrap${i}`).css("background-color","#ef9a9a ");
