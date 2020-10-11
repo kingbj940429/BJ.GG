@@ -15,11 +15,12 @@ html
         $('.game_form').submit((e)=>{
            e.preventDefault();
             $.ajax({
-              url:`/summonerInfo/ajax`,
+              url:`/summonerInfo/add_summoner`,
               data:{
                 summoner_query : $('.summoner_query').val(),
               },
               success:function(data){
+                console.log(data);
                 alert("ajax 성공");
                   }
               })
