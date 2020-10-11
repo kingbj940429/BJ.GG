@@ -16,13 +16,12 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
         var champ_list= [];//챔피언에 대한 리스트
         var item_url = [];
         var champion_img_url = [];
-        console.time("matchDto");
-        for (i = 0; i < game_of_times; i++) { //최근 5개의 게임만을 나타내기 위함
-            MatchDto[i] = await matchDto(summoner_getGameId[i]);//최근 5게임의 gameid를 가지고있음
+        
+        for (i = 0; i < game_of_times; i++) { //최근 N개의 게임만을 나타내기 위함
+            MatchDto[i] = await matchDto(summoner_getGameId[i]);//최근 N게임의 gameid를 가지고있음
         }
-        console.timeEnd("matchDto");
         //검색된 소환사의 게임당 순번 및 팀
-        console.time("그 외 시간");
+       
         var count =0;
         for (k = 0; k < game_of_times; k++) {
             participantList[k] = [];
@@ -135,7 +134,7 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
             game_of_times++;
             team_number_count++;
         }
-        console.timeEnd("그 외 시간");
+        
         return participantList;
     } catch (error) {
         console.error(error);

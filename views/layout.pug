@@ -8,10 +8,23 @@ html
     link(rel='stylesheet', href='/stylesheets/responsive.css')
     link(rel='stylesheet', href='/stylesheets/gnb.css')
     link(rel='stylesheet', href='/stylesheets/footer.css')
-    script(src='https://code.jquery.com/jquery-3.5.1.slim.js')
+    script(src='https://code.jquery.com/jquery-3.5.1.min.js')
     script.
       $(()=>{
         var game_times = $(".game_times").val();
+        $('.game_form').submit((e)=>{
+           e.preventDefault();
+            $.ajax({
+              url:`/summonerInfo/ajax`,
+              data:{
+                summoner_query : $('.summoner_query').val(),
+              },
+              success:function(data){
+                alert("ajax 성공");
+                  }
+              })
+        })
+    
         for(var i=0;i<game_times;i++){
           if( $(`.win_fail_check${i}`).text() === 'Fail'){
             $(`.gameRecord_wrap${i}`).css("background-color","#ef9a9a ");
