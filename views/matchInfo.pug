@@ -1,12 +1,12 @@
 matchInfo
     input(class="summoner_query" type="hidden" value=summoner_query)
-    .content_wrap.col-12.col-center.mw-1200
-        form.game_form(method="post")
+    form.game_form(method="post")
             button(type="submit") 추가
+    .content_wrap.col-12.col-center.mw-1200
         -var game_times = 3;
         -for(i=0;i<game_times;i++)
             input(class="game_times" type="hidden" value=game_times)
-            .content_wrap1.col-12
+            .gameRecord_box.col-12
                 .gameRecord_wrap.col-12
                     .gameRecord_con.col-12
                         .gameRecord_inner.col-12
@@ -16,6 +16,7 @@ matchInfo
                                     var win_fail_number = #{i};
                                     $(`.gameRecord_info_win_fail_check`).attr("class","win_fail_check"+ #{i});
                                     $(`.gameRecord_wrap`).attr("class","gameRecord_wrap"+ #{i} +" col-12" + " mw-1200" + " col-center"+ " gameRecord_wrap_css");
+                                    $(`.gameRecord_box`).attr("class","gameRecord_box"+ #{i} +" col-12" + " mw-1200" + " col-center"+ " gameRecord_wrap_css");
                                 .gameRecord_info_time #{result[i+game_times].gameTime}분
                             .gameRecord_champ
                                 .gameRecord_champ_img
@@ -82,3 +83,8 @@ matchInfo
                                     .gameRecord_row 
                                         img( src=result[i+game_times].otherChamps[9])
                                         .gameRecord_row_name #{result[i][9]}
+    .content_wrap.col-12.col-center.mw-1200
+        -for(i=0;i<game_times;i++)
+            .gameRecord_add_con.col-12.mw-1200.col-center
+                script.
+                    $('.gameRecord_add_con').attr("class","gameRecord_add_con" + #{i} + " col-12" + " mw-1200" + " col-center");
