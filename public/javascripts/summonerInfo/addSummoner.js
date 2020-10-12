@@ -68,8 +68,11 @@ var add_Summoner = (submit_number) => {
                 }
             }
 
-            alert("ajax 성공");
+            alert("불러오기 성공");
+        },error:function(err){
+            alert("불러올 데이터가 없습니다.");
         }
     })
+    
     //})
 }

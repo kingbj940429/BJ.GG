@@ -56,53 +56,63 @@ matchInfo
                                         .other_champion_img0
                                             img( src=result[i+game_times].otherChamps[0])
                                         .gameRecord_row_name0 
-                                            div #{result[i][0]}
+                                            div 
+                                                a(href="/summonerInfo?summonerName="+ result[i][0]) #{result[i][0]}
                                     .gameRecord_row 
                                         .other_champion_img1
                                             img( src=result[i+game_times].otherChamps[1])
                                         .gameRecord_row_name1
-                                            div #{result[i][1]}
+                                            div 
+                                                a(href="/summonerInfo?summonerName="+ result[i][1]) #{result[i][1]}
                                     .gameRecord_row 
                                         .other_champion_img2
                                             img( src=result[i+game_times].otherChamps[2])
                                         .gameRecord_row_name2 
-                                            div #{result[i][2]}
+                                            div 
+                                                a(href="/summonerInfo?summonerName="+ result[i][2]) #{result[i][2]}
                                     .gameRecord_row 
                                         .other_champion_img3
                                             img( src=result[i+game_times].otherChamps[3])
                                         .gameRecord_row_name3
-                                            div #{result[i][3]}
+                                            div 
+                                                a(href="/summonerInfo?summonerName="+ result[i][3]) #{result[i][3]}
                                     .gameRecord_row 
                                         .other_champion_img4
                                             img( src=result[i+game_times].otherChamps[4])
                                         .gameRecord_row_name4 
-                                            div #{result[i][4]}
+                                            div 
+                                                a(href="/summonerInfo?summonerName="+ result[i][4]) #{result[i][4]}
                                 .gameRecord_team02
                                     .gameRecord_row 
                                         .other_champion_img5
                                             img( src=result[i+game_times].otherChamps[5])
                                         .gameRecord_row_name5 
-                                            div #{result[i][5]}
+                                            div 
+                                                a(href="/summonerInfo?summonerName="+ result[i][5]) #{result[i][5]}
                                     .gameRecord_row 
                                         .other_champion_img6
                                             img( src=result[i+game_times].otherChamps[6])
                                         .gameRecord_row_name6 
-                                            div #{result[i][6]}
+                                            div 
+                                                a(href="/summonerInfo?summonerName="+ result[i][6]) #{result[i][6]}
                                     .gameRecord_row 
                                         .other_champion_img7
                                             img( src=result[i+game_times].otherChamps[7])
                                         .gameRecord_row_name7 
-                                            div #{result[i][7]}
+                                            div 
+                                                a(href="/summonerInfo?summonerName="+ result[i][7]) #{result[i][7]}
                                     .gameRecord_row 
                                         .other_champion_img8
                                             img( src=result[i+game_times].otherChamps[8])
                                         .gameRecord_row_name8 
-                                            div #{result[i][8]}
+                                            div 
+                                                a(href="/summonerInfo?summonerName="+ result[i][8]) #{result[i][8]}
                                     .gameRecord_row 
                                         .other_champion_img9
                                             img( src=result[i+game_times].otherChamps[9])
                                         .gameRecord_row_name9 
-                                            div #{result[i][9]}
+                                            div 
+                                                a(href="/summonerInfo?summonerName="+ result[i][9]) #{result[i][9]}
     .content_wrap.col-12.col-center.mw-1200
         -for(i=0;i<game_times;i++)
             .gameRecord_add_con.col-12.mw-1200.col-center

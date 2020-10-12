@@ -34,15 +34,15 @@
 .gameRecord_row img{position: absolute;left:-25px;height: 20px;width: 20px;}
 .gameRecord_row_name{}
 
-.gameRecord_add_con0 > .gameRecord_wrap0{margin-bottom: 25px;}
-.gameRecord_add_con0 > .gameRecord_wrap1{margin-bottom: 25px;}
-.gameRecord_add_con0 > .gameRecord_wrap2{margin-bottom: 25px;}
+.gameRecord_add_con0 > .gameRecord_wrap0{margin-bottom: 25px;border-radius: 5px;}
+.gameRecord_add_con0 > .gameRecord_wrap1{margin-bottom: 25px;border-radius: 5px;}
+.gameRecord_add_con0 > .gameRecord_wrap2{margin-bottom: 25px;border-radius: 5px;}
 
-.gameRecord_add_con1 > .gameRecord_wrap0{margin-bottom: 25px;}
-.gameRecord_add_con1 > .gameRecord_wrap1{margin-bottom: 25px;}
-.gameRecord_add_con1 > .gameRecord_wrap2{margin-bottom: 25px;}
+.gameRecord_add_con1 > .gameRecord_wrap0{margin-bottom: 25px;border-radius: 5px;}
+.gameRecord_add_con1 > .gameRecord_wrap1{margin-bottom: 25px;border-radius: 5px;}
+.gameRecord_add_con1 > .gameRecord_wrap2{margin-bottom: 25px;border-radius: 5px;}
 
-.gameRecord_add_con2 > .gameRecord_wrap0{margin-bottom: 25px;}
-.gameRecord_add_con2 > .gameRecord_wrap1{margin-bottom: 25px;}
-.gameRecord_add_con2 > .gameRecord_wrap2{margin-bottom: 25px;}
+.gameRecord_add_con2 > .gameRecord_wrap0{margin-bottom: 25px;border-radius: 5px;}
+.gameRecord_add_con2 > .gameRecord_wrap1{margin-bottom: 25px;border-radius: 5px;}
+.gameRecord_add_con2 > .gameRecord_wrap2{margin-bottom: 25px;border-radius: 5px;}
 
