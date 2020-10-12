@@ -15,7 +15,7 @@ matchInfo
                                 script.
                                     var win_fail_number = #{i};
                                     $(`.gameRecord_info_win_fail_check`).attr("class","win_fail_check"+ #{i});
-                                    $(`.gameRecord_wrap`).attr("class","gameRecord_wrap"+ #{i} +" col-12" + " mw-1200" + " col-center"+ " gameRecord_wrap_css");
+                                    $(`.gameRecord_wrap`).attr("class","gameRecord_wrap"+ #{i} +" col-12" + " mw-1200" + " col-center");
                                     $(`.gameRecord_box`).attr("class","gameRecord_box"+ #{i} +" col-12" + " mw-1200" + " col-center"+ " gameRecord_wrap_css");
                                 .gameRecord_info_time #{result[i+game_times].gameTime}분
                             .gameRecord_champ
@@ -35,54 +35,74 @@ matchInfo
                                 .gameRecord_CS #{result[i+game_times].total_cs} CS
                             .gameRecord_items
                                 .gameRecord_items_top
-                                    div 
+                                    div.item0 
                                         img(src=result[i+game_times].item[0])
-                                    div 
+                                    div.item1 
                                         img(src=result[i+game_times].item[1])
-                                    div 
+                                    div.item2 
                                         img(src=result[i+game_times].item[2])
-                                    div 
+                                    div.item3 
                                         img(src=result[i+game_times].item[3])
                                 .gameRecord_items_bottom
-                                    div
+                                    div.item4 
                                         img(src=result[i+game_times].item[4])
-                                    div
+                                    div.item5
                                         img(src=result[i+game_times].item[5])
-                                    div
+                                    div.item6
                                         img(src=result[i+game_times].item[6])
                             .gameRecord_summoner_names            
                                 .gameRecord_team01 
                                     .gameRecord_row
-                                        img( src=result[i+game_times].otherChamps[0])
-                                        .gameRecord_row_name #{result[i][0]}
+                                        .other_champion_img0
+                                            img( src=result[i+game_times].otherChamps[0])
+                                        .gameRecord_row_name0 
+                                            div #{result[i][0]}
                                     .gameRecord_row 
-                                        img( src=result[i+game_times].otherChamps[1])
-                                        .gameRecord_row_name #{result[i][1]}
+                                        .other_champion_img1
+                                            img( src=result[i+game_times].otherChamps[1])
+                                        .gameRecord_row_name1
+                                            div #{result[i][1]}
                                     .gameRecord_row 
-                                        img( src=result[i+game_times].otherChamps[2])
-                                        .gameRecord_row_name #{result[i][2]}
+                                        .other_champion_img2
+                                            img( src=result[i+game_times].otherChamps[2])
+                                        .gameRecord_row_name2 
+                                            div #{result[i][2]}
                                     .gameRecord_row 
-                                        img( src=result[i+game_times].otherChamps[3])
-                                        .gameRecord_row_name #{result[i][3]}
+                                        .other_champion_img3
+                                            img( src=result[i+game_times].otherChamps[3])
+                                        .gameRecord_row_name3
+                                            div #{result[i][3]}
                                     .gameRecord_row 
-                                        img( src=result[i+game_times].otherChamps[4])
-                                        .gameRecord_row_name #{result[i][4]}
+                                        .other_champion_img4
+                                            img( src=result[i+game_times].otherChamps[4])
+                                        .gameRecord_row_name4 
+                                            div #{result[i][4]}
                                 .gameRecord_team02
                                     .gameRecord_row 
-                                        img( src=result[i+game_times].otherChamps[5])
-                                        .gameRecord_row_name #{result[i][5]}
+                                        .other_champion_img5
+                                            img( src=result[i+game_times].otherChamps[5])
+                                        .gameRecord_row_name5 
+                                            div #{result[i][5]}
                                     .gameRecord_row 
-                                        img( src=result[i+game_times].otherChamps[6])
-                                        .gameRecord_row_name #{result[i][6]}
+                                        .other_champion_img6
+                                            img( src=result[i+game_times].otherChamps[6])
+                                        .gameRecord_row_name6 
+                                            div #{result[i][6]}
                                     .gameRecord_row 
-                                        img( src=result[i+game_times].otherChamps[7])
-                                        .gameRecord_row_name #{result[i][7]}
+                                        .other_champion_img7
+                                            img( src=result[i+game_times].otherChamps[7])
+                                        .gameRecord_row_name7 
+                                            div #{result[i][7]}
                                     .gameRecord_row 
-                                        img( src=result[i+game_times].otherChamps[8])
-                                        .gameRecord_row_name #{result[i][8]}
+                                        .other_champion_img8
+                                            img( src=result[i+game_times].otherChamps[8])
+                                        .gameRecord_row_name8 
+                                            div #{result[i][8]}
                                     .gameRecord_row 
-                                        img( src=result[i+game_times].otherChamps[9])
-                                        .gameRecord_row_name #{result[i][9]}
+                                        .other_champion_img9
+                                            img( src=result[i+game_times].otherChamps[9])
+                                        .gameRecord_row_name9 
+                                            div #{result[i][9]}
     .content_wrap.col-12.col-center.mw-1200
         -for(i=0;i<game_times;i++)
             .gameRecord_add_con.col-12.mw-1200.col-center

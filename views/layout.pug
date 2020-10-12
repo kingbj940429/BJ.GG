@@ -14,11 +14,16 @@ html
       $(()=>{
         var game_times = $(".game_times").val();
         var submit_number = 0;
+
         $('.game_form').submit((e) => {
           e.preventDefault();
-          add_Summoner(submit_number);
-          submit_number++;
-          console.log(submit_number);
+            if(submit_number<3){
+              add_Summoner(submit_number);
+              submit_number++;
+              console.log(submit_number);
+            }else{
+              alert("더 이상 불러올 정보가 없습니다.");
+            }
         });
 
         for(var i=0;i<game_times;i++){
