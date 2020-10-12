@@ -20,12 +20,11 @@ html
             if(submit_number<3){
               add_Summoner(submit_number);
               submit_number++;
-              console.log(submit_number);
             }else{
               alert("더 이상 불러올 정보가 없습니다.");
             }
         });
-
+        
         for(var i=0;i<game_times;i++){
           if( $(`.win_fail_check${i}`).text() === 'Fail'){
             $(`.gameRecord_wrap${i}`).css("background-color","#ef9a9a ");
@@ -37,4 +36,6 @@ html
   body
     include gnb  
     block content
+    include addSummonerButton
     include footer
+    

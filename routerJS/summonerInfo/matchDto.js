@@ -114,7 +114,10 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
             var level = stats.champLevel;
            
             kda = (Math.round(kda * 100) / 100).toFixed(2);
-
+            if(kda === 'Infinity'){
+                kda= "Perfect";
+            }
+           
             participantList[game_of_times] = {
                 gameTime: Math.round(MatchDto[i].data.gameDuration / 60),
                 gameWinFail: MatchDto[i].data.teams[team_number[team_number_count]].win, //이거 어느 팀이냐에 따라 다르게 나와야함

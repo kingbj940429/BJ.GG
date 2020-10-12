@@ -14,7 +14,7 @@ var add_Summoner = (submit_number) => {
             //첫번째
             for (var i = 0; i < add_count; i++) {
                 $(`.gameRecord_add_con${submit_number}`).append($(`.gameRecord_box${i}`).html());
-
+                
                 //값 대입
                 $(`.gameRecord_add_con${submit_number} .win_fail_check${i}`).text(`${res.participantList[i+3].gameWinFail}`);
                 $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .gameRecord_info_time`).text(`${res.participantList[i+3].gameTime}분`);
@@ -37,16 +37,21 @@ var add_Summoner = (submit_number) => {
                 $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .item6 img`).attr("src",`${res.participantList[i+3].item[6]}`);
                
                 //소환사들 이름
-                $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .gameRecord_row_name0`).text(`${res.participantList[i][0]}`);
-                $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .gameRecord_row_name1`).text(`${res.participantList[i][1]}`);
-                $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .gameRecord_row_name2`).text(`${res.participantList[i][2]}`);
-                $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .gameRecord_row_name3`).text(`${res.participantList[i][3]}`);
-                $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .gameRecord_row_name4`).text(`${res.participantList[i][4]}`);
-                $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .gameRecord_row_name5`).text(`${res.participantList[i][5]}`);
-                $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .gameRecord_row_name6`).text(`${res.participantList[i][6]}`);
-                $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .gameRecord_row_name7`).text(`${res.participantList[i][7]}`);
-                $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .gameRecord_row_name8`).text(`${res.participantList[i][8]}`);
-                $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .gameRecord_row_name9`).text(`${res.participantList[i][9]}`);
+                //a(href="/summonerInfo?summonerName="+ result[i][0]) #{result[i][0]}
+                for(var k=0;k<10;k++){
+                    $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .gameRecord_row_name${k}`).text(``);
+                    $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .gameRecord_row_name${k}`).append(`<a>${res.participantList[i][k]}</a>`);
+                    $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .gameRecord_row_name${k} a`).attr("href",`/summonerInfo?summonerName=${res.participantList[i][k]}`);
+                }
+                // $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .gameRecord_row_name1`).text(`${res.participantList[i][1]}`);
+                // $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .gameRecord_row_name2`).text(`${res.participantList[i][2]}`);
+                // $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .gameRecord_row_name3`).text(`${res.participantList[i][3]}`);
+                // $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .gameRecord_row_name4`).text(`${res.participantList[i][4]}`);
+                // $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .gameRecord_row_name5`).text(`${res.participantList[i][5]}`);
+                // $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .gameRecord_row_name6`).text(`${res.participantList[i][6]}`);
+                // $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .gameRecord_row_name7`).text(`${res.participantList[i][7]}`);
+                // $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .gameRecord_row_name8`).text(`${res.participantList[i][8]}`);
+                // $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .gameRecord_row_name9`).text(`${res.participantList[i][9]}`);
                 //소환사들 사진
                 $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .other_champion_img0 img`).attr("src",`${res.participantList[i+3].otherChamps[0]}`);
                 $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .other_champion_img1 img`).attr("src",`${res.participantList[i+3].otherChamps[1]}`);

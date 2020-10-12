@@ -46,3 +46,9 @@
 .gameRecord_add_con2 > .gameRecord_wrap1{margin-bottom: 25px;border-radius: 5px;}
 .gameRecord_add_con2 > .gameRecord_wrap2{margin-bottom: 25px;border-radius: 5px;}
 
+/*
+    addSummonerButton
+*/
+.addSummonerButton_wrap{margin-top: -23px;}
+.game_form{}
+.addSummonerButton_button{font-size: 15px;background-color: rgba(2, 133, 240, 0.2);border: 0px; outline: 0px;cursor: pointer;margin-bottom: 25px;padding: 25px;border-radius: 5px;}
