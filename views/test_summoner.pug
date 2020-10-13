@@ -1,0 +1,32 @@
+extends summonerHistory
+
+block content
+  .summoner_basic_wrap
+    .summoner_basic_con.col-12.col-center.mw-1200
+      .summoner_basic_inner
+        .summoner_basic_img
+          .summoner_rank_img 
+            img(src='/images/ranked-emblems/'+ summoner.data[0].tier +'.png')
+        .summoner_basic_box  
+            .summoner_basic_welcome #{summoner.data[0].summonerName}님 환영합니다.
+            .summoner_basic_queType 큐 타입 : #{summoner.data[0].queueType}
+            .summoner_basic_tier 티어 : #{summoner.data[0].tier}
+            .summoner_basic_leaguePoint 리그 포인트 : #{summoner.data[0].leaguePoints} 
+            .summoner_basic_wins 승리 : #{summoner.data[0].wins}
+            .summoner_basic_losses 패배 : #{summoner.data[0].losses}
+  .summoner_basic_wrap
+    .summoner_basic_con.col-12.col-center.mw-1200
+      .summoner_basic_inner
+        .summoner_basic_img
+          .summoner_rank_img 
+            img(src='/images/ranked-emblems/'+ summoner.data[1].tier +'.png')
+        .summoner_basic_box  
+            .summoner_basic_welcome #{summoner.data[1].summonerName}님 환영합니다.
+            .summoner_basic_queType 큐 타입 : #{summoner.data[1].queueType}
+            .summoner_basic_tier 티어 : #{summoner.data[1].tier}
+            .summoner_basic_leaguePoint 리그 포인트 : #{summoner.data[1].leaguePoints} 
+            .summoner_basic_wins 승리 : #{summoner.data[1].wins}
+            .summoner_basic_losses 패배 : #{summoner.data[1].losses}          
+
+  include matchInfo
+  

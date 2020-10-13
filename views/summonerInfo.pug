@@ -1,18 +1,34 @@
-extends layout
+extends summonerHistory
 
 block content
-  .summoner_basic_wrap.col-12
-    .summoner_basic_con.col-12.col-center.mw-1200
-      .summoner_basic_inner
-        .summoner_basic_img
-          .summoner_rank_img 
-            img(src='/images/ranked-emblems/'+ summoner.data[0].tier +'.png')
-        .summoner_basic_box  
-            .summoner_basic_welcome #{summoner.data[0].summonerName}님 환영합니다.
-            .summoner_basic_queType 큐 타입 : #{summoner.data[0].queueType}
-            .summoner_basic_tier 티어 : #{summoner.data[0].tier}
-            .summoner_basic_leaguePoint 리그 포인트 : #{summoner.data[0].leaguePoints} 
-            .summoner_basic_wins 승리 : #{summoner.data[0].wins}
-            .summoner_basic_losses 패배 : #{summoner.data[0].losses}
-  include matchInfo
-  
+    .summonnerInfo_wrap.col-12.mw-1200.col-center
+        .summonerInfo_con.col-12
+            .summonerInfo_con_right
+                .summonerInfo_inner_icon
+                .summonerInfo_inner_nick #{summoner.data[0].summonerName}님 환영합니다.
+            .summonerInfo_con_center 
+                .summonerInfo_inner
+                    .summonerInfo_inner_left
+                        .summonerInfo_inner_img
+                            img(src='/images/ranked-emblems/'+ summoner.data[0].tier +'.png')
+                    .summonerInfo_inner_right
+                        .summonerInfo_box.col-12
+                            .summoner_basic_queType 큐 타입 : #{summoner.data[0].queueType}
+                            .summonerInfo_tier 티어 : #{summoner.data[0].tier}
+                            .summonerInfo_leaguePoint 리그 포인트 : #{summoner.data[0].leaguePoints}LP
+                            .summonerInfo_wins 승리 : #{summoner.data[0].wins}
+                            .summonerInfo_loses 패배 : #{summoner.data[0].losses}
+            .summonerInfo_con_left 
+                .summonerInfo_inner
+                    .summonerInfo_inner_left
+                        .summonerInfo_inner_img
+                            img(src='/images/ranked-emblems/'+ summoner.data[1].tier +'.png')
+                    .summonerInfo_inner_right
+                        .summonerInfo_box.col-12
+                            .summoner_basic_queType 큐 타입 : #{summoner.data[1].queueType}
+                            .summonerInfo_tier 티어 : #{summoner.data[1].tier}
+                            .summonerInfo_leaguePoint 리그 포인트 : #{summoner.data[1].leaguePoints}LP
+                            .summonerInfo_wins 승리 : #{summoner.data[1].wins}
+                            .summonerInfo_loses 패배 : #{summoner.data[1].losses}
+
+    include matchInfo

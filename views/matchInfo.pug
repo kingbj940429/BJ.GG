@@ -22,9 +22,9 @@ matchInfo
                                 .gameRecord_champ_name #{result[i+game_times].champ_name[i]}
                                 .gameRecord_spells
                                     .gameRecord_spell01
-                                        img(src=result[i+game_times].spell.spell1)
+                                        img(src=result[i+game_times].spell1)
                                     .gameRecord_spell02
-                                        img(src=result[i+game_times].spell.spell2)
+                                        img(src=result[i+game_times].spell2)
                             .gameRecord_KDA
                                 .gameRecord_kda #{result[i+game_times].kills}/ #{result[i+game_times].deaths}/ #{result[i+game_times].assists}
                                 .gameRecord_average #{result[i+game_times].kda}:1 평점

@@ -23,7 +23,7 @@ const Spell_Data_Dragon = async (spellKey)=>{
             spell1 : spell1,
             spell2 : spell2,
         }
-
+     
         return spell_data;
     } catch (error) {
         console.error(error);

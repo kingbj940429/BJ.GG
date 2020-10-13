@@ -1,12 +1,17 @@
-.summoner_basic_wrap{margin-bottom: 50px;}
-.summoner_basic_con{}
-.summoner_basic_inner{}
-.summoner_basic_img{}
-.summoner_rank_img {margin-bottom: 30px;float: left;width: 200px;height: 200px;}
-.summoner_basic_box {}
-.summoner_basic_welcome{padding-top: 30px;}
-.summoner_basic_queType {}
-.summoner_basic_tier {}
-.summoner_basic_leaguePoint {} 
-.summoner_basic_wins {}
-.summoner_basic_losses {}
+.summonnerInfo_wrap{margin-bottom: 20px;}
+.summonerInfo_con{}
+.summonerInfo_con_right{float: left;background-color: antiquewhite;}
+.summonerInfo_inner_icon{}
+.summonerInfo_inner_nick{}
+.summonerInfo_con_center{float: left;background-color: aqua;}
+.summonerInfo_con_left{float: left;background-color: aquamarine;}
+.summonerInfo_inner{}
+.summonerInfo_inner_left{float: left;}
+.summonerInfo_inner_img{width: 150px;height: 150px;padding-bottom: 19px;}
+.summonerInfo_inner_right{float: left;}
+.summonerInfo_box{padding-top: 30px;}
+.summonerInfo_tier{}
+.summonerInfo_leaguePoint{}
+.summonerInfo_wins{}
+.summonerInfo_loses{}
+.summonerInfo_con_left{}

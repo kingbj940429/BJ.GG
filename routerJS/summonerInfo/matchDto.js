@@ -87,8 +87,8 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
         //소환사 스펠 관련
         var spell=[];
         var spell_list = {};
-        var spell_url = {};
-        var spell_result = [];
+        var spell1=[];
+        var spell2=[];
         for(i=0;i < searchedName_eachGame_number.length; i++){
             var participants = MatchDto[i].data.participants[searchedName_eachGame_number[i]];
             spell[i] = {
@@ -97,13 +97,17 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
             }
         }
         spell_list = await spellDataDragon(spell);
+        console.log(spell_list);
         //##소환사 스펠 관련
         for(i=0;i<process.env.GAME_TIMES;i++){
-             spell_url.spell1 = `http://ddragon.leagueoflegends.com/cdn/${process.env.SPELL_VERSION}/img/spell/${spell_list.spell1[i]}.png`;
-             spell_url.spell2 = `http://ddragon.leagueoflegends.com/cdn/${process.env.SPELL_VERSION}/img/spell/${spell_list.spell2[i]}.png`;
-             spell_result.push(spell_url);
+             spell1.push(`http://ddragon.leagueoflegends.com/cdn/${process.env.SPELL_VERSION}/img/spell/${spell_list.spell1[i]}.png`);
+             spell2.push(`http://ddragon.leagueoflegends.com/cdn/${process.env.SPELL_VERSION}/img/spell/${spell_list.spell2[i]}.png`);
         }
-        
+        const spell_result={
+            spell1 : spell1,
+            spell2 : spell2,
+        }
+        console.log(spell_result);
         //최종적으로 pug에 렌더링 해줄 것들
         var team_number_count = 0;
         for (i = 0; i < process.env.GAME_TIMES; i++) {
@@ -131,13 +135,14 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
                 total_cs : total_cs,
                 level : level,
                 item : item_url[i],
-                spell : spell_result[i],
+                spell1 : spell_result.spell1[i],
+                spell2 : spell_result.spell2[i],
                 otherChamps : other_summoner_champ_url[i],
             }
             game_of_times++;
             team_number_count++;
         }
-        
+        console.log(participantList);
         return participantList;
     } catch (error) {
         console.error(error);
