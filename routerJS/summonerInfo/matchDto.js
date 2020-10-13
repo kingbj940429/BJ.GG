@@ -97,7 +97,7 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
             }
         }
         spell_list = await spellDataDragon(spell);
-        console.log(spell_list);
+        
         //##소환사 스펠 관련
         for(i=0;i<process.env.GAME_TIMES;i++){
              spell1.push(`http://ddragon.leagueoflegends.com/cdn/${process.env.SPELL_VERSION}/img/spell/${spell_list.spell1[i]}.png`);
@@ -107,7 +107,7 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
             spell1 : spell1,
             spell2 : spell2,
         }
-        console.log(spell_result);
+      
         //최종적으로 pug에 렌더링 해줄 것들
         var team_number_count = 0;
         for (i = 0; i < process.env.GAME_TIMES; i++) {
@@ -142,7 +142,7 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
             game_of_times++;
             team_number_count++;
         }
-        console.log(participantList);
+    
         return participantList;
     } catch (error) {
         console.error(error);

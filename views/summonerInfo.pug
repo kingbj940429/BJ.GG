@@ -13,11 +13,11 @@ block content
                             img(src='/images/ranked-emblems/'+ summoner.data[0].tier +'.png')
                     .summonerInfo_inner_right
                         .summonerInfo_box.col-12
-                            .summoner_basic_queType 큐 타입 : #{summoner.data[0].queueType}
-                            .summonerInfo_tier 티어 : #{summoner.data[0].tier}
-                            .summonerInfo_leaguePoint 리그 포인트 : #{summoner.data[0].leaguePoints}LP
-                            .summonerInfo_wins 승리 : #{summoner.data[0].wins}
-                            .summonerInfo_loses 패배 : #{summoner.data[0].losses}
+                            .summoner_basic_queType #{summoner.data[0].queueType}
+                            .summonerInfo_tier #{summoner.data[0].tier} #{summoner.data[0].rank}
+                            .summonerInfo_leaguePoint 리그 포인트 : #{summoner.data[0].leaguePoints} LP
+                            .summonerInfo_wins #{summoner.data[0].wins}승 #{summoner.data[0].losses}패
+                            .summonerInfo_loses 승률
             .summonerInfo_con_left 
                 .summonerInfo_inner
                     .summonerInfo_inner_left
@@ -25,10 +25,10 @@ block content
                             img(src='/images/ranked-emblems/'+ summoner.data[1].tier +'.png')
                     .summonerInfo_inner_right
                         .summonerInfo_box.col-12
-                            .summoner_basic_queType 큐 타입 : #{summoner.data[1].queueType}
-                            .summonerInfo_tier 티어 : #{summoner.data[1].tier}
+                            .summoner_basic_queType #{summoner.data[1].queueType}
+                            .summonerInfo_tier #{summoner.data[1].tier} #{summoner.data[1].rank}
                             .summonerInfo_leaguePoint 리그 포인트 : #{summoner.data[1].leaguePoints}LP
-                            .summonerInfo_wins 승리 : #{summoner.data[1].wins}
-                            .summonerInfo_loses 패배 : #{summoner.data[1].losses}
+                            .summonerInfo_wins #{summoner.data[1].wins}승 #{summoner.data[1].losses}패
+                            .summonerInfo_loses 승률
 
     include matchInfo
