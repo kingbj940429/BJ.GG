@@ -4,7 +4,7 @@ var getSeason = require('../axios/season.js')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index',{title: 'BJ.GG'})
+  res.render('first_main/index',{title: 'BJ.GG'})
 });
 
 module.exports = router;

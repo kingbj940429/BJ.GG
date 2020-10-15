@@ -26,7 +26,7 @@ router.get('/', function (req, res, next) {
            
             const participantList = await matchDto_JS(summoner_getGameId, searchedName);
            
-            res.render('summonerInfo.pug', {
+            res.render('summoner_info/summonerInfo.pug', {
                 summoner_query: searchedName,
                 summoner: summoner,
                 result: participantList,

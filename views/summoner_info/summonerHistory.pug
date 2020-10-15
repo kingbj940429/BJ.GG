@@ -32,10 +32,19 @@ html
             $(`.gameRecord_wrap${i}`).css("background-color","#90caf9");
           }
         }
+        //소환사 정보 승률
+        for(var i=0;i<2;i++){
+          var winningRate = $(`.summonerInfo_win${i}`).val()*1/($(`.summonerInfo_lose${i}`).val()*1+$(`.summonerInfo_win${i}`).val()*1);
+          winningRate = winningRate*100;
+          winningRate = winningRate.toFixed(0);
+
+          $(`.summonerInfo_rate${i}`).text("승률 " + winningRate+"%");
+        }
+
       })  
   body
-    include gnb  
+    include ../cmmn/gnb  
     block content
     include addSummonerButton
-    include footer
+    include ../cmmn/footer
     

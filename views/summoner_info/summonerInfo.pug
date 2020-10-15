@@ -3,10 +3,10 @@ extends summonerHistory
 block content
     .summonnerInfo_wrap.col-12.mw-1200.col-center
         .summonerInfo_con.col-12
-            .summonerInfo_con_right
+            .summonerInfo_con_right.col-4
                 .summonerInfo_inner_icon
                 .summonerInfo_inner_nick #{summoner.data[0].summonerName}님 환영합니다.
-            .summonerInfo_con_center 
+            .summonerInfo_con_center.col-4 
                 .summonerInfo_inner
                     .summonerInfo_inner_left
                         .summonerInfo_inner_img
@@ -16,9 +16,11 @@ block content
                             .summoner_basic_queType #{summoner.data[0].queueType}
                             .summonerInfo_tier #{summoner.data[0].tier} #{summoner.data[0].rank}
                             .summonerInfo_leaguePoint 리그 포인트 : #{summoner.data[0].leaguePoints} LP
-                            .summonerInfo_wins #{summoner.data[0].wins}승 #{summoner.data[0].losses}패
-                            .summonerInfo_loses 승률
-            .summonerInfo_con_left 
+                            .summonerInfo_wins #{summoner.data[0].wins}<span>승</span> #{summoner.data[0].losses}<span>패</span>
+                            input(type="hidden" class="summonerInfo_win0" value=summoner.data[0].wins)
+                            input(type="hidden" class="summonerInfo_lose0" value=summoner.data[0].losses) 
+                            .summonerInfo_rate0 승률
+            .summonerInfo_con_left.col-4 
                 .summonerInfo_inner
                     .summonerInfo_inner_left
                         .summonerInfo_inner_img
@@ -29,6 +31,8 @@ block content
                             .summonerInfo_tier #{summoner.data[1].tier} #{summoner.data[1].rank}
                             .summonerInfo_leaguePoint 리그 포인트 : #{summoner.data[1].leaguePoints}LP
                             .summonerInfo_wins #{summoner.data[1].wins}승 #{summoner.data[1].losses}패
-                            .summonerInfo_loses 승률
+                            input(type="hidden" class="summonerInfo_win1" value=summoner.data[1].wins)
+                            input(type="hidden" class="summonerInfo_lose1" value=summoner.data[1].losses) 
+                            .summonerInfo_rate1 승률
 
     include matchInfo
