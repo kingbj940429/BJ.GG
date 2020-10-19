@@ -1,3 +1,10 @@
+# 프로그램 설명
+Node.js 기반 리그오브레전드 관련 정보 사이트 입니다.
+비슷한 사이트로는 OP.GG가 있습니다.
+# 개발 환경
+백엔드 : Node.js, MySQL
+프론트엔드 : Pug 템플릿 엔진
+API : RIOT
 # 실행 방법
 1) git clone해서 다운받습니다.
 2) 본인 API_KEY를 RIOT developer에서 발급받습니다.
