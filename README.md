@@ -5,9 +5,9 @@
 ```js
 //.env 파일은 따로 만들어야 합니다. 위치는 폴더 가장 상위
 API_KEY = "본인 API_KEY를 넣으세요"
-ITEM_VERSION = 10.19.1 //각 json 버전
-CHAMP_VERSION = 10.19.1
-SPELL_VERSION = 10.19.1
+ITEM_VERSION = "현재 버전" //각 json 버전 ex)10.19.1
+CHAMP_VERSION = "현재 버전"
+SPELL_VERSION = "현재 버전"
 GAME_TIMES = 10 //검색할 게임 수
 //GAME_TIMES 변수와 views/matchInfo.pug에서 game_times 변경해주면됨
 ```
@@ -103,7 +103,7 @@ KDA 추가
 ### 2020-10-16
 * 소환사 검색시 아이콘 추가
 
-### 2020-10-17
+### 2020-10-19
 * 더보기 ajax 오류 수정
 * 소환사 정보에 게임을 언제했는지에 대한 정보를 "n일전"으로 표시 (0일전은 오늘로 표시, 현재시간 기준 차이임)
 * Win, Fail을 승리, 패배로 표시
