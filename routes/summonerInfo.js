@@ -19,7 +19,7 @@ router.get('/', function (req, res, next) {
             searchedName = req.query.summonerName; //소환사 이름 ex) 여의도 한량이
 
             searchedSummonerId = await getSummonerId(searchedName); //쿼리스트링의 이름을 axios.getSummonerId에 넣어서 값 받기 AccountId : searchedSummonerId.data.accountId
-            console.log(searchedSummonerId);
+           
             var summoner = await getSummonerInfo(searchedSummonerId.id); //소환사 기본 정보 콜백함수
       
             summoner_getGameId = await getGameId(searchedSummonerId.accountId, add_game_count); //gameId : summoner_getGameId.data.matches[0].gameId
@@ -46,7 +46,8 @@ router.get('/add_summoner', function (req, res, next) {
 
         try {
             add_game_count+=3;
-            summoner_getGameId = await getGameId(searchedSummonerId.data.accountId, add_game_count);
+        
+            summoner_getGameId = await getGameId(searchedSummonerId.accountId, add_game_count);
             const participantList = await matchDto_JS(summoner_getGameId, searchedName);
             console.log(add_game_count);
            
