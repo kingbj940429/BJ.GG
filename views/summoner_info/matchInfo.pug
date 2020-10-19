@@ -9,7 +9,8 @@ matchInfo
                     .gameRecord_con.col-12
                         .gameRecord_inner.col-12
                             .gameRecord_info
-                                .gameRecord_info_win_fail_check #{result[i+game_times].gameWinFail}
+                                .gameRecord_info_gameTime #{result[i+game_times].game_date[i]}
+                                .gameRecord_info_win_fail_check #{result[i+game_times].gameWinFail_kor}
                                 script.
                                     var win_fail_number = #{i};
                                     $(`.gameRecord_info_win_fail_check`).attr("class","win_fail_check"+ #{i});

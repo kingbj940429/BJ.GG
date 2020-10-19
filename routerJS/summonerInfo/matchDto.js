@@ -1,9 +1,9 @@
 var matchDto = require('../../axios/matchDto');
 
 var champDataDragon = require('./champDataDragon.js');
+const dateDiff = require('./dateDiff');
 var spellDataDragon = require('./spellDataDragon.js');
-//console.time("소요시간"); 시간 측정 
-//console.timeEnd("소요시간");
+
 const participantIdentities = async (summoner_getGameId, searchedName) => {
     try {
         
@@ -16,12 +16,19 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
         var champ_list= [];//챔피언에 대한 리스트
         var item_url = [];
         var champion_img_url = [];
+        var game_date = [];
         
+        /**
+         * 최근 3게임의 id 불러옴, 언제 했는지 date 정보도 가져옴
+         */
         for (i = 0; i < game_of_times; i++) { //최근 N개의 게임만을 나타내기 위함
             MatchDto[i] = await matchDto(summoner_getGameId[i]);//최근 N게임의 gameid를 가지고있음
+            game_date[i] = dateDiff(new Date(MatchDto[i].data.gameCreation), new Date());
         }
-        //검색된 소환사의 게임당 순번 및 팀
-       
+    
+        /**
+         * 검색된 소환사의 위치
+         */
         var count =0;
         for (k = 0; k < game_of_times; k++) {
             participantList[k] = [];
@@ -116,15 +123,22 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
             var kill = stats.kills, death = stats.deaths, assist = stats.assists,kda =(kill+assist)/death;
             var total_cs = stats.totalMinionsKilled + stats.neutralMinionsKilled;
             var level = stats.champLevel;
-           
+            var gameWinFail_kor;
             kda = (Math.round(kda * 100) / 100).toFixed(2);
             if(kda === 'Infinity'){
                 kda= "Perfect";
             }
-           
+            
+            if(MatchDto[i].data.teams[team_number[team_number_count]].win == 'Win'){
+                gameWinFail_kor = '승리';
+            }else{
+                gameWinFail_kor = '패배';
+            }
             participantList[game_of_times] = {
+                game_date : game_date,
                 gameTime: Math.round(MatchDto[i].data.gameDuration / 60),
                 gameWinFail: MatchDto[i].data.teams[team_number[team_number_count]].win, //이거 어느 팀이냐에 따라 다르게 나와야함
+                gameWinFail_kor : gameWinFail_kor,
                 championId: participants.championId,
                 kills: kill,
                 deaths: death,

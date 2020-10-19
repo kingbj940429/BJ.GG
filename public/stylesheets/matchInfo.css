@@ -4,6 +4,7 @@
 .gameRecord_inner{}
 .gameRecord_inner > div{float: left;}
 .gameRecord_info{margin-left: 30px;margin-right: 30px;}
+.gameRecord_info_gameTime{}
 .gameRecord_info_winlose{}
 .gameRecord_info_time{}
 .gameRecord_champ{margin-right: 100px;position: relative;}
