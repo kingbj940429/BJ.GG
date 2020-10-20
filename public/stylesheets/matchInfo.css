@@ -3,37 +3,73 @@
 .gameRecord_con{margin: 15px;}
 .gameRecord_inner{}
 .gameRecord_inner > div{float: left;}
-.gameRecord_info{margin-left: 30px;margin-right: 30px;}
+.gameRecord_info{margin-left: 30px;margin-right: 30px;overflow: hidden;width: 50px;}
 .gameRecord_info_gameTime{}
 .gameRecord_info_winlose{}
 .gameRecord_info_time{}
-.gameRecord_champ{margin-right: 100px;position: relative;}
-.gameRecord_champ_img{float: left;}
+.gameRecord_champ{float: left;margin-right: 20px;}
+.gameRecord_champ_top{float: left;padding-right: 10px;}
+.gameRecord_champ_bottom{float: left;padding-top: 10px;}
+.gameRecord_champ_img{}
 .gameRecord_champ_img > img{height: 80px;width: 80px;border-radius: 50%;}
 .gameRecord_champ_name{text-align: center;}
-.gameRecord_spells{float: left;position: absolute;bottom:30px;right:-45px;}
-.gameRecord_spells img{height: 30px;width: 30px;margin-right: 10px;border-radius: 5px;}
+.gameRecord_spells{float: left;bottom:30px;}
+.gameRecord_spells img{height: 25px;width: 25px;margin-right: 10px;border-radius: 5px;}
 .gameRecord_spell01{}
 .gameRecord_spell02{}
+.gameRecord_perks{float: left;}
+.gameRecord_perks img{height: 25px;width: 25px;}
+.gameRecord_perks_1{}
+.gameRecord_perks_2{}
 .gameRecord_KDA{margin-right: 50px;}
 .gameRecord_kda{}
 .gameRecord_average{}
-.gameRecord_levelCS{margin-right: 80px;}
+.gameRecord_totalDamageDealtToChampions{}
+.gameRecord_totalDamage_top{}
+.gameRecord_totalDamage_bottom{}
+.gameRecord_levelCS{margin-right: 60px;overflow: hidden;width: 80px;}
 .gameRecord_level{}
 .gameRecord_CS{}
-.gameRecord_items{margin-right: 50px;}
+.gameRecord_goldEarned{}
+.gameRecord_goldEarned_top{}
+.gameRecord_goldEarned_under{}
+.gameRecord_items{margin-right: 30px;overflow: hidden;}
 .gameRecord_items img {height: 50px;width: 50px;border-radius: 7px;margin-right: 5px;}
 .gameRecord_items_top{}
 .gameRecord_items_top > div{float: left;}
 .gameRecord_items_bottom{}
 .gameRecord_items_bottom > div{float: left;}
 .gameRecord_summoner_names{margin-right: 0px;margin-left: 50px;}
-..gameRecord_summoner_names img{height: 20px;width: 20px;}
-.gameRecord_team01{margin-right: 30px;float: left;}
+.gameRecord_summoner_names img{height: 20px;width: 20px;}
+.gameRecord_team01{margin-right: 20px;float: left;}
 .gameRecord_team02{float: left;}
-.gameRecord_row{position: relative;margin-bottom: 5px;height: 20px;}
-.gameRecord_row img{position: absolute;left:-25px;height: 20px;width: 20px;}
-.gameRecord_row_name{}
+.gameRecord_row{margin-bottom: 5px;height: 20px;}
+.gameRecord_row img{height: 20px;width: 20px;}
+
+
+.other_champion_img0{float: left;padding-right: 3px;}
+.gameRecord_row_name0{float: left;white-space: nowrap; overflow: hidden;width: 90px;}
+.other_champion_img1{float: left;padding-right: 3px;}
+.gameRecord_row_name1{float: left;white-space: nowrap; overflow: hidden;width: 90px;}
+.other_champion_img2{float: left;padding-right: 3px;}
+.gameRecord_row_name2{float: left;white-space: nowrap; overflow: hidden;width: 90px;}
+.other_champion_img3{float: left;padding-right: 3px;}
+.gameRecord_row_name3{float: left;white-space: nowrap; overflow: hidden;width: 90px;}
+.other_champion_img4{float: left;padding-right: 3px;}
+.gameRecord_row_name4{float: left;white-space: nowrap; overflow: hidden;width: 90px;}
+
+.other_champion_img5{float: left;padding-right: 3px;}
+.gameRecord_row_name5{float: left;white-space: nowrap; overflow: hidden;width: 90px;}
+.other_champion_img9{float: left;padding-right: 3px;}
+.gameRecord_row_name9{float: left;white-space: nowrap; overflow: hidden;width: 90px;}
+.other_champion_img6{float: left;padding-right: 3px;}
+.gameRecord_row_name6{float: left;white-space: nowrap; overflow: hidden;width: 90px;}
+.other_champion_img7{float: left;padding-right: 3px;}
+.gameRecord_row_name7{float: left;white-space: nowrap; overflow: hidden;width: 90px;}
+.other_champion_img8{float: left;padding-right: 3px;}
+.gameRecord_row_name8{float: left;white-space: nowrap; overflow: hidden;width: 90px;}
+
+
 
 .gameRecord_add_con0 > .gameRecord_wrap0{margin-bottom: 25px;border-radius: 5px;}
 .gameRecord_add_con0 > .gameRecord_wrap1{margin-bottom: 25px;border-radius: 5px;}

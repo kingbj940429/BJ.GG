@@ -121,9 +121,20 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
             var participants = MatchDto[i].data.participants[searchedName_eachGame_number[i]];//검색된 소환사의 게임에서의 번호
             var stats = participants.stats;
             var kill = stats.kills, death = stats.deaths, assist = stats.assists,kda =(kill+assist)/death;
+            var totalDamageDealtToChampions = stats.totalDamageDealtToChampions;
+            var goldEarned = stats.goldEarned;
+            var perk0 = stats.perk0;
+            var perkSubStyle = stats.perkSubStyle;
             var total_cs = stats.totalMinionsKilled + stats.neutralMinionsKilled;
             var level = stats.champLevel;
             var gameWinFail_kor;
+           
+            /**
+             * perk은 DD에 없어서 OP.GG 소스 주소를 가져옴
+             */
+            perk0 = `https://opgg-static.akamaized.net/images/lol/perk/${perk0}.png`;
+            perkSubStyle = `https://opgg-static.akamaized.net/images/lol/perkStyle/${perkSubStyle}.png`;
+
             kda = (Math.round(kda * 100) / 100).toFixed(2);
             if(kda === 'Infinity'){
                 kda= "Perfect";
@@ -134,16 +145,23 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
             }else{
                 gameWinFail_kor = '패배';
             }
+            /**
+             * 전송 데이터
+             */
             participantList[game_of_times] = {
                 game_date : game_date,
                 gameTime: Math.round(MatchDto[i].data.gameDuration / 60),
                 gameWinFail: MatchDto[i].data.teams[team_number[team_number_count]].win, //이거 어느 팀이냐에 따라 다르게 나와야함
                 gameWinFail_kor : gameWinFail_kor,
                 championId: participants.championId,
+                perk0 : perk0,
+                perkSubStyle : perkSubStyle,
                 kills: kill,
                 deaths: death,
                 assists: assist,
                 kda : kda,
+                totalDamageDealtToChampions : totalDamageDealtToChampions,
+                goldEarned : goldEarned,
                 champ_name : other_summoner_champ_list.my_champ_name,
                 champ_img : champion_img_url,
                 total_cs : total_cs,

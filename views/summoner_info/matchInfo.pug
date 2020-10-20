@@ -18,21 +18,34 @@ matchInfo
                                     $(`.gameRecord_box`).attr("class","gameRecord_box"+ #{i} +" col-12" + " mw-1200" + " col-center"+ " gameRecord_wrap_css");
                                 .gameRecord_info_time #{result[i+game_times].gameTime}분
                             .gameRecord_champ
-                                .gameRecord_champ_img
-                                    img(src=result[i+game_times].champ_img[i])
-                                .gameRecord_champ_name #{result[i+game_times].champ_name[i]}
-                                .gameRecord_spells
-                                    .gameRecord_spell01
-                                        img(src=result[i+game_times].spell1)
-                                    .gameRecord_spell02
-                                        img(src=result[i+game_times].spell2)
+                                .gameRecord_champ_top
+                                    .gameRecord_champ_img
+                                        img(src=result[i+game_times].champ_img[i])
+                                    .gameRecord_champ_name #{result[i+game_times].champ_name[i]}
+                                .gameRecord_champ_bottom
+                                    .gameRecord_spells
+                                        .gameRecord_spell01
+                                            img(src=result[i+game_times].spell1)
+                                        .gameRecord_spell02
+                                            img(src=result[i+game_times].spell2)
+                                    .gameRecord_perks
+                                        .gameRecord_perks_1
+                                            img(src=result[i+game_times].perk0)
+                                        .gameRecord_perks_2
+                                            img(src=result[i+game_times].perkSubStyle)
                             .gameRecord_KDA
                                 .gameRecord_kda #{result[i+game_times].kills}/ #{result[i+game_times].deaths}/ #{result[i+game_times].assists}
                                 .gameRecord_average #{result[i+game_times].kda}:1 평점
+                                .gameRecord_totalDamageDealtToChampions
+                                    .gameRecord_totalDamage_top 챔피언에게 가한 데미지 
+                                    .gameRecord_totalDamage_bottom #{result[i+game_times].totalDamageDealtToChampions}
                             .gameRecord_levelCS
                                 .gameRecord_level 레벨 #{result[i+game_times].level}
                                 .gameRecord_CS #{result[i+game_times].total_cs} CS
-                            .gameRecord_items
+                                .gameRecord_goldEarned
+                                    .gameRecord_goldEarned_top 획득 골드 
+                                    .gameRecord_goldEarned_under #{result[i+game_times].goldEarned} gold
+                            .gameRecord_items 
                                 .gameRecord_items_top
                                     div.item0 
                                         img(src=result[i+game_times].item[0])
