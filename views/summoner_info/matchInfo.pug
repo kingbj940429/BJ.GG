@@ -47,20 +47,20 @@ matchInfo
                                     .gameRecord_goldEarned_under #{result[i+game_times].goldEarned} gold
                             .gameRecord_items 
                                 .gameRecord_items_top
-                                    div.item0 
+                                    div.item0(tooltip="" + result[i+game_times].item_list[i][0].name + "" flow="left")
                                         img(src=result[i+game_times].item[0])
-                                    div.item1 
+                                    div.item1(tooltip="" + result[i+game_times].item_list[i][1].name + "" flow="left") 
                                         img(src=result[i+game_times].item[1])
-                                    div.item2 
+                                    div.item2(tooltip="" + result[i+game_times].item_list[i][2].name + "" flow="right") 
                                         img(src=result[i+game_times].item[2])
-                                    div.item3 
+                                    div.item3(tooltip="" + result[i+game_times].item_list[i][3].name + "" flow="right") 
                                         img(src=result[i+game_times].item[3])
                                 .gameRecord_items_bottom
-                                    div.item4 
+                                    div.item4(tooltip="" + result[i+game_times].item_list[i][4].name + "" flow="left") 
                                         img(src=result[i+game_times].item[4])
-                                    div.item5
+                                    div.item5(tooltip="" + result[i+game_times].item_list[i][5].name + "" flow="left")
                                         img(src=result[i+game_times].item[5])
-                                    div.item6
+                                    div.item6(tooltip="" + result[i+game_times].item_list[i][6].name + "" flow="right")
                                         img(src=result[i+game_times].item[6])
                             .gameRecord_summoner_names            
                                 .gameRecord_team01 

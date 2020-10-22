@@ -33,7 +33,7 @@
 .gameRecord_goldEarned{}
 .gameRecord_goldEarned_top{}
 .gameRecord_goldEarned_under{}
-.gameRecord_items{margin-right: 30px;overflow: hidden;}
+.gameRecord_items{margin-right: 30px;}
 .gameRecord_items img {height: 50px;width: 50px;border-radius: 7px;margin-right: 5px;}
 .gameRecord_items_top{}
 .gameRecord_items_top > div{float: left;}

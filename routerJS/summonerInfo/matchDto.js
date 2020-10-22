@@ -3,6 +3,7 @@ var matchDto = require('../../axios/matchDto');
 var champDataDragon = require('./champDataDragon.js');
 const dateDiff = require('./dateDiff');
 var spellDataDragon = require('./spellDataDragon.js');
+const itemDataDragon = require('../../axios/itemDataDragon.js');
 
 const participantIdentities = async (summoner_getGameId, searchedName) => {
     try {
@@ -74,6 +75,7 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
         }
         //##챔피언 사진 이름 관련 
         //아이템 관련
+        var item_list = []
         for(k=0;k < searchedName_eachGame_number.length; k++){
             var participants = MatchDto[k].data.participants[searchedName_eachGame_number[k]];
             var stats = participants.stats;
@@ -82,6 +84,7 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
                 items : [stats.item0,stats.item1,stats.item2,stats.item3,stats.item4,stats.item5,stats.item6]
             };
             item_url[k] = [];
+           
             for(i= 0 ;i<7;i++){
                 if(item.items[i]==0){
                     item_url[k].push("/images/gray-background.jpg");
@@ -89,7 +92,9 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
                     item_url[k].push(`http://ddragon.leagueoflegends.com/cdn/${item.version}/img/item/${item.items[i]}.png`);
                  }
             }
+            item_list.push(await itemDataDragon(item));
         }
+        console.log(item_list);
         //##아이템 관련
         //소환사 스펠 관련
         var spell=[];
@@ -167,6 +172,7 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
                 total_cs : total_cs,
                 level : level,
                 item : item_url[i],
+                item_list : item_list,
                 spell1 : spell_result.spell1[i],
                 spell2 : spell_result.spell2[i],
                 otherChamps : other_summoner_champ_url[i],
