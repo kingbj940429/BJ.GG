@@ -178,11 +178,12 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
                 spell_list1 : spell_list.spell1[i],
                 spell_list2 : spell_list.spell2[i],
                 otherChamps : other_summoner_champ_url[i],
+                otherChampName : other_summoner_champ_list.champ_name[i],
             }
             game_of_times++;
             team_number_count++;
         }
-       
+        
         return participantList;
     } catch (error) {
         console.error(error);

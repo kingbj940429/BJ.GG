@@ -152,7 +152,125 @@
   }
   
   
+  /**
+  * 이름 관련 툴팁
+  */
+
+  /* START TOOLTIP STYLES */
+[tooltip2] {
+  position: relative; /* opinion 1 */
+}
+
+/* Applies to all tooltips */
+[tooltip2]::before,
+[tooltip2]::after {
+  text-transform: none; /* opinion 2 */
+  font-size: .9em; /* opinion 3 */
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  display: none;
+  opacity: 0;
+}
+[tooltip2]::before {
+  content: '';
+  border: 5px solid transparent; /* opinion 4 */
+  z-index: 1001; /* absurdity 1 */
+}
+[tooltip2]::after {
+  content: attr(tooltip2); /* magic! */
   
+  /* most of the rest of this is opinion */
+  font-family: Helvetica, sans-serif;
+  
+  
+  /* 
+    Let the content set the size of the tooltips 
+    but this will also keep them from being obnoxious
+    */
+  min-width: 3em;
+  text-align: center;
+  overflow: hidden;
+  white-space: pre-line; 
+  line-height: 1.2; 
+  width: 100px;
+  padding: 1ch 1.5ch;
+  border-radius: .3ch;
+  box-shadow: 0 1em 2em -.5em rgba(0, 0, 0, 0.35);
+  background: #333;
+  color: #fff;
+  z-index: 1000; /* absurdity 2 */
+}
+
+/* Make the tooltips respond to hover */
+[tooltip2]:hover::before,
+[tooltip2]:hover::after {
+  display: block;
+}
+
+/* don't show empty tooltips */
+[tooltip2='']::before,
+[tooltip2='']::after {
+  display: none !important;
+}
+
+/* FLOW: UP */
+[tooltip2]:not([flow])::before,
+[tooltip2][flow^="up"]::before {
+  bottom: 100%;
+  border-bottom-width: 0;
+  border-top-color: #333;
+}
+[tooltip2]:not([flow])::after,
+[tooltip2][flow^="up"]::after {
+  bottom: calc(100% + 5px);
+}
+[tooltip2]:not([flow])::before,
+[tooltip2]:not([flow])::after,
+[tooltip2][flow^="up"]::before,
+[tooltip2][flow^="up"]::after {
+  left: 50%;
+  transform: translate(-50%, -.5em);
+}
+
+/* KEYFRAMES */
+@keyframes tooltips-vert {
+  to {
+    opacity: .9;
+    transform: translate(-50%, 0);
+  }
+}
+
+@keyframes tooltips-horz {
+  to {
+    opacity: .9;
+    transform: translate(0, -50%);
+  }
+}
+
+/* FX All The Things */ 
+[tooltip2]:not([flow]):hover::before,
+[tooltip2]:not([flow]):hover::after,
+[tooltip2][flow^="up"]:hover::before,
+[tooltip2][flow^="up"]:hover::after,
+[tooltip2][flow^="down"]:hover::before,
+[tooltip2][flow^="down"]:hover::after {
+  animation: tooltips-vert 300ms ease-out forwards;
+}
+
+[tooltip2][flow^="left"]:hover::before,
+[tooltip2][flow^="left"]:hover::after,
+[tooltip2][flow^="right"]:hover::before,
+[tooltip2][flow^="right"]:hover::after {
+  animation: tooltips-horz 300ms ease-out forwards;
+}
+
+
+
+
+
+
   
 
   

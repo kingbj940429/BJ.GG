@@ -67,7 +67,6 @@ var add_Summoner = (submit_number) => {
                 /**
                  * 소환사들 이름
                  */
-                //a(href="/summonerInfo?summonerName="+ result[i][0]) #{result[i][0]}
                 for(var k=0;k<10;k++){
                     $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .gameRecord_row_name${k}`).text(``);
                     $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .gameRecord_row_name${k}`).append(`<a>${res.participantList[i][k]}</a>`);
@@ -78,15 +77,25 @@ var add_Summoner = (submit_number) => {
                  * 소환사들 사진
                  */
                 $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .other_champion_img0 img`).attr("src",`${res.participantList[i+3].otherChamps[0]}`);
+                $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .other_champion_img0`).attr("tooltip2",`${res.participantList[i+3].otherChampName[0]}`);
                 $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .other_champion_img1 img`).attr("src",`${res.participantList[i+3].otherChamps[1]}`);
+                $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .other_champion_img1`).attr("tooltip2",`${res.participantList[i+3].otherChampName[1]}`);
                 $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .other_champion_img2 img`).attr("src",`${res.participantList[i+3].otherChamps[2]}`);
+                $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .other_champion_img2`).attr("tooltip2",`${res.participantList[i+3].otherChampName[2]}`);
                 $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .other_champion_img3 img`).attr("src",`${res.participantList[i+3].otherChamps[3]}`);
+                $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .other_champion_img3`).attr("tooltip2",`${res.participantList[i+3].otherChampName[3]}`);
                 $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .other_champion_img4 img`).attr("src",`${res.participantList[i+3].otherChamps[4]}`);
+                $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .other_champion_img4`).attr("tooltip2",`${res.participantList[i+3].otherChampName[4]}`);
                 $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .other_champion_img5 img`).attr("src",`${res.participantList[i+3].otherChamps[5]}`);
+                $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .other_champion_img5`).attr("tooltip2",`${res.participantList[i+3].otherChampName[5]}`);
                 $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .other_champion_img6 img`).attr("src",`${res.participantList[i+3].otherChamps[6]}`);
+                $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .other_champion_img6`).attr("tooltip2",`${res.participantList[i+3].otherChampName[6]}`);
                 $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .other_champion_img7 img`).attr("src",`${res.participantList[i+3].otherChamps[7]}`);
+                $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .other_champion_img7`).attr("tooltip2",`${res.participantList[i+3].otherChampName[7]}`);
                 $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .other_champion_img8 img`).attr("src",`${res.participantList[i+3].otherChamps[8]}`);
+                $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .other_champion_img8`).attr("tooltip2",`${res.participantList[i+3].otherChampName[8]}`);
                 $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .other_champion_img9 img`).attr("src",`${res.participantList[i+3].otherChamps[9]}`);
+                $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .other_champion_img9`).attr("tooltip2",`${res.participantList[i+3].otherChampName[9]}`);
               
                 
                 //승패에 따른 색깔 구분
