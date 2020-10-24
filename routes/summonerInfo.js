@@ -49,7 +49,7 @@ router.get('/add_summoner', function (req, res, next) {
         
             summoner_getGameId = await getGameId(searchedSummonerId.accountId, add_game_count);
             const participantList = await matchDto_JS(summoner_getGameId, searchedName);
-            console.log(add_game_count);
+            
            
             res.json({
                 participantList: participantList,

@@ -94,7 +94,7 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
             }
             item_list.push(await itemDataDragon(item));
         }
-        console.log(item_list);
+        
         //##아이템 관련
         //소환사 스펠 관련
         var spell=[];
