@@ -22,7 +22,9 @@ var add_Summoner = (submit_number) => {
                 $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .gameRecord_champ_img img`).attr("src", `${res.participantList[i+3].champ_img[i]}`);
                 $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .gameRecord_champ_name`).text(`${res.participantList[i+3].champ_name[i]}`);
                 $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .gameRecord_spell01 img`).attr("src", `${res.participantList[i+3].spell1}`);
+                $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .gameRecord_spell01`).attr("tooltip", `${res.participantList[i+3].spell_list1.name}\n\n${res.participantList[i+3].spell_list1.description}`);
                 $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .gameRecord_spell02 img`).attr("src", `${res.participantList[i+3].spell2}`);
+                $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .gameRecord_spell02`).attr("tooltip", `${res.participantList[i+3].spell_list2.name}\n\n${res.participantList[i+3].spell_list2.description}`);
                 $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .gameRecord_perks_1 img`).attr("src", `${res.participantList[i+3].perk0}`);
                 $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .gameRecord_perks_2 img`).attr("src", `${res.participantList[i+3].perkSubStyle}`);
                 $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .gameRecord_kda`).text(`${res.participantList[i+3].kills} / ${res.participantList[i+3].deaths} / ${res.participantList[i+3].assists}`);

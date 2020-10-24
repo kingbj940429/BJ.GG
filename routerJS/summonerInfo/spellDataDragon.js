@@ -11,10 +11,10 @@ const Spell_Data_Dragon = async (spellKey)=>{
         for(i=0;i< process.env.GAME_TIMES;i++){
             for (let spell of Object.values(spells)) {
                 if(parseInt(spell.key) === spellKey[i].spell1){
-                    spell1.push(spell.id);
+                    spell1.push({id : spell.id,name : spell.name, description : spell.description });
                 }
                 if(parseInt(spell.key) === spellKey[i].spell2){
-                    spell2.push(spell.id);
+                    spell2.push({id : spell.id,name : spell.name, description : spell.description });
                 }
             }
         }
@@ -23,7 +23,7 @@ const Spell_Data_Dragon = async (spellKey)=>{
             spell1 : spell1,
             spell2 : spell2,
         }
-     
+       
         return spell_data;
     } catch (error) {
         console.error(error);

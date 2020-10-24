@@ -25,9 +25,9 @@ matchInfo
                                     .gameRecord_champ_name #{result[i+game_times].champ_name[i]}
                                 .gameRecord_champ_bottom
                                     .gameRecord_spells
-                                        .gameRecord_spell01
+                                        .gameRecord_spell01(tooltip="" + result[i+game_times].spell_list1.name+"\n\n"+ result[i+game_times].spell_list1.description flow="up")
                                             img(src=result[i+game_times].spell1)
-                                        .gameRecord_spell02
+                                        .gameRecord_spell02(tooltip="" + result[i+game_times].spell_list2.name+"\n\n"+ result[i+game_times].spell_list2.description flow="up")
                                             img(src=result[i+game_times].spell2)
                                     .gameRecord_perks
                                         .gameRecord_perks_1
