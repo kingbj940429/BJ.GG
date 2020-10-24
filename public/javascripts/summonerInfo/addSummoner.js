@@ -18,6 +18,7 @@ var add_Summoner = (submit_number) => {
                 //값 대입
                 $(`.gameRecord_add_con${submit_number} .win_fail_check${i}`).text(`${res.participantList[i+3].gameWinFail_kor}`);
                 $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .gameRecord_info_gameTime`).text(`${res.participantList[i+3].game_date[i]}`);
+                $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .gameRecord_info_gameTime`).attr('tooltip',`${res.participantList[i+3].game_date_tool}`);
                 $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .gameRecord_info_time`).text(`${res.participantList[i+3].gameTime}분`);
                 $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .gameRecord_champ_img img`).attr("src", `${res.participantList[i+3].champ_img[i]}`);
                 $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .gameRecord_champ_name`).text(`${res.participantList[i+3].champ_name[i]}`);
@@ -108,7 +109,7 @@ var add_Summoner = (submit_number) => {
 
             alert("불러오기 성공");
         },error:function(err){
-            alert("불러올 데이터가 없습니다.");
+            alert("요청 실패");
         }
     })
     

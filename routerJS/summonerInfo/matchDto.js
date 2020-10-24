@@ -4,6 +4,7 @@ var champDataDragon = require('./champDataDragon.js');
 const dateDiff = require('./dateDiff');
 var spellDataDragon = require('./spellDataDragon.js');
 const itemDataDragon = require('../../axios/itemDataDragon.js');
+const yyyymmdd = require('../other/yyyymmdd.js');
 
 const participantIdentities = async (summoner_getGameId, searchedName) => {
     try {
@@ -18,6 +19,7 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
         var item_url = [];
         var champion_img_url = [];
         var game_date = [];
+        var game_date_tool = [];
         
         /**
          * 최근 3게임의 id 불러옴, 언제 했는지 date 정보도 가져옴
@@ -25,8 +27,10 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
         for (i = 0; i < game_of_times; i++) { //최근 N개의 게임만을 나타내기 위함
             MatchDto[i] = await matchDto(summoner_getGameId[i]);//최근 N게임의 gameid를 가지고있음
             game_date[i] = dateDiff(new Date(MatchDto[i].data.gameCreation), new Date());
+            game_date_tool[i] = yyyymmdd((MatchDto[i].data.gameCreation));
         }
-    
+        
+        
         /**
          * 검색된 소환사의 위치
          */
@@ -155,6 +159,7 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
              */
             participantList[game_of_times] = {
                 game_date : game_date,
+                game_date_tool : game_date_tool[i],
                 gameTime: Math.round(MatchDto[i].data.gameDuration / 60),
                 gameWinFail: MatchDto[i].data.teams[team_number[team_number_count]].win, //이거 어느 팀이냐에 따라 다르게 나와야함
                 gameWinFail_kor : gameWinFail_kor,
