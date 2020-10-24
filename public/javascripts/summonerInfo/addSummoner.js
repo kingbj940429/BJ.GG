@@ -32,34 +32,34 @@ var add_Summoner = (submit_number) => {
                 $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .gameRecord_CS`).text(`${res.participantList[i+3].total_cs} CS`);
                 $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .gameRecord_goldEarned_under`).text(`${res.participantList[i+3].goldEarned} gold`);
                 /**
-                 * 아이템
+                 * 아이템 result[i+game_times].item_list[i][0].description + "" + result[i+game_times].item_list[i][0].gold
                  */
                 $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .item0 img`).attr("src",`${res.participantList[i+3].item[0]}`);
-                $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .item0`).attr("tooltip",`${res.participantList[i+3].item_list[i][0].name}`);
+                $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .item0`).attr("tooltip",`${res.participantList[i+3].item_list[i][0].name}\n\n${res.participantList[i+3].item_list[i][0].description}${res.participantList[i+3].item_list[i][0].gold}`);
                 $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .item0`).attr("flow",`up`);
 
                 $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .item1 img`).attr("src",`${res.participantList[i+3].item[1]}`);
-                $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .item1`).attr("tooltip",`${res.participantList[i+3].item_list[i][1].name}`);
+                $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .item1`).attr("tooltip",`${res.participantList[i+3].item_list[i][1].name}\n\n${res.participantList[i+3].item_list[i][1].description}${res.participantList[i+3].item_list[i][1].gold}`);
                 $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .item1`).attr("flow",`up`);
 
                 $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .item2 img`).attr("src",`${res.participantList[i+3].item[2]}`);
-                $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .item2`).attr("tooltip",`${res.participantList[i+3].item_list[i][2].name}`);
+                $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .item2`).attr("tooltip",`${res.participantList[i+3].item_list[i][2].name}\n\n${res.participantList[i+3].item_list[i][2].description}${res.participantList[i+3].item_list[i][2].gold}`);
                 $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .item2`).attr("flow",`up`);
 
                 $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .item3 img`).attr("src",`${res.participantList[i+3].item[3]}`);
-                $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .item3`).attr("tooltip",`${res.participantList[i+3].item_list[i][3].name}`);
+                $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .item3`).attr("tooltip",`${res.participantList[i+3].item_list[i][3].name}\n\n${res.participantList[i+3].item_list[i][3].description}${res.participantList[i+3].item_list[i][3].gold}`);
                 $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .item3`).attr("flow",`up`);
 
                 $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .item4 img`).attr("src",`${res.participantList[i+3].item[4]}`);
-                $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .item4`).attr("tooltip",`${res.participantList[i+3].item_list[i][4].name}`);
+                $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .item4`).attr("tooltip",`${res.participantList[i+3].item_list[i][4].name}\n\n${res.participantList[i+3].item_list[i][4].description}${res.participantList[i+3].item_list[i][4].gold}`);
                 $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .item4`).attr("flow",`up`);
 
                 $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .item5 img`).attr("src",`${res.participantList[i+3].item[5]}`);
-                $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .item5`).attr("tooltip",`${res.participantList[i+3].item_list[i][5].name}`);
+                $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .item5`).attr("tooltip",`${res.participantList[i+3].item_list[i][5].name}\n\n${res.participantList[i+3].item_list[i][5].description}${res.participantList[i+3].item_list[i][5].gold}`);
                 $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .item5`).attr("flow",`up`);
 
                 $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .item6 img`).attr("src",`${res.participantList[i+3].item[6]}`);
-                $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .item6`).attr("tooltip",`${res.participantList[i+3].item_list[i][6].name}`);
+                $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .item6`).attr("tooltip",`${res.participantList[i+3].item_list[i][6].name}\n\n${res.participantList[i+3].item_list[i][6].description}${res.participantList[i+3].item_list[i][6].gold}`);
                 $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .item6`).attr("flow",`up`);
                
                 /**
