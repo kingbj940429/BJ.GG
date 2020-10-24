@@ -3,7 +3,7 @@
 .gameRecord_con{margin: 15px;}
 .gameRecord_inner{}
 .gameRecord_inner > div{float: left;}
-.gameRecord_info{margin-left: 30px;margin-right: 30px;overflow: hidden;width: 50px;}
+.gameRecord_info{margin-left: 30px;margin-right: 30px;width: 50px;}
 .gameRecord_info_gameTime{}
 .gameRecord_info_winlose{}
 .gameRecord_info_time{}
@@ -12,7 +12,7 @@
 .gameRecord_champ_bottom{float: left;padding-top: 10px;}
 .gameRecord_champ_img{}
 .gameRecord_champ_img > img{height: 80px;width: 80px;border-radius: 50%;}
-.gameRecord_champ_name{text-align: center;}
+.gameRecord_champ_name{text-align: center;width: 90px;overflow: hidden;white-space: nowrap;}
 .gameRecord_spells{float: left;bottom:30px;}
 .gameRecord_spells img{height: 25px;width: 25px;margin-right: 10px;border-radius: 5px;}
 .gameRecord_spell01{}
@@ -27,7 +27,7 @@
 .gameRecord_totalDamageDealtToChampions{}
 .gameRecord_totalDamage_top{}
 .gameRecord_totalDamage_bottom{}
-.gameRecord_levelCS{margin-right: 60px;overflow: hidden;width: 80px;}
+.gameRecord_levelCS{margin-right: 60px;width: 80px;}
 .gameRecord_level{}
 .gameRecord_CS{}
 .gameRecord_goldEarned{}
