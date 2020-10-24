@@ -1,7 +1,8 @@
 /*매치 기록*/
+.content_wrap{max-width: 1200px;}
 .gameRecord_wrap_css{border-radius: 5px;margin-bottom: 25px;}
-.gameRecord_con{margin: 15px;}
-.gameRecord_inner{}
+.gameRecord_con{margin:15px 0px;padding-top: 20px;padding-bottom: 20px; background-color: bisque;}
+.gameRecord_inner{margin:15px 0px;padding-top: 15px;padding-bottom: 20px;border-radius:5px;}
 .gameRecord_inner > div{float: left;}
 .gameRecord_info{margin-left: 30px;margin-right: 30px;width: 50px;}
 .gameRecord_info_gameTime{}
@@ -83,9 +84,12 @@
 .gameRecord_add_con2 > .gameRecord_wrap1{margin-bottom: 25px;border-radius: 5px;}
 .gameRecord_add_con2 > .gameRecord_wrap2{margin-bottom: 25px;border-radius: 5px;}
 
+.gameRecord_con0{margin-bottom: 25px;border-radius: 5px;}
+.gameRecord_con1{margin-bottom: 25px;border-radius: 5px;}
+.gameRecord_con2{margin-bottom: 25px;border-radius: 5px;position: relative;}
 /*
     addSummonerButton
 */
 .addSummonerButton_wrap{margin-top: -23px;}
 .game_form{}
-.addSummonerButton_button{font-size: 15px;background-color: rgba(2, 133, 240, 0.2);border: 0px; outline: 0px;cursor: pointer;margin-bottom: 25px;padding: 25px;border-radius: 5px;}
+.addSummonerButton_button{font-size: 15px;background-color: rgba(36, 155, 253, 0.2);border: 0px; outline: 0px;cursor: pointer;margin-bottom: 25px;padding: 25px;border-radius: 5px;}

@@ -28,9 +28,9 @@ html
         
         for(var i=0;i<game_times;i++){
           if( $(`.win_fail_check${i}`).text() === '패배'){
-            $(`.gameRecord_wrap${i}`).css("background-color","#ef9a9a ");
+            $(`.gameRecord_con${i}`).css("background-color","#ef9a9a ");
           }else{
-            $(`.gameRecord_wrap${i}`).css("background-color","#90caf9");
+            $(`.gameRecord_con${i}`).css("background-color","#90caf9");
           }
         }
         //소환사 정보 승률

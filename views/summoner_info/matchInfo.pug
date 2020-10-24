@@ -1,6 +1,6 @@
 matchInfo
     input(class="summoner_query" type="hidden" value=summoner_query)
-    .content_wrap.col-12.col-center.mw-1200
+    .content_wrap.col-12.col-center
         -var game_times = 3;
         -for(i=0;i<game_times;i++)
             input(class="game_times" type="hidden" value=game_times)
@@ -14,8 +14,9 @@ matchInfo
                                 script.
                                     var win_fail_number = #{i};
                                     $(`.gameRecord_info_win_fail_check`).attr("class","win_fail_check"+ #{i});
-                                    $(`.gameRecord_wrap`).attr("class","gameRecord_wrap"+ #{i} +" col-12" + " mw-1200" + " col-center");
-                                    $(`.gameRecord_box`).attr("class","gameRecord_box"+ #{i} +" col-12" + " mw-1200" + " col-center"+ " gameRecord_wrap_css");
+                                    $(`.gameRecord_con`).attr("class","gameRecord_con"+ #{i} + " col-12 ");
+                                    $(`.gameRecord_wrap`).attr("class","gameRecord_wrap"+ #{i} +" col-12 " + "" + " col-center");
+                                    $(`.gameRecord_box`).attr("class","gameRecord_box"+ #{i} +" col-12 " + "" + " col-center"+ " gameRecord_wrap_css");
                                 .gameRecord_info_time #{result[i+game_times].gameTime}분
                             .gameRecord_champ
                                 .gameRecord_champ_top
@@ -47,20 +48,20 @@ matchInfo
                                     .gameRecord_goldEarned_under #{result[i+game_times].goldEarned} gold
                             .gameRecord_items 
                                 .gameRecord_items_top
-                                    div.item0(tooltip="" + result[i+game_times].item_list[i][0].name + "" flow="left")
+                                    div.item0(tooltip="" + result[i+game_times].item_list[i][0].name + "" flow="up")
                                         img(src=result[i+game_times].item[0])
-                                    div.item1(tooltip="" + result[i+game_times].item_list[i][1].name + "" flow="left") 
+                                    div.item1(tooltip="" + result[i+game_times].item_list[i][1].name + "" flow="up") 
                                         img(src=result[i+game_times].item[1])
-                                    div.item2(tooltip="" + result[i+game_times].item_list[i][2].name + "" flow="right") 
+                                    div.item2(tooltip="" + result[i+game_times].item_list[i][2].name + "" flow="up") 
                                         img(src=result[i+game_times].item[2])
-                                    div.item3(tooltip="" + result[i+game_times].item_list[i][3].name + "" flow="right") 
+                                    div.item3(tooltip="" + result[i+game_times].item_list[i][3].name + "" flow="up") 
                                         img(src=result[i+game_times].item[3])
                                 .gameRecord_items_bottom
-                                    div.item4(tooltip="" + result[i+game_times].item_list[i][4].name + "" flow="left") 
+                                    div.item4(tooltip="" + result[i+game_times].item_list[i][4].name + "" flow="up") 
                                         img(src=result[i+game_times].item[4])
-                                    div.item5(tooltip="" + result[i+game_times].item_list[i][5].name + "" flow="left")
+                                    div.item5(tooltip="" + result[i+game_times].item_list[i][5].name + "" flow="up")
                                         img(src=result[i+game_times].item[5])
-                                    div.item6(tooltip="" + result[i+game_times].item_list[i][6].name + "" flow="right")
+                                    div.item6(tooltip="" + result[i+game_times].item_list[i][6].name + "" flow="up")
                                         img(src=result[i+game_times].item[6])
                             .gameRecord_summoner_names            
                                 .gameRecord_team01 
@@ -125,8 +126,9 @@ matchInfo
                                         .gameRecord_row_name9 
                                             div 
                                                 a(href="/summonerInfo?summonerName="+ result[i][9]) #{result[i][9]}
-    .content_wrap.col-12.col-center.mw-1200
+    .content_wrap.col-12.col-center
         -for(i=0;i<game_times;i++)
-            .gameRecord_add_con.col-12.mw-1200.col-center
+            .gameRecord_add_con.col-12.col-center
                 script.
-                    $('.gameRecord_add_con').attr("class","gameRecord_add_con" + #{i} + " col-12" + " mw-1200" + " col-center");
+                    $('.gameRecord_add_con').attr("class","gameRecord_add_con" + #{i} + " col-12" + " col-center");
+                    
