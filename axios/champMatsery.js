@@ -20,12 +20,14 @@ const champMastery = async (searchedSummonerId) => {
         if (parseInt(champ.key) === list[i].championId) {
           mastery_champ_name.push({
             championName: champ.name,
+            championId: champ.id,
             championLevel: list[i].championLevel,
             championPoints: list[i].championPoints,
+            championImg : `http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champ.id}_0.jpg`
           });
           count++;
         }
-        if (count == 5) break;
+        if (count == process.env.MASTERY_TIMES) break;
       }
     }
     
