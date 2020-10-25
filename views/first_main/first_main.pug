@@ -1,14 +1,21 @@
 doctype html
 html
   head
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/common/style.css')
     link(rel='stylesheet', href='/stylesheets/matchInfo.css')
     link(rel='stylesheet', href='/stylesheets/summonerInfo.css')
-    link(rel='stylesheet', href='/stylesheets/responsive.css')
-    link(rel='stylesheet', href='/stylesheets/gnb.css')
-    link(rel='stylesheet', href='/stylesheets/footer.css')
+    link(rel='stylesheet', href='/stylesheets/common/responsive.css')
+    link(rel='stylesheet', href='/stylesheets/common/gnb.css')
+    link(rel='stylesheet', href='/stylesheets/common/footer.css')
+    link(rel='stylesheet', href='/stylesheets/common/loading.css')
     script(src='https://code.jquery.com/jquery-3.5.1.min.js')
-   
+    script.
+      $(()=>{
+        $('.gnb_search2 button').click(function() { 
+            $('.loading').css('display','')
+            $('.gnb_search2 form').submit(); 
+            });
+      })
   body
     include ../cmmn/gnb
     block index

@@ -1,5 +1,5 @@
 var add_Summoner = (submit_number) => {
-
+    $('.loading').css('display','')
     //$('.game_form').submit((e) => {
     //    e.preventDefault();
     $.ajax({
@@ -108,7 +108,7 @@ var add_Summoner = (submit_number) => {
                 }
             }
 
-            alert("불러오기 성공");
+            $('.loading').css('display','none')
         },error:function(err){
             alert("요청 실패");
         }
