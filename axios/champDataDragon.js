@@ -5,7 +5,8 @@ const fs = require('fs');
 const champDataDragon = async () => {
   try {
     var champion_List = await axios.get(`http://ddragon.leagueoflegends.com/cdn/${process.env.CHAMP_VERSION}/data/ko_KR/champion.json`);
-    
+    champion_List = champion_List.data.data
+   
     return champion_List;
   } catch (error) {
     console.error(error);

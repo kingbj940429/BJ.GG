@@ -26,8 +26,8 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
          */
         for (i = 0; i < game_of_times; i++) { //최근 N개의 게임만을 나타내기 위함
             MatchDto[i] = await matchDto(summoner_getGameId[i]);//최근 N게임의 gameid를 가지고있음
-            game_date[i] = dateDiff(new Date(MatchDto[i].data.gameCreation), new Date());
-            game_date_tool[i] = yyyymmdd((MatchDto[i].data.gameCreation));
+            game_date[i] = dateDiff(new Date(MatchDto[i].gameCreation), new Date());
+            game_date_tool[i] = yyyymmdd((MatchDto[i].gameCreation));
         }
         
         
@@ -37,9 +37,9 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
         var count =0;
         for (k = 0; k < game_of_times; k++) {
             participantList[k] = [];
-            for (i = 0; i < MatchDto[k].data.participantIdentities.length; i++) {
-                participantList[k].push(MatchDto[k].data.participantIdentities[i].player.summonerName);
-                if (MatchDto[k].data.participantIdentities[i].player.summonerName === searchedName) {
+            for (i = 0; i < MatchDto[k].participantIdentities.length; i++) {
+                participantList[k].push(MatchDto[k].participantIdentities[i].player.summonerName);
+                if (MatchDto[k].participantIdentities[i].player.summonerName === searchedName) {
                     searchedName_eachGame_number[k] = i; //검색된 소환사의 이름의 순번. index이므로 0부터 시작
                     count++;
                 }
@@ -59,10 +59,10 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
         var other_summoner_champ_list = [];
         var other_summoner_champ_url = [];
         for(var i = 0; i<game_of_times;i++){
-            my_champKey.push(MatchDto[i].data.participants[searchedName_eachGame_number[i]].championId);
+            my_champKey.push(MatchDto[i].participants[searchedName_eachGame_number[i]].championId);
             other_summoner_champKey[i] = [];
             for(k=0;k<10;k++){
-                other_summoner_champKey[i].push(MatchDto[i].data.participants[k].championId);
+                other_summoner_champKey[i].push(MatchDto[i].participants[k].championId);
             }
         }
         other_summoner_champ_list = await champDataDragon(other_summoner_champKey,my_champKey);
@@ -81,7 +81,7 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
         //아이템 관련
         var item_list = []
         for(k=0;k < searchedName_eachGame_number.length; k++){
-            var participants = MatchDto[k].data.participants[searchedName_eachGame_number[k]];
+            var participants = MatchDto[k].participants[searchedName_eachGame_number[k]];
             var stats = participants.stats;
             var item = {
                 version : `${process.env.ITEM_VERSION}`,
@@ -106,7 +106,7 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
         var spell1=[];
         var spell2=[];
         for(i=0;i < searchedName_eachGame_number.length; i++){
-            var participants = MatchDto[i].data.participants[searchedName_eachGame_number[i]];
+            var participants = MatchDto[i].participants[searchedName_eachGame_number[i]];
             spell[i] = {
                 spell1 : participants.spell1Id,
                 spell2 : participants.spell2Id,
@@ -127,7 +127,7 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
         //최종적으로 pug에 렌더링 해줄 것들
         var team_number_count = 0;
         for (i = 0; i < process.env.GAME_TIMES; i++) {
-            var participants = MatchDto[i].data.participants[searchedName_eachGame_number[i]];//검색된 소환사의 게임에서의 번호
+            var participants = MatchDto[i].participants[searchedName_eachGame_number[i]];//검색된 소환사의 게임에서의 번호
             var stats = participants.stats;
             var kill = stats.kills, death = stats.deaths, assist = stats.assists,kda =(kill+assist)/death;
             var totalDamageDealtToChampions = stats.totalDamageDealtToChampions;
@@ -149,7 +149,7 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
                 kda= "Perfect";
             }
             
-            if(MatchDto[i].data.teams[team_number[team_number_count]].win == 'Win'){
+            if(MatchDto[i].teams[team_number[team_number_count]].win == 'Win'){
                 gameWinFail_kor = '승리';
             }else{
                 gameWinFail_kor = '패배';
@@ -160,8 +160,8 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
             participantList[game_of_times] = {
                 game_date : game_date,
                 game_date_tool : game_date_tool[i],
-                gameTime: Math.round(MatchDto[i].data.gameDuration / 60),
-                gameWinFail: MatchDto[i].data.teams[team_number[team_number_count]].win, //이거 어느 팀이냐에 따라 다르게 나와야함
+                gameTime: Math.round(MatchDto[i].gameDuration / 60),
+                gameWinFail: MatchDto[i].teams[team_number[team_number_count]].win, //이거 어느 팀이냐에 따라 다르게 나와야함
                 gameWinFail_kor : gameWinFail_kor,
                 championId: participants.championId,
                 perk0 : perk0,
@@ -174,6 +174,7 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
                 goldEarned : goldEarned,
                 champ_name : other_summoner_champ_list.my_champ_name,
                 champ_img : champion_img_url,
+                champ_title : other_summoner_champ_list.my_champ_title,
                 total_cs : total_cs,
                 level : level,
                 item : item_url[i],

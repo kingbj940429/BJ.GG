@@ -3,13 +3,15 @@ var champDataDragon = require('../../axios/champDataDragon');
 const Champion_Data_Dragon = async (champKey, my_champKey)=>{
     try {
         const champ_Data_Dragon = await champDataDragon();
-        const champs = champ_Data_Dragon.data.data;
+        const champs = champ_Data_Dragon;
         var count;
-        var champ_id = [];
-        var champ_name = [];
-        var my_champ_id = [];
-        var my_champ_name = [];
+        const champ_id = [];
+        const champ_name = [];
+        const my_champ_id = [];
+        const my_champ_name = [];
+        const my_champ_title = [];
 
+        
         for(i=0;i< process.env.GAME_TIMES;i++){
             champ_id[i]=[];
             champ_name[i]=[];
@@ -33,18 +35,20 @@ const Champion_Data_Dragon = async (champKey, my_champKey)=>{
                 if(parseInt(champ.key) === my_champKey[i]){
                     my_champ_id.push(champ.id);
                     my_champ_name.push(champ.name);
+                    my_champ_title.push(champ.title);
                     count++;
                 }
                 if(count==10)break;
             }
         }
-       
+        
         
         const champion_data = {
             champ_name : champ_name,
             champ_id : champ_id,
             my_champ_id : my_champ_id,
             my_champ_name : my_champ_name,
+            my_champ_title : my_champ_title,
         }
     
         return champion_data;

@@ -10,7 +10,7 @@ matchInfo
                         .gameRecord_inner.col-12
                             .gameRecord_info
                                 .gameRecord_info_gameTime(tooltip="" + result[i+game_times].game_date_tool flow="up") #{result[i+game_times].game_date[i]}
-                                .gameRecord_info_win_fail_check #{result[i+game_times].gameWinFail_kor}
+                                .gameRecord_info_win_fail_check(tooltip2="승리/ 패배"  flow="up") #{result[i+game_times].gameWinFail_kor}
                                 script.
                                     var win_fail_number = #{i};
                                     $(`.gameRecord_info_win_fail_check`).attr("class","win_fail_check"+ #{i});
@@ -19,7 +19,7 @@ matchInfo
                                     $(`.gameRecord_box`).attr("class","gameRecord_box"+ #{i} +" col-12 " + "" + " col-center"+ " gameRecord_wrap_css");
                                 .gameRecord_info_time(tooltip2="플레이 시간"  flow="up") #{result[i+game_times].gameTime}분
                             .gameRecord_champ
-                                .gameRecord_champ_top
+                                .gameRecord_champ_top(tooltip2=""+result[i+game_times].champ_title[i]  flow="up")
                                     .gameRecord_champ_img
                                         img(src=result[i+game_times].champ_img[i])
                                     .gameRecord_champ_name #{result[i+game_times].champ_name[i]}

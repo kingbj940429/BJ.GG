@@ -11,7 +11,7 @@
 .gameRecord_champ{float: left;margin-right: 20px;}
 .gameRecord_champ_top{float: left;padding-right: 10px;}
 .gameRecord_champ_bottom{float: left;padding-top: 10px;}
-.gameRecord_champ_img{}
+.gameRecord_champ_img{text-align: center;}
 .gameRecord_champ_img > img{height: 80px;width: 80px;border-radius: 50%;}
 .gameRecord_champ_name{text-align: center;width: 90px;overflow: hidden;white-space: nowrap;}
 .gameRecord_spells{float: left;bottom:30px;}
