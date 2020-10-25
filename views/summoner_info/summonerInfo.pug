@@ -7,6 +7,7 @@ block content
                 .summonerInfo_inner_icon
                     img(src="http://ddragon.leagueoflegends.com/cdn/10.21.1/img/profileicon/"+ profileIconId + ".png", alt="profile_icon")
                 .summonerInfo_inner_nick #{summoner.data[0].summonerName}님 환영합니다.
+                .summonerInfo_inner_level 레벨 #{summonerLevel}
             .summonerInfo_con_center.col-4 
                 .summonerInfo_inner
                     .summonerInfo_inner_left
@@ -35,5 +36,5 @@ block content
                             input(type="hidden" class="summonerInfo_win1" value=summoner.data[1].wins)
                             input(type="hidden" class="summonerInfo_lose1" value=summoner.data[1].losses) 
                             .summonerInfo_rate1 승률
-
+    include champMastery
     include matchInfo

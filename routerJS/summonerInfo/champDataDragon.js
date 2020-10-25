@@ -10,7 +10,7 @@ const Champion_Data_Dragon = async (champKey, my_champKey)=>{
         const my_champ_id = [];
         const my_champ_name = [];
         const my_champ_title = [];
-
+    
         
         for(i=0;i< process.env.GAME_TIMES;i++){
             champ_id[i]=[];
@@ -41,7 +41,6 @@ const Champion_Data_Dragon = async (champKey, my_champKey)=>{
                 if(count==10)break;
             }
         }
-        
         
         const champion_data = {
             champ_name : champ_name,

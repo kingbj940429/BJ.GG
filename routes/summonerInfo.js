@@ -1,10 +1,11 @@
-var express = require('express');
-var router = express.Router();
-var getSummonerInfo = require('../axios/summonerInfo');
-var getSummonerId = require('../axios/summonerId');
-var getGameId = require('../axios/getGameId');
+const express = require('express');
+const router = express.Router();
+const getSummonerInfo = require('../axios/summonerInfo');
+const getSummonerId = require('../axios/summonerId');
+const getGameId = require('../axios/getGameId');
+const champMastery = require('../axios/champMatsery.js');
 
-var matchDto_JS = require('../routerJS/summonerInfo/matchDto.js');
+const matchDto_JS = require('../routerJS/summonerInfo/matchDto.js');
 
 var searchedName;
 var summoner_getGameId;
@@ -20,13 +21,17 @@ router.get('/', function (req, res, next) {
 
             searchedSummonerId = await getSummonerId(searchedName); //쿼리스트링의 이름을 axios.getSummonerId에 넣어서 값 받기 AccountId : searchedSummonerId.data.accountId
            
-            var summoner = await getSummonerInfo(searchedSummonerId.id); //소환사 기본 정보 콜백함수
-      
+            const summoner = await getSummonerInfo(searchedSummonerId.id); //소환사 기본 정보 콜백함수
+            
+            const champ_mastery = await champMastery(searchedSummonerId.id);
+            
             summoner_getGameId = await getGameId(searchedSummonerId.accountId, add_game_count); //gameId : summoner_getGameId.data.matches[0].gameId
            
             const participantList = await matchDto_JS(summoner_getGameId, searchedName);
            
             res.render('summoner_info/summonerInfo.pug', {
+                champ_mastery : champ_mastery,
+                summonerLevel :searchedSummonerId.summonerLevel,
                 profileIconId : searchedSummonerId.profileIconId,
                 summoner_query: searchedName,
                 summoner: summoner,

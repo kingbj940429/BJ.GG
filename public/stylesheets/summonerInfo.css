@@ -4,6 +4,7 @@
 .summonerInfo_inner_icon{}
 .summonerInfo_inner_icon > img {width: 120px;width: 120px;border-radius: 50%;}
 .summonerInfo_inner_nick{}
+.summonerInfo_inner_level{}
 .summonerInfo_con_center{float: left;background-color: aqua;}
 .summonerInfo_con_left{float: left;background-color: aquamarine;}
 .summonerInfo_inner{}
