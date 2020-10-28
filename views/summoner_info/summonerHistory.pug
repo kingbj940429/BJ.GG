@@ -34,14 +34,16 @@ html
         $('.gnb_search2 button').click(function() { 
           $('.loading').css('display','')
           $('.gnb_search2 form').submit(); 
-          });
+        });
         /**
         * 소환사 이름 눌렀을 때 로딩 관련
         */  
-        $('.gameRecord_summoner_names a').click(function() { 
+        $('.gameRecord_row a').click(function() { 
           $('.loading').css('display','')
-          $('.gameRecord_summoner_names a').submit(); 
-          });
+          $('.gameRecord_row a').submit(); 
+        });
+       
+        
 
         
         for(var i=0;i<game_times;i++){
@@ -62,6 +64,7 @@ html
 
       })  
   body
+    div(class="loading" style="display:none") Loading&#8230;
     include ../cmmn/gnb  
     block content
     include addSummonerButton

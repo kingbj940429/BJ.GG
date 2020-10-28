@@ -1,7 +1,6 @@
 var add_Summoner = (submit_number) => {
     $('.loading').css('display','')
-    //$('.game_form').submit((e) => {
-    //    e.preventDefault();
+
     $.ajax({
         url: `/summonerInfo/add_summoner`,
         data: {
@@ -98,8 +97,14 @@ var add_Summoner = (submit_number) => {
                 $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .other_champion_img8`).attr("tooltip2",`${res.participantList[i+3].otherChampName[8]}`);
                 $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .other_champion_img9 img`).attr("src",`${res.participantList[i+3].otherChamps[9]}`);
                 $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .other_champion_img9`).attr("tooltip2",`${res.participantList[i+3].otherChampName[9]}`);
-              
                 
+                /**
+                 * 로딩 관련
+                 */
+                $('.gameRecord_row a').click(function() { 
+                    $('.loading').css('display','')
+                    $('.gameRecord_row a').submit(); 
+                  });
                 //승패에 따른 색깔 구분
                 if ($(`.gameRecord_add_con${submit_number} .win_fail_check${i}`).text() === '패배') {
                     $(`.gameRecord_add_con${submit_number} .gameRecord_con${i}`).css("background-color", "#ef9a9a ");
