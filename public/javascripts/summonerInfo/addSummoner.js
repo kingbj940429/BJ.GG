@@ -99,7 +99,7 @@ var add_Summoner = (submit_number) => {
                 $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .other_champion_img9`).attr("tooltip2",`${res.participantList[i+3].otherChampName[9]}`);
                 
                 /**
-                 * 로딩 관련
+                 * 로딩
                  */
                 $('.gameRecord_row a').click(function() { 
                     $('.loading').css('display','')

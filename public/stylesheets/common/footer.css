@@ -1,1 +1,13 @@
-.footer_wrap{height: 20px;background-color: antiquewhite;}
+.footer_wrap.col-12.col-center{background-color: rgba(0,0,0);color: rgb(131, 131, 131);}
+.footer_con.col-12.mw-1200.col-center{}
+.footer_box_top.col-12{margin-top: 40px;margin-bottom: 20px;}
+.footer_top_inner_first.col-1{}
+.footer_top_inner_second.col-1{}
+.footer_top_inner_third.col-1{}
+.footer_box_middle.col-12{margin-bottom: 20px;}
+.footer_box_line{border: 1px solid rgba(131, 131, 131,0.5);margin-bottom: 20px;}
+.footer_box_bottom.col-12{}
+.footer_inner_bottom_first{position: relative;left: -70px;top:-60px;width: 300px;height: auto;}
+.footer_inner_bottom_second{font-weight: bold;}
+.footer_inner_bottom_third{}
+.footer_inner_bottom_third > a  img{width: 30px;height: auto;}

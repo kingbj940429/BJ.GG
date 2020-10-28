@@ -1,4 +1,5 @@
-.gnb_wrap{background-color: #5383e8;margin-bottom: 50px;}
+.gnb_wrap{position: fixed;background-color: rgba(0,0,0,0.9);margin-bottom: 50px;z-index: 1001;}
+.gnb_wrap a {text-decoration:none;color: white;}
 .gnb_con{margin-top: 20px;margin-bottom: 20px;}
 .gnb_inner{}
 .gnb_champion{padding-right: 100px;}
