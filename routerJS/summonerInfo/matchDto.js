@@ -66,7 +66,7 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
             }
         }
         other_summoner_champ_list = await champDataDragon(other_summoner_champKey,my_champKey);
-        
+        console.log(MatchDto[0].participants[0]);
         //내가 플레이한 챔피언 사진
         //같이 플레이한 소환사들의 챔피언 사진
         for(var i=0;i<game_of_times;i++){
