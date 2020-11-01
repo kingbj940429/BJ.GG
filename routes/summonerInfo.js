@@ -54,7 +54,6 @@ router.get('/add_summoner', function (req, res, next) {
         
             summoner_getGameId = await getGameId(searchedSummonerId.accountId, add_game_count);
             const participantList = await matchDto_JS(summoner_getGameId, searchedName);
-            
            
             res.json({
                 participantList: participantList,
@@ -67,5 +66,29 @@ router.get('/add_summoner', function (req, res, next) {
 
     getSummoner_information();
 });
+
+router.post('/otherSummonerInfo', function(req, res, next){
+    const otherSummonerInfo = async () => {
+
+        try {
+            console.log(req.body.gameId);
+            summoner_getGameId = await getGameId(searchedSummonerId.accountId, add_game_count);
+            const participantList = await matchDto_JS(summoner_getGameId, searchedName);
+            
+           
+            // res.json({
+            //     participantList: participantList,
+            // })
+            res.json({
+                test: "test",
+            })
+
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    otherSummonerInfo();
+})
 
 module.exports = router;

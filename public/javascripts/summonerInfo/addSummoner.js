@@ -19,6 +19,8 @@ var add_Summoner = (submit_number) => {
                 $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .gameRecord_info_gameTime`).text(`${res.participantList[i+3].game_date[i]}`);
                 $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .gameRecord_info_gameTime`).attr('tooltip',`${res.participantList[i+3].game_date_tool}`);
                 $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .gameRecord_info_time`).text(`${res.participantList[i+3].gameTime}분`);
+                $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .gameRecord_info_time`).append(`${res.participantList[i+3].gameId}`);
+                $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .gameRecord_info_gameId_hidden${i+count} > input`).attr("value",`${res.participantList[i+3].gameId}`);
                 $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .gameRecord_champ_img img`).attr("src", `${res.participantList[i+3].champ_img[i]}`);//(tooltip2=""+result[i+game_times].champ_title[i]  flow="up")
                 $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .gameRecord_champ_top`).attr("tooltip2", `${res.participantList[i+3].champ_title[i]}`);
                 $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .gameRecord_champ_name`).text(`${res.participantList[i+3].champ_name[i]}`);

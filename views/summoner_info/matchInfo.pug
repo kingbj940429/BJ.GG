@@ -17,7 +17,11 @@ matchInfo
                                     $(`.gameRecord_con`).attr("class","gameRecord_con"+ #{i} + " col-12 ");
                                     $(`.gameRecord_wrap`).attr("class","gameRecord_wrap"+ #{i} +" col-12 " + "" + " col-center");
                                     $(`.gameRecord_box`).attr("class","gameRecord_box"+ #{i} +" col-12 " + "" + " col-center"+ " gameRecord_wrap_css");
-                                .gameRecord_info_time(tooltip2="플레이 시간"  flow="up") #{result[i+game_times].gameTime}분
+                                .gameRecord_info_time(tooltip2="플레이 시간"  flow="up") #{result[i+game_times].gameTime}분 #{result[i+game_times].gameId}
+                                .gameRecord_info_gameId_hidden
+                                    input(class="gameId" type="hidden" value=result[i+game_times].gameId)
+                                    script.
+                                        $(`.gameRecord_info_gameId_hidden`).attr("class","gameRecord_info_gameId_hidden"+ #{i});
                             .gameRecord_champ
                                 .gameRecord_champ_top(tooltip2=""+result[i+game_times].champ_title[i]  flow="up")
                                     .gameRecord_champ_img
@@ -126,6 +130,13 @@ matchInfo
                                         .gameRecord_row_name9 
                                             div 
                                                 a(href="/summonerInfo?summonerName="+ result[i][9]) #{result[i][9]}
+                            .gameRecord_other_summoner_call_btn_con
+                                .gameRecord_other_summoner_call_btn_form
+                                    form.other_summoner_btn(action="/summonerInfo/otherSummonerInfo" method="post")
+                                        button(type="submit" value=result[i+game_times].gameId) 버튼
+                                        script.
+                                            $('.other_summoner_btn').attr("class","other_summoner_btn"+#{i})
+                                    
     .content_wrap.col-12.col-center
         -for(i=0;i<game_times;i++)
             .gameRecord_add_con.col-12.col-center

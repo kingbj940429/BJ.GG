@@ -20,17 +20,17 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
         var champion_img_url = [];
         var game_date = [];
         var game_date_tool = [];
-        
+        var gameId = [];
         /**
          * 최근 3게임의 id 불러옴, 언제 했는지 date 정보도 가져옴
          */
         for (i = 0; i < game_of_times; i++) { //최근 N개의 게임만을 나타내기 위함
             MatchDto[i] = await matchDto(summoner_getGameId[i]);//최근 N게임의 gameid를 가지고있음
+            gameId.push(MatchDto[i].gameId);
             game_date[i] = dateDiff(new Date(MatchDto[i].gameCreation), new Date());
             game_date_tool[i] = yyyymmdd((MatchDto[i].gameCreation));
         }
-        
-        
+          
         /**
          * 검색된 소환사의 위치
          */
@@ -51,7 +51,7 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
                 team_number[k] = 1;
             }
         }
-   
+        //console.log(MatchDto[0].participants[0]);
         //챔피언 사진 이름 관련 
         //검색된 소환사가 한 각 챔피언들의 key값을 받아냄. 내가 플레이한 사진만
         //검색된 소환사의 다른 소환사들 사진 
@@ -66,7 +66,7 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
             }
         }
         other_summoner_champ_list = await champDataDragon(other_summoner_champKey,my_champKey);
-        console.log(MatchDto[0].participants[0]);
+       
         //내가 플레이한 챔피언 사진
         //같이 플레이한 소환사들의 챔피언 사진
         for(var i=0;i<game_of_times;i++){
@@ -185,6 +185,7 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
                 spell_list2 : spell_list.spell2[i],
                 otherChamps : other_summoner_champ_url[i],
                 otherChampName : other_summoner_champ_list.champ_name[i],
+                gameId : gameId[i],
             }
             game_of_times++;
             team_number_count++;
