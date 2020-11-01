@@ -6,6 +6,7 @@ const getGameId = require('../axios/getGameId');
 const champMastery = require('../axios/champMatsery.js');
 
 const matchDto_JS = require('../routerJS/summonerInfo/matchDto.js');
+const otherSummoner = require('../routerJS/summonerInfo/otherSummoner.js');
 
 var searchedName;
 var summoner_getGameId;
@@ -71,14 +72,9 @@ router.post('/otherSummonerInfo', function(req, res, next){
     const otherSummonerInfo = async () => {
 
         try {
-            console.log(req.body.gameId);
-            // summoner_getGameId = await getGameId(searchedSummonerId.accountId, add_game_count);
-            // const participantList = await matchDto_JS(summoner_getGameId, searchedName);
-            
-           
-            // res.json({
-            //     participantList: participantList,
-            // })
+            console.log(req.body);
+            const participantList = await otherSummoner(req.body.gameId, req.body.summoner_query);
+        
             res.json({
                 test: "test",
             })

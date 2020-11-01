@@ -6,6 +6,7 @@ var add_others = (submit_number) => {
         url: `/summonerInfo/otherSummonerInfo`,
         data: {
             gameId: $(`.other_summoner_btn${submit_number} button`).val(),
+            summoner_query: $('.summoner_query').val(),
         },
         success: function (res) {
             
