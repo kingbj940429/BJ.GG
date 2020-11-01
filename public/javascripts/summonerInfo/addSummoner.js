@@ -1,4 +1,4 @@
-var add_Summoner = (submit_number) => {
+var add_Summoner = (submit_number, count) => {
     $('.loading').css('display','')
 
     $.ajax({
@@ -21,6 +21,9 @@ var add_Summoner = (submit_number) => {
                 $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .gameRecord_info_time`).text(`${res.participantList[i+3].gameTime}분`);
                 $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .gameRecord_info_time`).append(`${res.participantList[i+3].gameId}`);
                 $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .gameRecord_info_gameId_hidden${i+count} > input`).attr("value",`${res.participantList[i+3].gameId}`);
+                $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .other_summoner_btn${i}`).attr("class","other_summoner_btn"+(count+i));
+                $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .other_summoner_btn${i+count} > button`).attr("value",`${res.participantList[i+3].gameId}`);
+                $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .other_summoner_btn${i+count}`).attr("method",`post`);
                 $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .gameRecord_champ_img img`).attr("src", `${res.participantList[i+3].champ_img[i]}`);//(tooltip2=""+result[i+game_times].champ_title[i]  flow="up")
                 $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .gameRecord_champ_top`).attr("tooltip2", `${res.participantList[i+3].champ_title[i]}`);
                 $(`.gameRecord_add_con${submit_number} .gameRecord_wrap${i} .gameRecord_champ_name`).text(`${res.participantList[i+3].champ_name[i]}`);
@@ -115,7 +118,42 @@ var add_Summoner = (submit_number) => {
                 }
             }
 
-            $('.loading').css('display','none')
+            $('.loading').css('display','none');
+            /**
+             * 해당 경기 정보를 위한 ajax
+             */
+            $(`.other_summoner_btn4`).submit((e) => {
+                e.preventDefault();
+                add_others(4);
+            });
+            $(`.other_summoner_btn5`).submit((e) => {
+                e.preventDefault();
+                add_others(5);
+            });
+            $(`.other_summoner_btn6`).submit((e) => {
+                e.preventDefault();
+                add_others(6);
+            });
+            $(`.other_summoner_btn7`).submit((e) => {
+                e.preventDefault();
+                add_others(7);
+            });
+            $(`.other_summoner_btn8`).submit((e) => {
+                e.preventDefault();
+                add_others(8);
+            });
+            $(`.other_summoner_btn9`).submit((e) => {
+                e.preventDefault();
+                add_others(9);
+            });
+            $(`.other_summoner_btn10`).submit((e) => {
+                e.preventDefault();
+                add_others(10);
+            });
+            $(`.other_summoner_btn11`).submit((e) => {
+                e.preventDefault();
+                add_others(11);
+            });
         },error:function(err){
             alert("요청 실패");
         }

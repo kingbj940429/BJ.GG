@@ -72,8 +72,8 @@ router.post('/otherSummonerInfo', function(req, res, next){
 
         try {
             console.log(req.body.gameId);
-            summoner_getGameId = await getGameId(searchedSummonerId.accountId, add_game_count);
-            const participantList = await matchDto_JS(summoner_getGameId, searchedName);
+            // summoner_getGameId = await getGameId(searchedSummonerId.accountId, add_game_count);
+            // const participantList = await matchDto_JS(summoner_getGameId, searchedName);
             
            
             // res.json({

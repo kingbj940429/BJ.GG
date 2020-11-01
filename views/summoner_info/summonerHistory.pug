@@ -20,24 +20,19 @@ html
         var game_times = $(".game_times").val();
         var submit_number = 0;
         var count = 3;
-        //- for(var i=0;i<game_times;i++){
-        //-    $(`.other_summoner_btn${i}`).submit((e) => {
-        //-     e.preventDefault();
-        //-     add_others(i);
-        //-   });
-        //- }
-        add_others_jqueries();
-
+        
         $('.game_form').submit((e) => {
           e.preventDefault();
             if(submit_number<3){
-              add_Summoner(count);
+              add_Summoner(submit_number ,count);
+              
               submit_number++;
               count+=3;
             }else{
               alert("더 이상 불러올 정보가 없습니다.");
             }
         });
+        add_others_jqueries();
         /**
         * 검색 시 로딩 관련
         */
@@ -53,7 +48,7 @@ html
           $('.gameRecord_row a').submit(); 
         });
        
-        
+         
 
         
         for(var i=0;i<game_times;i++){
