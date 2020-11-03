@@ -162,3 +162,27 @@ KDA 추가
 3) 현재는 우선 ajax로 서버에 보고 싶은 경기에 해당하는 gameID를 넘겨줌 
 => 요청으로 보낸 gameId를 가지고 서버에서 해당 데이터를 찾아 응답해줄것임
 ```
+
+### 2020-11-03
+```
+1) mysql2 npm 설치 후 본인 깃허브에 있는 DBPool 모듈로 DB와 연동하고 앞으로 쿼리문을 동기식으로 처리할 수 있게됨.
+2) .env에 추가적으로 DB 정보를 넣어주었다.
+3) mysql로 스키마 bjgg 를 만든 후 champion이라는 테이블을 만들었다.
+Table: champions
+    Columns:
+        key_champ varchar(10) PK 
+        id varchar(45) 
+        name varchar(45) 
+        title varchar(500) 
+        blurb varchar(1000)
+=> Riot의 DataDragonChampin.json으로 더 이상 챔피언 정보를 불러올 필요가 없다.
+"Zyra":{
+    "version":"10.22.1",
+    "id":"Zyra",
+    "key":"143",
+    "name":"자이라",
+    "title":"가시 덩굴의 복수",
+=> 이런식으로 되어있는데 match.json에서는 챔피언 이름이 아닌 key 값으로 주기 때문에
+   key 값으로 Zyra라는 객체에 접근할려면 for문을 돌려줘서 그에 맞는 name 값을 찾는 방법 밖에 없었다.
+앞으로는 바로 위와 같은 방법 쓸 필요가 없게 된것이다.
+```

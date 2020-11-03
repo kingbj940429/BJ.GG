@@ -8,6 +8,9 @@ const champMastery = require('../axios/champMatsery.js');
 const matchDto_JS = require('../routerJS/summonerInfo/matchDto.js');
 const otherSummoner = require('../routerJS/summonerInfo/otherSummoner.js');
 
+const dbPool = require('../config/config.js') //DB 연동
+
+
 var searchedName;
 var summoner_getGameId;
 var add_game_count;
@@ -30,7 +33,7 @@ router.get('/', function (req, res, next) {
            
             const participantList = await matchDto_JS(summoner_getGameId, searchedName);
            
-            res.render('summoner_info/summonerInfo.pug', {
+            res.render('summonerInfo.pug', {
                 champ_mastery : champ_mastery,
                 summonerLevel :searchedSummonerId.summonerLevel,
                 profileIconId : searchedSummonerId.profileIconId,
@@ -43,7 +46,6 @@ router.get('/', function (req, res, next) {
             console.log(error);
         }
     };
-
     getSummoner_information();
 });
 
