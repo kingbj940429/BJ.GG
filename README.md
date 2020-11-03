@@ -20,6 +20,15 @@ CHAMP_VERSION = "현재 버전"
 SPELL_VERSION = "현재 버전"
 GAME_TIMES = 10 //검색할 게임 수
 //GAME_TIMES 변수와 views/matchInfo.pug에서 game_times 변경해주면됨
+
+/**
+* DB
+*/
+DB_HOST = "호스트"
+DB_USER = "계정"
+DB_PASSWORD = "계정 비밀번호"
+DB_DATABASE = "데이터베이스(스키마)"
+
 ```
 4) 터미널에서 npm i 명령어로 필요한 npm들을 다운 받습니다.
 5) 터미널에서 npm i -D nodemon로 nodemon를 다운 받습니다.
