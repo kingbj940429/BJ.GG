@@ -13,13 +13,15 @@ API : RIOT
 2) 본인 API_KEY를 RIOT developer에서 발급받습니다.
 3) .env 파일을 만들어서 아래와 같은 정보를 넣어줍니다. 
 ```js
+// ★★★★★ .env 파일에 주석이 있으면 안됨. 따라서 다 지워줘야함★★★★★
 //.env 파일은 따로 만들어야 합니다. 위치는 폴더 가장 상위
-API_KEY = "본인 API_KEY를 넣으세요" //API_KEY는 매일매일 바뀌므로 매일 업데이트 해줘야함
+API_KEY = "본인 API_KEY를 넣으세요" //★★API_KEY는 매일매일 바뀌므로 매일 업데이트 해줘야함★★
 ITEM_VERSION = "현재 버전" //각 json 버전 ex)10.19.1
 CHAMP_VERSION = "현재 버전"
 SPELL_VERSION = "현재 버전"
-GAME_TIMES = 10 //검색할 게임 수
-//GAME_TIMES 변수와 views/matchInfo.pug에서 game_times 변경해주면됨
+GAME_TIMES = 3 //검색할 게임 수
+MASTERY_TIMES = 4 //숙련도 표시할 챔피언 갯수
+
 
 /**
 * DB
