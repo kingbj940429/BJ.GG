@@ -1,7 +1,34 @@
-env 수정
-matchInfo.pug에서 2,3 라인 수정
+    /**
+    *    챔피언에 대한 INSERT
+    */
+    result = await champDataDragon();
+    for(var keys in result){
+        var champObj = result[keys];
+        var champion_detail = await champDataDetail(champObj.id);
+        var champion_name = champion_detail[champObj.id];
+        console.log(champion_name.spells[0].name);
+        //await dbPool(`INSERT INTO champions (key_champ, id, name, title, blurb, lore) VALUES("${champObj.key}","${champObj.id}","${champObj.name}","${champObj.title}","${champObj.blurb}","${champion_name.lore}");`);
+        //await dbPool(`INSERT INTO allytips (id, allytip01, allytip02, allytip03) VALUES("${champObj.id}","${champion_name.allytips[0]}","${champion_name.allytips[1]}","${champion_name.allytips[2]}");`);
+        //await dbPool(`INSERT INTO spells (id, spell_id01, spell_name01, spell_desc01, spell_id02, spell_name02, spell_desc02, spell_id03, spell_name03, spell_desc03, spell_id04, spell_name04, spell_desc04) VALUES ("", "", "", "", "", "", "", "", "", "", "", "", "");`);
+    }
 
-에러처리
-랭크가 없을시 예외 처리
-게임이 12게임 이하일시
-평점 perfect 구별해주기
+    /**
+    *   스환사 스펠에 대한 INSERT
+    */   
+    result = spell_List.data.data;
+
+    for(var keys in result){
+        var spellObj = result[keys];
+        console.log(spellObj.id);
+        await dbPool(`INSERT INTO summoner_spells(key_spell, id, name, description) VALUES ("${spellObj.key}","${spellObj.id}","${spellObj.name}","${spellObj.description}")`);
+    }
+
+    /**
+    * 아이템에 대한 INSERT
+    */
+     const keys = item_List.data.data;
+        
+    for(var key in keys){
+        var itemObj = keys[key];
+        await dbPool(`INSERT INTO items(key_item, name, description, plaintext, gold, sell) VALUES ("${key}","${itemObj.name}","${itemObj.description}","${itemObj.plaintext}","${itemObj.gold.total}","${itemObj.gold.sell}")`);
+    }

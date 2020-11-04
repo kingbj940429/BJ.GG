@@ -1,5 +1,6 @@
 //DataDragon을 통한 아이템 정보
 const axios = require('axios');
+const dbPool = require('../config/config');
 
 const itemDataDragon = async(para)=>{
     try {
@@ -8,7 +9,8 @@ const itemDataDragon = async(para)=>{
        
         var item_List = await axios.get(`http://ddragon.leagueoflegends.com/cdn/${process.env.ITEM_VERSION}/data/ko_KR/item.json`);
         const keys = item_List.data.data;
-        
+
+
         for (var i = 0;i<7;i++){
             arr=[]
             for (let key of Object.keys(keys)) {

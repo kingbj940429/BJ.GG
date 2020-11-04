@@ -195,3 +195,13 @@ Table: champions
    key 값으로 Zyra라는 객체에 접근할려면 for문을 돌려줘서 그에 맞는 name 값을 찾는 방법 밖에 없었다.
 앞으로는 바로 위와 같은 방법 쓸 필요가 없게 된것이다.
 ```
+
+### 2020-11-05
+```
+1) champions, spell, items, summoner_spells  각각의 테이블을 만듬
+2) othersummoner.js에 각 소환사들의 챔피언 정보, 각 소환사들의 소환사 스펠 정보 들을 각각 객체화 시켜주었다.
+
+** 테이블 만들 때 데이터가 너무 많기 때문에 일일이 다 집어넣기엔 무리가 있다. 따라서
+테이블과 알맞은 컬럼들을 생성한 후 dbPool를 이용해 for(var key in keys)를 사용해 json의
+모든 키값에 접근한 다음 await dbPool(`INSERT`) 해주었다. 노가다가 필요없다.
+```

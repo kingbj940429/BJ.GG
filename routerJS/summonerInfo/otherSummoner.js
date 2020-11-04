@@ -9,64 +9,72 @@ const dbPool = require('../../config/config.js') //DB 연동
 
 const OtherparticipantIdentities = async (summoner_getGameId, searchedName) => {
     try {
-        
+
         var participantList = []; //게임정보 다 들어가 있음
         const searchedName_eachGame_number = []; //검색된 소환사의 각 게임당 위치를 저장
         var team_number = []; //검색된 소환사가 어느 팀이였는지 구별해주는 변수
         var game_of_times = process.env.GAME_TIMES; //게임 횟수
-        var my_champKey = [];//챔피언 키
-        var champ_list= [];//챔피언에 대한 리스트
+        var my_champKey = []; //챔피언 키
+        var champ_list = []; //챔피언에 대한 리스트
         var item_url = [];
         var champion_img_url = [];
         var game_date = [];
         var game_date_tool = [];
         var gameId = [];
-        /**
-         * 최근 3게임의 id 불러옴, 언제 했는지 date 정보도 가져옴
-         */
-      
-            const MatchDto= await matchDto(summoner_getGameId);//최근 N게임의 gameid를 가지고있음
-            //console.log(MatchDto.participants);
-            
-        //챔피언 사진 이름 관련 
-        //검색된 소환사가 한 각 챔피언들의 key값을 받아냄. 내가 플레이한 사진만
-        //검색된 소환사의 다른 소환사들 사진 
-        var other_champKey = [];
-      
-        
-           
-            for(k=0;k<10;k++){
-                other_champKey.push(MatchDto.participants[k].championId);
-            }
-        console.log(other_champKey);
-        test = await dbPool(`SELECT * FROM CHAMPIONS WHERE key_champ IN ('${other_champKey[0]}','${other_champKey[1]}','${other_champKey[2]}','${other_champKey[3]}','${other_champKey[4]}','${other_champKey[5]}','${other_champKey[6]}','${other_champKey[7]}','${other_champKey[8]}','${other_champKey[9]}')`);
-        console.log(test);
 
-        //other_summoner_champ_list = await champDataDragon(other_summoner_champKey);
+        /**
+         * 해당 게임 ID의 JSON 정보 불러오기
+         */
+        const MatchDto = await matchDto(summoner_getGameId); //최근 N게임의 gameid를 가지고있음
+        //console.log(MatchDto.participants);
+
+        /**
+         * 소환사들의 각 챔피언 키값들
+         */
+        var other_champKey = [];
+        for (k = 0; k < 10; k++) {
+            other_champKey.push(MatchDto.participants[k].championId);
+        }
         
-       
-        //##챔피언 사진 이름 관련 
-        //아이템 관련
-        // var item_list = []
-        // for(k=0;k < searchedName_eachGame_number.length; k++){
-        //     var participants = MatchDto[k].participants[searchedName_eachGame_number[k]];
-        //     var stats = participants.stats;
-        //     var item = {
-        //         version : `${process.env.ITEM_VERSION}`,
-        //         items : [stats.item0,stats.item1,stats.item2,stats.item3,stats.item4,stats.item5,stats.item6]
-        //     };
-        //     item_url[k] = [];
-           
-        //     for(i= 0 ;i<7;i++){
-        //         if(item.items[i]==0){
-        //             item_url[k].push("/images/gray-background.jpg");
-        //          }else{
-        //             item_url[k].push(`http://ddragon.leagueoflegends.com/cdn/${item.version}/img/item/${item.items[i]}.png`);
-        //          }
-        //     }
-        //     item_list.push(await itemDataDragon(item));
-        // }
+        /**
+         * 소환사들의 각 챔피언 정보
+         * other_champ_name [{id, name, title}]
+         */
+        var other_champ_name = []
+        for(var i in other_champKey){
+            var temp = await dbPool(`SELECT id, name, title FROM champions WHERE key_champ = "${other_champKey[i]}"`);
+            other_champ_name.push({
+                id : temp[0].id,
+                name : temp[0].name,
+                title : temp[0].title,
+            }) 
+        }
+        //console.log(other_champ_name);
         
+        /**
+         * 소환사 스펠 관련
+         */
+
+        var summoner_spells = []
+        for (k = 0; k < 10; k++) {
+            //MatchDto.participants[k].spell1Id;
+            var temp = await dbPool(`SELECT * FROM summoner_spells WHERE key_spell = ${MatchDto.participants[k].spell1Id}`);
+            var temp2 = await dbPool(`SELECT * FROM summoner_spells WHERE key_spell = ${MatchDto.participants[k].spell2Id}`);
+            summoner_spells.push({
+                key_spell : temp[0].key_spell,
+                key_spell2 : temp2[0].key_spell,
+                id : temp[0].id,
+                id2 : temp2[0].id,
+                name : temp[0].name,
+                name2 : temp2[0].name,
+                description : temp[0].description,
+                description2 : temp2[0].description,
+                spell_img : `http://ddragon.leagueoflegends.com/cdn/${process.env.SPELL_VERSION}/img/spell/${temp[0].id}.png`,
+                spell_img2 : `http://ddragon.leagueoflegends.com/cdn/${process.env.SPELL_VERSION}/img/spell/${temp2[0].id}.png`
+            });
+        }
+        //console.log(summoner_spells);
+
         //##아이템 관련
         //소환사 스펠 관련
         // var spell=[];
@@ -81,7 +89,7 @@ const OtherparticipantIdentities = async (summoner_getGameId, searchedName) => {
         //     }
         // }
         // spell_list = await spellDataDragon(spell);
-        
+
         //##소환사 스펠 관련
         // for(i=0;i<process.env.GAME_TIMES;i++){
         //      spell1.push(`http://ddragon.leagueoflegends.com/cdn/${process.env.SPELL_VERSION}/img/spell/${spell_list.spell1[i].id}.png`);
@@ -91,7 +99,7 @@ const OtherparticipantIdentities = async (summoner_getGameId, searchedName) => {
         //     spell1 : spell1,
         //     spell2 : spell2,
         // }
-        
+
         //최종적으로 pug에 렌더링 해줄 것들
         // var team_number_count = 0;
         // for (i = 0; i < process.env.GAME_TIMES; i++) {
@@ -105,7 +113,7 @@ const OtherparticipantIdentities = async (summoner_getGameId, searchedName) => {
         //     var total_cs = stats.totalMinionsKilled + stats.neutralMinionsKilled;
         //     var level = stats.champLevel;
         //     var gameWinFail_kor;
-           
+
         //     /**
         //      * perk은 DD에 없어서 OP.GG 소스 주소를 가져옴
         //      */
@@ -116,7 +124,7 @@ const OtherparticipantIdentities = async (summoner_getGameId, searchedName) => {
         //     if(kda === 'Infinity'){
         //         kda= "Perfect";
         //     }
-            
+
         //     if(MatchDto[i].teams[team_number[team_number_count]].win == 'Win'){
         //         gameWinFail_kor = '승리';
         //     }else{
@@ -158,7 +166,7 @@ const OtherparticipantIdentities = async (summoner_getGameId, searchedName) => {
         //     game_of_times++;
         //     team_number_count++;
         // }
-        
+
         //return participantList;
         return 1;
     } catch (error) {
