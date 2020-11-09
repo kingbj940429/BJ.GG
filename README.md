@@ -207,3 +207,14 @@ Table: champions
 테이블과 알맞은 컬럼들을 생성한 후 dbPool를 이용해 for(var key in keys)를 사용해 json의
 모든 키값에 접근한 다음 await dbPool(`INSERT`) 해주었다. 노가다가 필요없다.
 ```
+
+### 2020-11-09
+```
+1) __**BJ.AutoTable**__ 를 사용해서 기본이 되는 champions_bj, items_bj, summoner_bj 테이블을
+생성시켜 주었다. 앞으로 버전이 바뀌여도 __**BJ.AutoTable**__ 이용해 쉽게 테이블 생성이 가능하다.
+2) 각 게임 경기를  __**자세히**__ 봤을 때 view에 뿌려주는 모든 값(ex. 소환사 이름, 게임 닉네임,
+등등 총 41개의 데이터)가 데이터베이스 저장된다.
+3) 같은 게임 ID를 여러번 눌렀을 때 중복된 값이 계속 들어가기 때문에 이를 방지하고자
+__**insert into () (select '') as tmp where not exists( )limit;**__ 으로 쿼리문을 짰다.
+해당 코드는 __**otherSummoner.js line 100**__ 참고 바랍니다.
+```
