@@ -10,7 +10,9 @@ Node.js 기반 리그오브레전드 관련 정보 사이트 입니다.
 API : RIOT
 
 기타 : BJ.AutoTable(json형식의 대규모 데이터를 처리하기 위하여
-본인이 직접 개발한 프로그램입니다. 깃허브에 있습니다.)
+본인이 직접 개발한 프로그램입니다.)
+[BJ.AutoTable 깃허브](https://github.com/kingbj940429/BJ.AutoDB)
+
 # 실행 방법
 1) git clone해서 다운받습니다.
 2) 본인 API_KEY를 RIOT developer에서 발급받습니다.
@@ -169,19 +171,18 @@ KDA 추가
 * footer 작업
 
 ### 2020-11-01
-```
 1) 해당 게임의 다른 소환사들의 게임 정보를 보기위한 버튼 추가
 2) 위에서 만든 버튼은 ajax방식으로 작동한다. ajax로 바로 서버에 요청한후 응답 받아 사용자에게 보여줄수 
 있도록 구현할 것임
 3) 현재는 우선 ajax로 서버에 보고 싶은 경기에 해당하는 gameID를 넘겨줌 
 => 요청으로 보낸 gameId를 가지고 서버에서 해당 데이터를 찾아 응답해줄것임
-```
+
 
 ### 2020-11-03
-```
 1) mysql2 npm 설치 후 본인 깃허브에 있는 DBPool 모듈로 DB와 연동하고 앞으로 쿼리문을 동기식으로 처리할 수 있게됨.
 2) .env에 추가적으로 DB 정보를 넣어주었다.
 3) mysql로 스키마 bjgg 를 만든 후 champion이라는 테이블을 만들었다.
+```
 Table: champions
     Columns:
         key_champ varchar(10) PK 
@@ -202,10 +203,9 @@ Table: champions
 ```
 
 ### 2020-11-05
-```
 1) champions, spell, items, summoner_spells  각각의 테이블을 만듬
 2) othersummoner.js에 각 소환사들의 챔피언 정보, 각 소환사들의 소환사 스펠 정보 들을 각각 객체화 시켜주었다.
-
+```
 ** 테이블 만들 때 데이터가 너무 많기 때문에 일일이 다 집어넣기엔 무리가 있다. 따라서
 테이블과 알맞은 컬럼들을 생성한 후 dbPool를 이용해 for(var key in keys)를 사용해 json의
 모든 키값에 접근한 다음 await dbPool(`INSERT`) 해주었다. 노가다가 필요없다.
@@ -214,7 +214,7 @@ Table: champions
 ### 2020-11-12
 1) __**BJ.AutoTable**__ 를 사용해서 기본이 되는 champions_bj, items_bj, summoner_bj 테이블을
 생성시켜 주었다. 앞으로 버전이 바뀌여도 __**BJ.AutoTable**__ 이용해 쉽게 테이블 생성이 가능하다.
-2) 각 게임 경기를  __**자세히**__ 봤을 때 view에 뿌려주는 모든 값(ex. 소환사 이름, 게임 닉네임,
+2) 각 게임 경기를  __**자세히(버튼 이름)**__ 봤을 때 view에 뿌려주는 모든 값(ex. 소환사 이름, 게임 닉네임,
 등등 총 41개의 데이터)가 데이터베이스 저장된다.
 3) 같은 게임 ID를 여러번 눌렀을 때 중복된 값이 계속 들어가기 때문에 이를 방지하고자
 __**insert into () (select '') as tmp where not exists( )limit;**__ 으로 쿼리문을 짰다.
@@ -226,9 +226,11 @@ __**insert into () (select '') as tmp where not exists( )limit;**__ 으로 쿼�
 우선, __**BJ.AutoTable**__ 를 이용해 업데이트된 아이템 데이터들이 있는 테이블을 만들었고
 이상하게 RIOT에서 실수를 했는지 몇몇 아이템이 json 데이터에 없었다. 그래서 __**items_old_bj**__
 테이블을 만들어서 만약 new에 없으면 old에서 데이터를 받아올수 있도록 하였다. 
+
 2) 전에는 axios만 사용하였기 때문에 for문이 굉장히 많았다. 이번에 코드를 싹 엎으면서 완전 개편했다. 
 아직 view에 뿌려주지는 못해서 속도 계산이 정확치는 않은데 async/await를 엄청 줄어들면서 속도 개선을 
 기대할수 있을거 같다.
+
 3) 한 gameId에 있는 모든 데이터를 results객체에 저장하고 DB에 저장할것이다.
 
 해야할것 : 화면에 뿌리기, DB에 데이터 저장
