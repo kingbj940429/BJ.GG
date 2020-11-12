@@ -111,6 +111,7 @@ const OtherparticipantIdentities = async (summoner_getGameId, searchedName) => {
                 WHERE NOT EXISTS(
                     SELECT gameid_key FROM gameid WHERE gameid_key = '${summoner_getGameId}' AND participantId = '${participantList[k].participantId}'
                 ) LIMIT 1`;
+            console.log(temp);
             await dbPool(temp);
             
         }
