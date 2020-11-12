@@ -70,8 +70,9 @@ html
       })  
   body
     div(class="loading" style="display:none") Loading&#8230;
-    include ./cmmn/gnb  
-    block content
-    include addSummonerButton
+    .wrapper  
+      include ./cmmn/gnb  
+      block content
+      include addSummonerButton
     include ./cmmn/footer
     
