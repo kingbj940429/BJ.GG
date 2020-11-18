@@ -7,6 +7,7 @@ const dbPool = require('../../config/config');
 const participantIdentities = async (summoner_getGameId, searchedName) => {
     try {
         var results = [];
+        
         for (i = 0; i < process.env.GAME_TIMES; i++) { //최근 N개의 게임만을 나타내기 위함
             var result = {};
             var temp;
@@ -145,15 +146,12 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
                 });
             }
             result.all_summoners = all_summoners;
+            
             /**
              * 최종 데이터
              */
             results.push(result);
         }
-        console.log(results);
-        console.log("----------------------------------------10 SUMMONER---------------------------------------------");
-        console.log(results[0].all_summoners[0]);
-        console.log(results[0].all_summoners[9]);
         return results;
     } catch (error) {
         console.error(error);

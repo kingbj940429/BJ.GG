@@ -50,84 +50,30 @@ matchInfo
                                     .gameRecord_goldEarned_under #{result[i].goldEarned} gold
                             .gameRecord_items 
                                 .gameRecord_items_top
-                                    div.item0(tooltip="" + result[i].items[0].name + "\n\n" + result[i].items[0].description + "" flow="up")
-                                        img(src=result[i].items[0].item_img)
-                                    div.item1(tooltip="" + result[i].items[1].name + "\n\n" + result[i].items[1].description + "" flow="up") 
-                                        img(src=result[i].items[1].item_img)
-                                    div.item2(tooltip="" + result[i].items[2].name + "\n\n" + result[i].items[2].description + "" flow="up") 
-                                        img(src=result[i].items[2].item_img)
-                                    div.item3(tooltip="" + result[i].items[3].name + "\n\n" + result[i].items[3].description + ""  flow="up") 
-                                        img(src=result[i].items[3].item_img)
+                                    -for(k=0;k<4;k++)
+                                        div(class= "item"+k ,tooltip="" + result[i].items[k].name + "\n\n" + result[i].items[k].description + "", flow="up")
+                                            img(src=result[i].items[k].item_img)
                                 .gameRecord_items_bottom
-                                    div.item4(tooltip="" + result[i].items[4].name + "\n\n" + result[i].items[4].description + ""  flow="up") 
-                                        img(src=result[i].items[4].item_img)
-                                    div.item5(tooltip="" + result[i].items[5].name + "\n\n" + result[i].items[5].description + ""  flow="up")
-                                        img(src=result[i].items[5].item_img)
-                                    div.item6(tooltip="" + result[i].items[6].name + "\n\n" + result[i].items[6].description + ""  flow="up")
-                                        img(src=result[i].items[6].item_img)
+                                    -for(k=4;k<7;k++)
+                                        div(class= "item"+k ,tooltip="" + result[i].items[k].name + "\n\n" + result[i].items[k].description + "", flow="up")
+                                            img(src=result[i].items[k].item_img)
                             .gameRecord_summoner_names            
-                                .gameRecord_team01 
-                                    .gameRecord_row
-                                        .other_champion_img0(tooltip2="" + result[i].all_summoners[0].champion_name flow="up")
-                                            img( src=result[i].all_summoners[0].champion_img)
-                                        .gameRecord_row_name0 
-                                            div 
-                                                a(href="/summonerInfo?summonerName="+ result[i].all_summoners[0].summonerName) #{result[i].all_summoners[0].summonerName}
-                                    .gameRecord_row 
-                                        .other_champion_img1(tooltip2="" + result[i].all_summoners[1].champion_name flow="up")
-                                            img( src=result[i].all_summoners[1].champion_img)
-                                        .gameRecord_row_name1
-                                            div 
-                                                a(href="/summonerInfo?summonerName="+ result[i].all_summoners[1].summonerName) #{result[i].all_summoners[1].summonerName}
-                                    .gameRecord_row 
-                                        .other_champion_img2(tooltip2="" + result[i].all_summoners[2].champion_name flow="up")
-                                            img( src=result[i].all_summoners[2].champion_img)
-                                        .gameRecord_row_name2 
-                                            div 
-                                                a(href="/summonerInfo?summonerName="+ result[i].all_summoners[2].summonerName) #{result[i].all_summoners[2].summonerName}
-                                    .gameRecord_row 
-                                        .other_champion_img3(tooltip2="" + result[i].all_summoners[3].champion_name flow="up")
-                                            img( src=result[i].all_summoners[3].champion_img)
-                                        .gameRecord_row_name3
-                                            div 
-                                                a(href="/summonerInfo?summonerName="+ result[i].all_summoners[3].summonerName) #{result[i].all_summoners[3].summonerName}
-                                    .gameRecord_row 
-                                        .other_champion_img4(tooltip2="" + result[i].all_summoners[4].champion_name flow="up")
-                                            img( src=result[i].all_summoners[4].champion_img)
-                                        .gameRecord_row_name4 
-                                            div 
-                                                a(href="/summonerInfo?summonerName="+ result[i].all_summoners[4].summonerName) #{result[i].all_summoners[4].summonerName}
+                                .gameRecord_team01
+                                    -for(k=0;k<5;k++)
+                                        .gameRecord_row
+                                            div(class='other_champion_img'+k ,tooltip2="" + result[i].all_summoners[k].champion_name, flow="up")
+                                                img( src=result[i].all_summoners[k].champion_img)
+                                            div(class='gameRecord_row_name'+k) 
+                                                div 
+                                                    a(href="/summonerInfo?summonerName="+ result[i].all_summoners[k].summonerName) #{result[i].all_summoners[k].summonerName}
                                 .gameRecord_team02
-                                    .gameRecord_row 
-                                        .other_champion_img5(tooltip2="" + result[i].all_summoners[5].champion_name flow="up")
-                                            img( src=result[i].all_summoners[5].champion_img)
-                                        .gameRecord_row_name5 
-                                            div 
-                                                a(href="/summonerInfo?summonerName="+ result[i].all_summoners[5].summonerName) #{result[i].all_summoners[5].summonerName}
-                                    .gameRecord_row 
-                                        .other_champion_img6(tooltip2="" + result[i].all_summoners[6].champion_name flow="up")
-                                            img( src=result[i].all_summoners[6].champion_img)
-                                        .gameRecord_row_name6 
-                                            div 
-                                                a(href="/summonerInfo?summonerName="+ result[i].all_summoners[6].summonerName) #{result[i].all_summoners[6].summonerName}
-                                    .gameRecord_row 
-                                        .other_champion_img7(tooltip2="" + result[i].all_summoners[7].champion_name flow="up")
-                                            img( src=result[i].all_summoners[7].champion_img)
-                                        .gameRecord_row_name7 
-                                            div 
-                                                a(href="/summonerInfo?summonerName="+ result[i].all_summoners[7].summonerName) #{result[i].all_summoners[7].summonerName}
-                                    .gameRecord_row 
-                                        .other_champion_img8(tooltip2="" + result[i].all_summoners[8].champion_name flow="up")
-                                            img( src=result[i].all_summoners[8].champion_img)
-                                        .gameRecord_row_name8 
-                                            div 
-                                                a(href="/summonerInfo?summonerName="+ result[i].all_summoners[8].summonerName) #{result[i].all_summoners[8].summonerName}
-                                    .gameRecord_row 
-                                        .other_champion_img9(tooltip2="" + result[i].all_summoners[9].champion_name flow="up")
-                                            img( src=result[i].all_summoners[9].champion_img)
-                                        .gameRecord_row_name9 
-                                            div 
-                                                a(href="/summonerInfo?summonerName="+ result[i].all_summoners[9].summonerName) #{result[i].all_summoners[9].summonerName}
+                                     -for(k=5;k<10;k++)
+                                        .gameRecord_row
+                                            div(class='other_champion_img'+k ,tooltip2="" + result[i].all_summoners[k].champion_name, flow="up")
+                                                img( src=result[i].all_summoners[k].champion_img)
+                                            div(class='gameRecord_row_name'+k) 
+                                                div 
+                                                    a(href="/summonerInfo?summonerName="+ result[i].all_summoners[k].summonerName) #{result[i].all_summoners[k].summonerName}
                             .gameRecord_other_summoner_call_btn_con
                                 .gameRecord_other_summoner_call_btn_form
                                     form.other_summoner_btn(method="post")
