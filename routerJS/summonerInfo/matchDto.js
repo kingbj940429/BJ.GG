@@ -56,7 +56,7 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
             result.champion_standard_key = temp[0].standard_key;
             result.champion_name = temp[0].name_bj;
             result.champion_key = temp[0].key_bj;
-            result.champion_img = `http://ddragon.leagueoflegends.com/cdn/10.23.1/img/champion/${temp[0].standard_key}.png`;
+            result.champion_img = `http://ddragon.leagueoflegends.com/cdn/${process.env.GAME_VERSION}/img/champion/${temp[0].standard_key}.png`;
 
             /**
              * 검색한 소환사의 스펠과 룬
@@ -141,7 +141,7 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
                     kda : kda,
                     champion_name : temp[0].name_bj,
                     champion_key : temp[0].standard_key,
-                    champion_img : `http://ddragon.leagueoflegends.com/cdn/10.23.1/img/champion/${temp[0].standard_key}.png`
+                    champion_img : `http://ddragon.leagueoflegends.com/cdn/${process.env.GAME_VERSION}/img/champion/${temp[0].standard_key}.png`
                 });
             }
             result.all_summoners = all_summoners;
@@ -151,8 +151,10 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
             results.push(result);
         }
         console.log(results);
+        console.log("----------------------------------------10 SUMMONER---------------------------------------------");
         console.log(results[0].all_summoners[0]);
         console.log(results[0].all_summoners[9]);
+        return results;
     } catch (error) {
         console.error(error);
     }

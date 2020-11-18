@@ -29,6 +29,7 @@ API_KEY = "본인 API_KEY를 넣으세요" //★★API_KEY는 매일매일 바�
 ITEM_VERSION = "현재 버전" //각 json 버전 ex)10.19.1
 CHAMP_VERSION = "현재 버전"
 SPELL_VERSION = "현재 버전"
+GAME_VERSION = "현재 버전"
 GAME_TIMES = 3 //검색할 게임 수
 MASTERY_TIMES = 4 //숙련도 표시할 챔피언 갯수
 

@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var getSeason = require('../axios/season.js')
+var getSeason = require('../axios/season.js');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {

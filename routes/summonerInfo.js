@@ -41,7 +41,6 @@ router.get('/', function (req, res, next) {
                 summoner: summoner,
                 result: participantList,
             });
-
         } catch (error) {
             console.log(error);
         }
