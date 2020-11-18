@@ -22,7 +22,7 @@ router.get('/', function (req, res, next) {
         try {
             add_game_count=0;
             searchedName = req.query.summonerName; //소환사 이름 ex) 여의도 한량이
-
+            console.time("champ_mastery");
             searchedSummonerId = await getSummonerId(searchedName); //쿼리스트링의 이름을 axios.getSummonerId에 넣어서 값 받기 AccountId : searchedSummonerId.data.accountId
            
             const summoner = await getSummonerInfo(searchedSummonerId.id); //소환사 기본 정보 콜백함수
@@ -30,9 +30,10 @@ router.get('/', function (req, res, next) {
             const champ_mastery = await champMastery(searchedSummonerId.id);
             
             summoner_getGameId = await getGameId(searchedSummonerId.accountId, add_game_count); //gameId : summoner_getGameId.data.matches[0].gameId
-           
+            console.timeEnd("champ_mastery");
+            console.time("matchDto_JS");
             const participantList = await matchDto_JS(summoner_getGameId, searchedName);
-           
+            console.timeEnd("matchDto_JS");
             res.render('summonerInfo.pug', {
                 champ_mastery : champ_mastery,
                 summonerLevel :searchedSummonerId.summonerLevel,
@@ -41,7 +42,6 @@ router.get('/', function (req, res, next) {
                 summoner: summoner,
                 result: participantList,
             });
-
         } catch (error) {
             console.log(error);
         }

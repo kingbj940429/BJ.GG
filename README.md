@@ -1,6 +1,10 @@
 # 프로그램 설명
 Node.js 기반 리그오브레전드 관련 정보 사이트 입니다.
 
+### 현재까지의 상황
+
+![Inked주석 2020-11-18 235207_LI](https://user-images.githubusercontent.com/63000843/99546056-613e4b00-29f9-11eb-8c97-3a420adb0fe3.jpg)
+
 비슷한 사이트로는 OP.GG가 있습니다.
 # 개발 환경
 백엔드 : __**Node.js**__
@@ -29,6 +33,7 @@ API_KEY = "본인 API_KEY를 넣으세요" //★★API_KEY는 매일매일 바�
 ITEM_VERSION = "현재 버전" //각 json 버전 ex)10.19.1
 CHAMP_VERSION = "현재 버전"
 SPELL_VERSION = "현재 버전"
+GAME_VERSION = "현재 버전"
 GAME_TIMES = 3 //검색할 게임 수
 MASTERY_TIMES = 4 //숙련도 표시할 챔피언 갯수
 
@@ -239,3 +244,19 @@ __**insert into () (select '') as tmp where not exists( )limit;**__ 으로 쿼�
 3) 한 gameId에 있는 모든 데이터를 results객체에 저장하고 DB에 저장할것이다.
 
 해야할것 : 화면에 뿌리기, DB에 데이터 저장
+
+### 2020-11-18
+1) 기존에서 새롭게 바꾼 객체의 데이터들을 다시 view 뿌려주었다.
+
+    이 과정에서 반복되는 태그들은 pug의 for문을 이용하여 코드수를 줄였다.
+
+2) 속도는 평균적으로 2500ms정도 소모된다.
+
+    MatchDto만 두고 봤을 때 1200ms정도 소모된다. 이는 전과 2000ms정도 걸렸던
+
+    전과 비교했을 때 엄청난 결과이다. 근데 전이 너무 느리긴 했다. 지금도 뭐 만족스럽진 않다.
+
+    시간을 찍어보니 ChampMastey가 1300ms을 잡아먹고 있다. 여기는 대폭 줄일수 있도록 해야겠다.
+    
+    ![bj gg 속도 이미지](https://user-images.githubusercontent.com/63000843/99546054-60a5b480-29f9-11eb-802c-619fe124c265.PNG)
+

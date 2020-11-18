@@ -7,6 +7,7 @@ const dbPool = require('../../config/config');
 const participantIdentities = async (summoner_getGameId, searchedName) => {
     try {
         var results = [];
+        
         for (i = 0; i < process.env.GAME_TIMES; i++) { //최근 N개의 게임만을 나타내기 위함
             var result = {};
             var temp;
@@ -56,7 +57,7 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
             result.champion_standard_key = temp[0].standard_key;
             result.champion_name = temp[0].name_bj;
             result.champion_key = temp[0].key_bj;
-            result.champion_img = `http://ddragon.leagueoflegends.com/cdn/10.23.1/img/champion/${temp[0].standard_key}.png`;
+            result.champion_img = `http://ddragon.leagueoflegends.com/cdn/${process.env.GAME_VERSION}/img/champion/${temp[0].standard_key}.png`;
 
             /**
              * 검색한 소환사의 스펠과 룬
@@ -141,18 +142,17 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
                     kda : kda,
                     champion_name : temp[0].name_bj,
                     champion_key : temp[0].standard_key,
-                    champion_img : `http://ddragon.leagueoflegends.com/cdn/10.23.1/img/champion/${temp[0].standard_key}.png`
+                    champion_img : `http://ddragon.leagueoflegends.com/cdn/${process.env.GAME_VERSION}/img/champion/${temp[0].standard_key}.png`
                 });
             }
             result.all_summoners = all_summoners;
+            
             /**
              * 최종 데이터
              */
             results.push(result);
         }
-        console.log(results);
-        console.log(results[0].all_summoners[0]);
-        console.log(results[0].all_summoners[9]);
+        return results;
     } catch (error) {
         console.error(error);
     }
