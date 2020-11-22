@@ -1,13 +1,12 @@
 const matchDto = require('../../axios/matchDto');
 
 const dateDiff = require('./dateDiff');
-const yyyymmdd = require('../other/yyyymmdd.js');
+const yyyymmdd = require('./yyyymmdd.js');
 const dbPool = require('../../config/config');
 
 const participantIdentities = async (summoner_getGameId, searchedName) => {
     try {
         var results = [];
-        
         for (i = 0; i < process.env.GAME_TIMES; i++) { //최근 N개의 게임만을 나타내기 위함
             var result = {};
             var temp;

@@ -1,0 +1,27 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/common/loading.css')
+    link(rel='stylesheet', href='/stylesheets/common/common.css')
+    link(rel='stylesheet', href='/stylesheets/common/responsive.css')
+    link(rel='stylesheet', href='/stylesheets/common/gnb2.css')
+    link(rel='stylesheet', href='/stylesheets/common/footer2.css')
+    link(rel='stylesheet', href='/stylesheets/common/tooltip.css')
+    link(rel='stylesheet', href='/stylesheets/summoner/summonerAddButton.css')
+    link(rel='stylesheet', href='/stylesheets/summoner/summonerGameHistory.css')
+    link(rel='stylesheet', href='/stylesheets/summoner/summonerMastery.css')
+    script(src='https://code.jquery.com/jquery-3.5.1.min.js')
+  
+  body
+    div(class="loading" style="display:none") Loading&#8230;
+    .header(class="col-12")
+        include ../common/gnb
+    .wrapper(class="col-12")
+        include ./summonerMastery
+        include ./summonerGameHistory
+        include ./summonerAddButton
+        .push
+    .footer(class="col-12")
+        include ../common/footer
+    

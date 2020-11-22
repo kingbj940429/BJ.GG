@@ -1,0 +1,67 @@
+div(class="history_wrap col-12 mw-1200 col-center")
+    input(type="hidden" id="summonerName" value=summonerName)
+    div(class="history_content col-12")
+        -for(var k=0;k<3;k++)
+            div(class="history_inner col-12", id="game_box"+k)
+                div(class="col-1")
+                    div(class="", id="game_date_diff") 12일 전
+                    div(class="", id="win_fail") 승리
+                    div(class="", id="game_duration") 28분
+                    div(class="", id="game_id") 게임 아이디
+                div(class="col-1")
+                    div(class="", id="champion_img") 이미지
+                    div(class="", id="champion_name") 야스오
+                div(class="col-1")
+                    div(class="", id="spell1_img") 스펠1
+                    div(class="", id="spell2_img") 스펠2
+                    div(class="", id="perk0") 룬1
+                    div(class="", id="perkSubStyle") 룬2
+                div(class="col-2")
+                    div(class="", id="kill_death_assist") 10 / 16 / 26
+                    div(class="", id="kda") 2.222 : 1 평점
+                    div(class="", id="") 챔피언에게 가한 데미지
+                    div(class="", id="totalDamageDealtToChampions") 100,000
+                div(class="col-1")
+                    div(class="", id="champLevel") 레벨 18
+                    div(class="", id="totalMinionsKilled") 200 CS
+                    div(class="", id="") 획득 골드
+                    div(class="", id="goldEarned") 17888 gold
+                div(class="col-4")
+                    div(class="items_top col-12")
+                        -for(var l=0;l<4;l++)
+                            div(class="col-3", id="item"+l) 아이템#{l}
+                    div(class="items_bottom col-12")
+                        -for(var l=4;l<7;l++)
+                            div(class="col-3", id="item"+l) 아이템#{l}
+                div(class="col-1 summoners_top")
+                    -for(var m=0;m<5;m++)
+                        div(class="", id="summoner"+m) 다른소환사
+                div(class="col-1 summoners_bottom")
+                    -for(var m=5;m<10;m++)
+                        div(class="", id="summoner"+m) 다른소환사
+
+
+
+        
+
+
+script.
+    $(()=>{
+        /**
+        * ajax 부분
+        */
+        $.ajax({
+            type : 'GET',
+            url : '/summoner/summonerList',
+            data : {
+                summonerName : $('#summonerName').val(),
+            },
+            success : function(res){
+                alert("성공");
+            },
+            error : function(error){
+                alert("실패");
+            }
+        });
+    })
+    
