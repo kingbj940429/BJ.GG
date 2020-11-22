@@ -260,3 +260,6 @@ __**insert into () (select '') as tmp where not exists( )limit;**__ 으로 쿼�
     
     ![bj gg 속도 이미지](https://user-images.githubusercontent.com/63000843/99546054-60a5b480-29f9-11eb-802c-619fe124c265.PNG)
 
+### 2020-11-22
+1) 기존 코드가 너무 마음에 안들어서 대폭 수정중. MVC 패턴으로 구현하려고 함
+
