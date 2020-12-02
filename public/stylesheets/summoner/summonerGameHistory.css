@@ -1,3 +1,22 @@
-.history_wrap{}
+.history_wrap{font-size: 15px;font-family: 'Do Hyeon', sans-serif;}
 .history_content{}
 .history_inner{border-radius: 5px;margin: 20px 0px;padding: 50px 20px ;background-color: rgba(36, 155, 253, 0.2);}
+.champion_img{border-radius: 50%;}
+.no_item{height: 50px; width: 50px; background-color: rgba(0, 0, 0, 0.5);}
+.all_items img, div{border-radius: 10px;}
+.all_items{margin: 0 10px;}
+.spell_img img{border-radius: 10px;width: auto;height: 50px;}
+.perk0_img img{height: 30px;width: auto;}
+.perk_img img{height: 20px;width: auto;}
+.col-second{margin: 0 10px;}
+.col-third{margin: 0 10px;}
+.col-fourth{margin: 0 10px;}
+.col-fiveth{margin: 0 10px;}
+
+.all_summoner{margin-left: 60px;}
+.summoners_top{}
+.summoners_top img{height: 25px;width: auto;}
+.summoners_bottom{margin-left: 100px;}
+.summoners_bottom img{height: 25px;width: auto;}
+.all_summonerName_img{position: relative;}
+.all_summonerName{position: absolute;padding-left: 30px;width: 100px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}

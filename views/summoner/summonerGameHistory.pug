@@ -1,67 +1,66 @@
-div(class="history_wrap col-12 mw-1200 col-center")
-    input(type="hidden" id="summonerName" value=summonerName)
-    div(class="history_content col-12")
-        -for(var k=0;k<3;k++)
-            div(class="history_inner col-12", id="game_box"+k)
-                div(class="col-1")
-                    div(class="", id="game_date_diff") 12일 전
-                    div(class="", id="win_fail") 승리
-                    div(class="", id="game_duration") 28분
-                    div(class="", id="game_id") 게임 아이디
-                div(class="col-1")
-                    div(class="", id="champion_img") 이미지
-                    div(class="", id="champion_name") 야스오
-                div(class="col-1")
-                    div(class="", id="spell1_img") 스펠1
-                    div(class="", id="spell2_img") 스펠2
-                    div(class="", id="perk0") 룬1
-                    div(class="", id="perkSubStyle") 룬2
-                div(class="col-2")
-                    div(class="", id="kill_death_assist") 10 / 16 / 26
-                    div(class="", id="kda") 2.222 : 1 평점
-                    div(class="", id="") 챔피언에게 가한 데미지
-                    div(class="", id="totalDamageDealtToChampions") 100,000
-                div(class="col-1")
-                    div(class="", id="champLevel") 레벨 18
-                    div(class="", id="totalMinionsKilled") 200 CS
-                    div(class="", id="") 획득 골드
-                    div(class="", id="goldEarned") 17888 gold
-                div(class="col-4")
-                    div(class="items_top col-12")
-                        -for(var l=0;l<4;l++)
-                            div(class="col-3", id="item"+l) 아이템#{l}
-                    div(class="items_bottom col-12")
-                        -for(var l=4;l<7;l++)
-                            div(class="col-3", id="item"+l) 아이템#{l}
-                div(class="col-1 summoners_top")
-                    -for(var m=0;m<5;m++)
-                        div(class="", id="summoner"+m) 다른소환사
-                div(class="col-1 summoners_bottom")
-                    -for(var m=5;m<10;m++)
-                        div(class="", id="summoner"+m) 다른소환사
+extends summonerLayout
 
-
-
-        
-
-
-script.
-    $(()=>{
-        /**
-        * ajax 부분
-        */
-        $.ajax({
-            type : 'GET',
-            url : '/summoner/summonerList',
-            data : {
-                summonerName : $('#summonerName').val(),
-            },
-            success : function(res){
-                alert("성공");
-            },
-            error : function(error){
-                alert("실패");
-            }
-        });
-    })
-    
+block game_history
+    div(class="history_wrap col-12 mw-1200 col-center")
+        input(type="hidden" id="summonerName" value=summonerName)
+        div(class="history_content col-12")
+            -for(var k=0;k<3;k++)
+                div(class="history_inner col-12", id="game_box"+k)
+                    div(class="col-first")
+                        div(class="", id="game_date_diff") #{result[k].game_date_diff}
+                        div(class="", id="win_fail") #{result[k].win_fail}
+                        div(class="", id="game_duration") #{result[k].game_duration}
+                        div(class="", id="game_id") #{result[k].game_id}
+                    div(class="col-second")
+                        div(class="", id="champion_img")
+                            img(class="champion_img",src=result[k].champion_img, alt="챔피언 이미지")
+                        div(class="tc", id="champion_name") #{result[k].champion_name}
+                    div(class="col-third")
+                        div(class="fl")
+                            div(class="spell_img", id="spell1_img")
+                                img(src=result[k].spell1_img, alt="스펠1 이미지")
+                            div(class="spell_img", id="spell2_img")
+                                img(src=result[k].spell2_img, alt="스펠2 이미지")
+                        div(class="perks fl")
+                            div(class="perk0_img", id="perk0")
+                                img(src=result[k].perk0, alt="룬1 이미지")
+                            div(class="perk_img", id="perkSubStyle")
+                                img(src=result[k].perkSubStyle, alt="룬2 이미지")
+                    div(class="col-fourth")
+                        div(class="", id="kill_death_assist") #{result[k].kills} / #{result[k].deaths} / #{result[k].assists}
+                        div(class="", id="kda") #{result[k].kda} : 1 평점
+                        div(class="", id="") 챔피언에게 가한 데미지
+                        div(class="", id="totalDamageDealtToChampions") #{result[k].totalDamageDealtToChampions} dealt
+                    div(class="col-fiveth")
+                        div(class="", id="champLevel") 레벨 #{result[k].champLevel}
+                        div(class="", id="totalMinionsKilled") #{result[k].totalMinionsKilled} CS
+                        div(class="", id="") 획득 골드
+                        div(class="", id="goldEarned") #{result[k].goldEarned} gold
+                    div(class="col-3 all_items")
+                        div(class="items_top col-12")
+                            -for(var l=0;l<4;l++)
+                                div(class="col-3", id="item"+l)
+                                    -if(result[k].items[l].name == '아이템 없음')
+                                        div(class="no_item")
+                                    -else
+                                        img(src=result[k].items[l].item_img, alt="아이템")
+                        div(class="items_bottom col-12")
+                            -for(var l=4;l<7;l++)
+                                div(class="col-3", id="item"+l)
+                                    -if(result[k].items[l].name == '아이템 없음')
+                                        div(class="no_item")
+                                    -else
+                                        img(src=result[k].items[l].item_img, alt="아이템")
+                    div(class="all_summoner fl")
+                        div(class="summoners_top fl")
+                            -for(var m=0;m<5;m++)
+                                div(class="", id="summoner"+m)
+                                    div(class="all_summonerName_img")
+                                        img(src=result[k].all_summoners[m].champion_img, alt="다른 소환사들")
+                                    div(class="all_summonerName") #{result[k].all_summoners[m].summonerName}
+                        div(class="summoners_bottom fl")
+                            -for(var m=5;m<10;m++)
+                                div(class="", id="summoner"+m)
+                                    div(class="all_summonerName_img")
+                                        img(src=result[k].all_summoners[m].champion_img, alt="다른 소환사들")
+                                    div(class="all_summonerName") #{result[k].all_summoners[m].summonerName}
