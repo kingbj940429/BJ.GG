@@ -1,3 +1,4 @@
+[![HitCount](http://hits.dwyl.com/kingbj940429/BJGG.svg)](http://hits.dwyl.com/kingbj940429/BJGG)
 
 # 프로그램 설명
 Node.js 기반 리그오브레전드 관련 정보 사이트 입니다.
