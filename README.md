@@ -1,3 +1,4 @@
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fkingbj940429&count_bg=%2308D791&title_bg=%23555555&icon=ulule.svg&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
 # 프로그램 설명
 Node.js 기반 리그오브레전드 관련 정보 사이트 입니다.
 
