@@ -7,19 +7,19 @@ block game_history
             -for(var k=0;k<3;k++)
                 div(class="history_inner col-12", id="game_box"+k)
                     div(class="col-first")
-                        div(class="", id="game_date_diff") #{result[k].game_date_diff}
-                        div(class="", id="win_fail") #{result[k].win_fail}
-                        div(class="", id="game_duration") #{result[k].game_duration}
+                        div(class="", id="game_date_diff",tooltip2=result[k].game_date, flow="up") #{result[k].game_date_diff}
+                        div(class="", id="win_fail",tooltip2="승/패", flow="up") #{result[k].win_fail}
+                        div(class="", id="game_duration",tooltip2="플레이 시간", flow="up") #{result[k].game_duration}
                         div(class="", id="game_id") #{result[k].game_id}
                     div(class="col-second")
-                        div(class="", id="champion_img")
+                        div(class="", id="champion_img",tooltip2=result[k].champion_title,  flow="up")
                             img(class="champion_img",src=result[k].champion_img, alt="챔피언 이미지")
                         div(class="tc", id="champion_name") #{result[k].champion_name}
                     div(class="col-third")
                         div(class="fl")
-                            div(class="spell_img", id="spell1_img")
+                            div(class="spell_img", id="spell1_img",tooltip=result[k].spell1_name+"\r\n\r\n"+result[k].spell1_description, flow="up")
                                 img(src=result[k].spell1_img, alt="스펠1 이미지")
-                            div(class="spell_img", id="spell2_img")
+                            div(class="spell_img", id="spell2_img",tooltip=result[k].spell2_name+"\r\n\r\n"+result[k].spell2_description, flow="up")
                                 img(src=result[k].spell2_img, alt="스펠2 이미지")
                         div(class="perks fl")
                             div(class="perk0_img", id="perk0")
@@ -27,40 +27,42 @@ block game_history
                             div(class="perk_img", id="perkSubStyle")
                                 img(src=result[k].perkSubStyle, alt="룬2 이미지")
                     div(class="col-fourth")
-                        div(class="", id="kill_death_assist") #{result[k].kills} / #{result[k].deaths} / #{result[k].assists}
-                        div(class="", id="kda") #{result[k].kda} : 1 평점
-                        div(class="", id="") 챔피언에게 가한 데미지
-                        div(class="", id="totalDamageDealtToChampions") #{result[k].totalDamageDealtToChampions} dealt
+                        div(class="", id="kill_death_assist",tooltip2="킬/데스/어시", flow="up") #{result[k].kills} / #{result[k].deaths} / #{result[k].assists}
+                        div(class="", id="kda",tooltip2="KDA", flow="up") #{result[k].kda} : 1 평점
+                        div(tooltip2="적에게 가한 총 데미지", flow="up")
+                            div(class="", id="") 챔피언에게 가한 데미지
+                            div(class="", id="totalDamageDealtToChampions") #{result[k].totalDamageDealtToChampions} dealt
                     div(class="col-fiveth")
-                        div(class="", id="champLevel") 레벨 #{result[k].champLevel}
-                        div(class="", id="totalMinionsKilled") #{result[k].totalMinionsKilled} CS
-                        div(class="", id="") 획득 골드
-                        div(class="", id="goldEarned") #{result[k].goldEarned} gold
+                        div(class="", id="champLevel",tooltip2="챔피언 레벨",flow="up") 레벨 #{result[k].champLevel}
+                        div(class="", id="totalMinionsKilled",tooltip2="처치한 총 미니언 수",flow="up") #{result[k].totalMinionsKilled} CS
+                        div(tooltip2="게임에서 획득한 골드량",flow="up")    
+                            div(class="", id="") 획득 골드
+                            div(class="", id="goldEarned") #{result[k].goldEarned} gold
                     div(class="col-3 all_items")
                         div(class="items_top col-12")
                             -for(var l=0;l<4;l++)
-                                div(class="col-3", id="item"+l)
+                                div(class="col-3", id="item"+l, tooltip=result[k].items[l].name+"\r\n\r\n"+result[k].items[l].description, flow="up")
                                     -if(result[k].items[l].name == '아이템 없음')
                                         div(class="no_item")
                                     -else
                                         img(src=result[k].items[l].item_img, alt="아이템")
                         div(class="items_bottom col-12")
                             -for(var l=4;l<7;l++)
-                                div(class="col-3", id="item"+l)
+                                div(class="col-3", id="item"+l, tooltip=result[k].items[l].name+"\r\n\r\n"+result[k].items[l].description, flow="up")
                                     -if(result[k].items[l].name == '아이템 없음')
                                         div(class="no_item")
                                     -else
                                         img(src=result[k].items[l].item_img, alt="아이템")
                     div(class="all_summoner fl")
-                        div(class="summoners_top fl")
+                        div(class="summoners_top")
                             -for(var m=0;m<5;m++)
                                 div(class="", id="summoner"+m)
-                                    div(class="all_summonerName_img")
+                                    div(class="all_summonerName_img ",tooltip2=result[k].all_summoners[m].champion_name,flow="up")
                                         img(src=result[k].all_summoners[m].champion_img, alt="다른 소환사들")
                                     div(class="all_summonerName") #{result[k].all_summoners[m].summonerName}
-                        div(class="summoners_bottom fl")
+                        div(class="summoners_bottom")
                             -for(var m=5;m<10;m++)
                                 div(class="", id="summoner"+m)
-                                    div(class="all_summonerName_img")
+                                    div(class="all_summonerName_img",tooltip2=result[k].all_summoners[m].champion_name,flow="up")
                                         img(src=result[k].all_summoners[m].champion_img, alt="다른 소환사들")
                                     div(class="all_summonerName") #{result[k].all_summoners[m].summonerName}

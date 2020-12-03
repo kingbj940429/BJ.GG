@@ -13,10 +13,10 @@
 .col-fourth{margin: 0 10px;}
 .col-fiveth{margin: 0 10px;}
 
-.all_summoner{margin-left: 60px;}
-.summoners_top{}
+.all_summoner{margin: 0 5px;}
+.summoners_top{display: inline-block;margin: 0 15px;}
 .summoners_top img{height: 25px;width: auto;}
-.summoners_bottom{margin-left: 100px;}
+.summoners_bottom{display: inline-block;}
 .summoners_bottom img{height: 25px;width: auto;}
-.all_summonerName_img{position: relative;}
-.all_summonerName{position: absolute;padding-left: 30px;width: 100px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+.all_summonerName_img{display: inline-block;}
+.all_summonerName{display: inline-block;width: 100px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}

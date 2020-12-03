@@ -940,7 +940,7 @@ html *, body * {transition: color, background-color, border-color .3s;}
 .mw-2560{max-width: 2560px;}
 /*# sourceMappingURL=wevenScsss.css.map */
 
-[class*="mw-"] {overflow: hidden;}
+[class*="mw-"] /*{overflow: hidden;}*/
 
 /* overflow */
 .over-hidden {overflow: hidden;}

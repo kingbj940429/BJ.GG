@@ -52,10 +52,11 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
              * 검색한 소환사의 챔피언
              */
             const Mp = MatchDto.participants[summoner_index];
-            temp = await dbPool(`SELECT standard_key, name_bj, key_bj FROM champions_bj WHERE key_bj = ${Mp.championId}`)
+            temp = await dbPool(`SELECT standard_key, name_bj, key_bj, title_bj FROM champions_bj WHERE key_bj = ${Mp.championId}`)
             result.champion_standard_key = temp[0].standard_key;
             result.champion_name = temp[0].name_bj;
             result.champion_key = temp[0].key_bj;
+            result.champion_title = temp[0].title_bj;
             result.champion_img = `http://ddragon.leagueoflegends.com/cdn/${process.env.GAME_VERSION}/img/champion/${temp[0].standard_key}.png`;
 
             /**
@@ -84,10 +85,13 @@ const participantIdentities = async (summoner_getGameId, searchedName) => {
                 if(temp[0] == undefined){
                     temp = await dbPool(`SELECT standard_key, name_bj, description_bj FROM items_old_bj WHERE standard_key = ${Mps[`item${k}`]}`);
                 }
+                description = temp[0].description_bj.replace(/<(\/br|br)([^>]*)>/gi,"\r\n\r\n");
+                description = description.replace(/(<([^>]+)>)/ig,"");
                 item = {
                     standard_key : temp[0].standard_key,
                     name : temp[0].name_bj,
-                    description : temp[0].description_bj,
+                    // description : temp[0].description_bj.replace(/(<([^>]+)>)/ig,""),
+                    description : description,
                     item_img : `https://opgg-static.akamaized.net/images/lol/item/${temp[0].standard_key}.png`
                 }
                 items.push(item);
