@@ -1,8 +1,9 @@
 extends summonerLayout
 
 block game_history
-    div(class="history_wrap col-12 mw-1200 col-center")
+    div(class="history_wrap col-12 mw-1200 col-center" style="overflow:unset;")
         input(type="hidden" id="summonerName" value=summonerName)
+        input(type="hidden" id="total_game" value=total_game)
         div(class="history_content col-12")
             -for(var k=0;k<3;k++)
                 div(class="history_inner col-12", id="game_box"+k)
@@ -66,3 +67,11 @@ block game_history
                                     div(class="all_summonerName_img",tooltip2=result[k].all_summoners[m].champion_name,flow="up")
                                         img(src=result[k].all_summoners[m].champion_img, alt="다른 소환사들")
                                     div(class="all_summonerName") #{result[k].all_summoners[m].summonerName}
+                        div(class="detail_btn")
+                            input(class="detail_btn_"+k, type="hidden", value=result[k].game_id)
+                            div(id="detail_btn_"+k) 버튼 #{k} + #{result[k].game_id}
+                    input(type="hidden", id="dc_show_hide", value="show")
+                    div(class="detail_con" id="dc_show")
+
+                        
+                            

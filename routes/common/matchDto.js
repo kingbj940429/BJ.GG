@@ -4,10 +4,10 @@ const dateDiff = require('./dateDiff');
 const yyyymmdd = require('./yyyymmdd.js');
 const dbPool = require('../../config/config');
 
-const participantIdentities = async (summoner_getGameId, searchedName) => {
+const participantIdentities = async (summoner_getGameId, searchedName, game_number) => {
     try {
         var results = [];
-        for (i = 0; i < process.env.GAME_TIMES; i++) { //최근 N개의 게임만을 나타내기 위함
+        for (i = 0; i < game_number; i++) { //최근 N개의 게임만을 나타내기 위함
             var result = {};
             var temp;
             var MatchDto = await matchDto(summoner_getGameId[i]);//최근 N게임의 gameid를 가지고있음
