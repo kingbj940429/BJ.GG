@@ -1,0 +1,13 @@
+.gnb_wrap(class="col-12")
+    .gnb_content(class="col-12 mw-1200 col-center")
+        .gnb_inner(class="col-12")
+            .gnb_champion.col-3
+                    a(href="/") 챔피언분석1
+            .gnb_search.col-3
+                a(href="/") 검색
+            .gnb_search2
+                form(action="summonerList", method="get")
+                    input(type="text" name='summonerName')
+                    button(type="submit") 검색
+   
+                
