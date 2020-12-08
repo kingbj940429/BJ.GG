@@ -29,6 +29,7 @@ router.post('/summonerList/detailGame', async (req, res, next)=>{
     res.json({
         message : '성공',
         game_id,
+        result,
     })
 });
 
