@@ -52,7 +52,15 @@ const participantIdentities = async (summoner_getGameId, searchedName, game_numb
              * 검색한 소환사의 챔피언
              */
             const Mp = MatchDto.participants[summoner_index];
-            temp = await dbPool(`SELECT standard_key, name_bj, key_bj, title_bj FROM champions_bj WHERE key_bj = ${Mp.championId}`)
+
+            temp = await dbPool(`
+            SELECT standard_key, name_bj, key_bj, title_bj 
+            FROM ${process.env.DB_DATABASE}.champions_bj 
+            WHERE 1=1 
+                AND key_bj = ${Mp.championId}
+                AND version_bj = '${process.env.CHAMP_VERSION}'
+            `);
+
             result.champion_standard_key = temp[0].standard_key;
             result.champion_name = temp[0].name_bj;
             result.champion_key = temp[0].key_bj;
@@ -62,7 +70,12 @@ const participantIdentities = async (summoner_getGameId, searchedName, game_numb
             /**
              * 검색한 소환사의 스펠과 룬
              */
-            temp = await dbPool(`SELECT standard_key, name_bj, description_bj, key_bj FROM summoner_spells_bj WHERE key_bj IN(${Mp.spell1Id},${Mp.spell2Id})`);
+            temp = await dbPool(`
+            SELECT standard_key, name_bj, description_bj, key_bj 
+            FROM ${process.env.DB_DATABASE}.summoner_spells_bj 
+            WHERE 1=1
+                AND key_bj IN(${Mp.spell1Id},${Mp.spell2Id})`
+            );
             result.spell1_standard_key = temp[0].standard_key;
             result.spell1_name = temp[0].name_bj;
             result.spell1_description = temp[0].description_bj;
@@ -81,9 +94,17 @@ const participantIdentities = async (summoner_getGameId, searchedName, game_numb
             const Mps = Mp.stats;
             var items = [];
             for(var k=0;k<7;k++){
-                temp = await dbPool(`SELECT standard_key, name_bj, description_bj FROM items_bj WHERE standard_key = ${Mps[`item${k}`]}`);
+                temp = await dbPool(`
+                SELECT standard_key, name_bj, description_bj 
+                FROM ${process.env.DB_DATABASE}.items_bj 
+                WHERE 1=1
+                    AND standard_key = ${Mps[`item${k}`]}`);
                 if(temp[0] == undefined){
-                    temp = await dbPool(`SELECT standard_key, name_bj, description_bj FROM items_old_bj WHERE standard_key = ${Mps[`item${k}`]}`);
+                    temp = await dbPool(`
+                    SELECT standard_key, name_bj, description_bj 
+                    FROM ${process.env.DB_DATABASE}.items_old_bj 
+                    WHERE 1=1
+                        AND standard_key = ${Mps[`item${k}`]}`);
                 }
                 description = temp[0].description_bj.replace(/<(\/br|br)([^>]*)>/gi,"\r\n\r\n");
                 description = description.replace(/(<([^>]+)>)/ig,"");
@@ -132,7 +153,12 @@ const participantIdentities = async (summoner_getGameId, searchedName, game_numb
                 }else{
                    var  kda = ((Mpart[k].stats.kills + Mpart[k].stats.assists) / Mpart[k].stats.deaths).toFixed(2);
                 }
-                temp = await dbPool(`SELECT standard_key, name_bj FROM champions_bj WHERE key_bj = ${Mpart[k].championId}`);
+                temp = await dbPool(`
+                SELECT standard_key, name_bj 
+                FROM ${process.env.DB_DATABASE}.champions_bj 
+                WHERE 1=1
+                    AND key_bj = ${Mpart[k].championId}`);
+
                 all_summoners.push({
                     participantId : Mpart[k].participantId,
                     accountId : MatchDto.participantIdentities[k].player.accountId,
@@ -143,6 +169,9 @@ const participantIdentities = async (summoner_getGameId, searchedName, game_numb
                     deaths : Mpart[k].stats.deaths,
                     assists : Mpart[k].stats.assists,
                     kda : kda,
+                    // champion_name : "",
+                    // champion_key : "",
+                    // champion_img : ""
                     champion_name : temp[0].name_bj,
                     champion_key : temp[0].standard_key,
                     champion_img : `http://ddragon.leagueoflegends.com/cdn/${process.env.GAME_VERSION}/img/champion/${temp[0].standard_key}.png`

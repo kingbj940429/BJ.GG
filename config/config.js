@@ -9,9 +9,11 @@ const dbPool = async (queries) => {
     const connection = await pool.getConnection(async conn => conn);
     try {    
       const [rows] = await connection.query(queries);
+      //console.log('Query Success ==>\n' + queries);
       connection.release();
       return rows;
     } catch (err) {
+      //console.log('Query error ==>\n' + queries);
       console.log('Query Error');
       connection.release();
       return false;
