@@ -20,6 +20,6 @@
 .summoners_bottom img{height: 25px;width: auto;}
 .all_summonerName_img{display: inline-block;}
 .all_summonerName{display: inline-block;width: 100px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
-
+.all_summonerName > a{text-decoration:none;color: black;}
 
 .detail_btn{cursor: pointer;}

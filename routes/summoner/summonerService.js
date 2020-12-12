@@ -3,7 +3,7 @@ const participantIdentities = require('../common/matchDto');
 
 const summonerList = async (req, res) =>{
     const game_number = process.env.GAME_TIMES;
-    const gameId = await summonerDao.summonerList(req, res);
+    const gameId = await summonerDao.summonerList(req, res);// get gameId
     const result =  await participantIdentities(gameId, req.query.summonerName, game_number);
     
     return result;

@@ -60,13 +60,16 @@ block game_history
                                 div(class="", id="summoner"+m)
                                     div(class="all_summonerName_img ",tooltip2=result[k].all_summoners[m].champion_name,flow="up")
                                         img(src=result[k].all_summoners[m].champion_img, alt="다른 소환사들")
-                                    div(class="all_summonerName") #{result[k].all_summoners[m].summonerName}
+                                    //- div(class="all_summonerName") #{result[k].all_summoners[m].summonerName}
+                                    div(class="all_summonerName")
+                                        a(href="/summonerList?summonerName=" + result[k].all_summoners[m].summonerName) #{result[k].all_summoners[m].summonerName}
                         div(class="summoners_bottom")
                             -for(var m=5;m<10;m++)
                                 div(class="", id="summoner"+m)
                                     div(class="all_summonerName_img",tooltip2=result[k].all_summoners[m].champion_name,flow="up")
                                         img(src=result[k].all_summoners[m].champion_img, alt="다른 소환사들")
-                                    div(class="all_summonerName") #{result[k].all_summoners[m].summonerName}
+                                    div(class="all_summonerName")
+                                        a(href="/summonerList?summonerName=" + result[k].all_summoners[m].summonerName) #{result[k].all_summoners[m].summonerName}
                         div(class="detail_btn")
                             input(class="detail_btn_"+k, type="hidden", value=result[k].game_id)
                             div(id="detail_btn_"+k) 버튼 #{k} + #{result[k].game_id}

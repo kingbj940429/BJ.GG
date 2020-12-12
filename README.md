@@ -1,12 +1,13 @@
 [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fkingbj940429%2FBJ.GG%2Fhit-counter&count_bg=%233D76C8&title_bg=%23555555&icon=ghostery.svg&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
-# 프로그램 설명
-Node.js 기반 리그오브레전드 관련 정보 사이트 입니다.
 
-### 현재까지의 상황
+# About BJ.GG
+This is a Node.js-based League of Legends information site.
+
+### Example Img
 
 ![Inked주석 2020-11-18 235207_LI](https://user-images.githubusercontent.com/63000843/99546056-613e4b00-29f9-11eb-8c97-3a420adb0fe3.jpg)
 
-비슷한 사이트로는 OP.GG가 있습니다.
+<!-- 비슷한 사이트로는 OP.GG가 있습니다.
 # 개발 환경
 백엔드 : __**Node.js**__
 
@@ -50,4 +51,4 @@ DB_DATABASE = "데이터베이스(스키마)"
 ```
 4) 터미널에서 npm i 명령어로 필요한 npm들을 다운 받습니다.
 5) 터미널에서 npm i -D nodemon로 nodemon를 다운 받습니다.
-6) 터미널에서 npm start 로 실행시켜줍니다.
+6) 터미널에서 npm start 로 실행시켜줍니다. -->
