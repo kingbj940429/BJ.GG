@@ -22,4 +22,20 @@
 .all_summonerName{display: inline-block;width: 100px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
 .all_summonerName > a{text-decoration:none;color: black;}
 
+.detail_con{margin: 10px 0px;}
 .detail_btn{cursor: pointer;}
+.detail_champ_img{width: 50px;float: left;}
+.detail_spell{float: left;margin: 0px 5px;}
+.detail_spell_1{width: 20px;}
+.detail_spell_2{width: 20px;}
+.detail_perk{float: left;margin: 0px 5px;}
+.detail_perk0{width: 20px;}
+.detail_perkSubStyle{width: 20px;}
+.detail_perk img{border-radius: 5px;}
+.detail_summ_name{float: left;margin: 0 10px;width: 100px;}
+.detail_tier{float: left;margin: 0 10px;}
+.detail_bjscore{float: left;margin: 0 10px;}
+.detail_kill_death_ass{float: left;margin: 0 10px;}
+.detail_items{float: left;}
+.detail_items_img{float: left; padding: 0 3px;}
+.detail_items_img > img{border-radius: 5px;width: 40px;}
