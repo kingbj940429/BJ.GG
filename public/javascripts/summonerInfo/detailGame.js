@@ -90,24 +90,31 @@ $(() => {
                         </div>
                         <div class="detail_items">
                             <div class="detail_items_img" tooltip="${res.result[index].items[0].name}\r\n\r\n${res.result[index].items[0].description}">
+                                <input type="hidden" id="item_0" value=${res.result[index].items[0].name}>
                                 <img src=${res.result[index].items[0].item_img}>
                             </div>
                             <div class="detail_items_img" tooltip="${res.result[index].items[1].name}\r\n\r\n${res.result[index].items[1].description}">
+                                <input type="hidden" id="item_1" value=${res.result[index].items[1].name}>    
                                 <img src=${res.result[index].items[1].item_img}>
                             </div>
                             <div class="detail_items_img" tooltip="${res.result[index].items[2].name}\r\n\r\n${res.result[index].items[2].description}">
+                                <input type="hidden" id="item_2" value=${res.result[index].items[2].name}>
                                 <img src=${res.result[index].items[2].item_img}>
                             </div>
                             <div class="detail_items_img" tooltip="${res.result[index].items[3].name}\r\n\r\n${res.result[index].items[3].description}">
+                                <input type="hidden" id="item_3" value=${res.result[index].items[3].name}>
                                 <img src=${res.result[index].items[3].item_img}>
                             </div>
                             <div class="detail_items_img" tooltip="${res.result[index].items[4].name}\r\n\r\n${res.result[index].items[4].description}">
+                                <input type="hidden" id="item_4" value=${res.result[index].items[4].name}>
                                 <img src=${res.result[index].items[4].item_img}>
                             </div>
                             <div class="detail_items_img" tooltip="${res.result[index].items[5].name}\r\n\r\n${res.result[index].items[5].description}">
+                                <input type="hidden" id="item_5" value=${res.result[index].items[5].name}>
                                 <img src=${res.result[index].items[5].item_img}>
                             </div>
                             <div class="detail_items_img" tooltip="${res.result[index].items[6].name}\r\n\r\n${res.result[index].items[6].description}">
+                                <input type="hidden" id="item_6" value=${res.result[index].items[6].name}>    
                                 <img src=${res.result[index].items[6].item_img}>
                             </div>
                         </div>

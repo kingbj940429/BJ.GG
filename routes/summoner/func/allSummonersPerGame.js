@@ -39,12 +39,17 @@ const allSummonersPerGame = async (gameId, summonerName, game_number) => {
                     }
                     description = temp_item[0].description_bj.replace(/<(\/br|br)([^>]*)>/gi,"\r\n\r\n");
                     description = description.replace(/(<([^>]+)>)/ig,"");
+
+                    item_img = `https://opgg-static.akamaized.net/images/lol/item/${temp_item[0].standard_key}.png`;
+                    if(temp_item[0].standard_key == '0'){
+                        item_img = `images/gray_background.png`
+                    }
                     item = {
                         standard_key : temp_item[0].standard_key,
                         name : temp_item[0].name_bj,
                         // description : temp_item[0].description_bj.replace(/(<([^>]+)>)/ig,""),
-                        description : description,
-                        item_img : `https://opgg-static.akamaized.net/images/lol/item/${temp_item[0].standard_key}.png`
+                        description,
+                        item_img,
                     }
                     items.push(item);
                 }

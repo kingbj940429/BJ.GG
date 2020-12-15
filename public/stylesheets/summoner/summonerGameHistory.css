@@ -5,6 +5,7 @@
 .no_item{height: 50px; width: 50px; background-color: rgba(0, 0, 0, 0.5);}
 .all_items img, div{border-radius: 10px;}
 .all_items{margin: 0 10px;}
+.all_items img{width: 62px;height: 62px;}
 .spell_img img{border-radius: 10px;width: auto;height: 50px;}
 .perk0_img img{height: 30px;width: auto;}
 .perk_img img{height: 20px;width: auto;}
