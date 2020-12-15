@@ -42,16 +42,16 @@ block game_history
                     div(class="col-3 all_items")
                         div(class="items_top col-12")
                             -for(var l=0;l<4;l++)
-                                div(class="col-3", id="item"+l, tooltip=result[k].items[l].name+"\r\n\r\n"+result[k].items[l].description, flow="up")
+                                div(class="col-3 item_box", id="item"+l, tooltip=result[k].items[l].name+"\r\n\r\n"+result[k].items[l].description, flow="up")
                                     -if(result[k].items[l].name == '아이템 없음')
-                                        div(class="no_item")
+                                        img(src='images/gray_background.png', alt="아이템")
                                     -else
                                         img(src=result[k].items[l].item_img, alt="아이템")
                         div(class="items_bottom col-12")
                             -for(var l=4;l<7;l++)
                                 div(class="col-3", id="item"+l, tooltip=result[k].items[l].name+"\r\n\r\n"+result[k].items[l].description, flow="up")
                                     -if(result[k].items[l].name == '아이템 없음')
-                                        div(class="no_item")
+                                        img(src='images/gray_background.png', alt="아이템")
                                     -else
                                         img(src=result[k].items[l].item_img, alt="아이템")
                     div(class="all_summoner fl")
@@ -74,7 +74,7 @@ block game_history
                             input(class="detail_btn_"+k, type="hidden", value=result[k].game_id)
                             div(id="detail_btn_"+k) 버튼 #{k} + #{result[k].game_id}
                     input(type="hidden", id="dc_show_hide", value="show")
-                    div(class="detail_con" id="dc_show")
+                    div(class="detail_con col-12" id="dc_show")
 
                         
                             

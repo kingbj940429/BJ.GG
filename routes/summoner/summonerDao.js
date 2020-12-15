@@ -14,6 +14,7 @@ const detailGame = async (game_id, summonerName) => {
     gameId.push(game_id);
     const result =  await allSummonersPerGame(gameId, summonerName, game_number);
     console.log(result);
+    console.log(result[0].items);
     return result;
 }
 
