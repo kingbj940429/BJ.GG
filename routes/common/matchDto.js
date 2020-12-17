@@ -1,7 +1,6 @@
 const matchDto = require('../../axios/matchDto');
 
-const dateDiff = require('./dateDiff');
-const yyyymmdd = require('./yyyymmdd.js');
+const dateUtil = require('./dateUtil');
 const dbPool = require('../../config/config');
 
 const participantIdentities = async (summoner_getGameId, searchedName, game_number) => {
@@ -13,13 +12,15 @@ const participantIdentities = async (summoner_getGameId, searchedName, game_numb
             var MatchDto = await matchDto(summoner_getGameId[i]);//최근 N게임의 gameid를 가지고있음
             game_id = MatchDto.gameId;
 
+            const newDateUtil = new dateUtil();
+
             /**
              * 플레이했던 날짜 
              * game_date_diff => 12일 전
              * game_date => 2020년 10월 31일 3:36 AM
              */
-            game_date_diff = dateDiff(new Date(MatchDto.gameCreation), new Date());
-            game_date = yyyymmdd((MatchDto.gameCreation));
+            game_date_diff = newDateUtil.dateDiff(new Date(MatchDto.gameCreation), new Date());
+            game_date = newDateUtil.yyyymmdd((MatchDto.gameCreation));
             seconds = MatchDto.gameDuration;
             game_duration = `${parseInt((seconds%3600)/60)}분 ${seconds%60}초`;
             result= {
