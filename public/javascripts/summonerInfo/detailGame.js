@@ -18,12 +18,13 @@ $(() => {
                         },
                         success: (res) => {
                             $('.loading').css('display', 'none'); //로딩 오프
-                            alert("성공");
+                            alert("데이터를 불러왔습니다.");
                             addDetailGame(game_seq, res);
                             $(`#game_box${game_seq} > #dc_show_hide`).attr("value", "hide");
                         },
                         error: (error) => {
-                            alert("실패");
+                            $('.loading').css('display', 'none');
+                            alert("데이터를 불러오지 못했습니다.");
                         }
                     });
                     // //ajax
@@ -72,7 +73,7 @@ $(() => {
                         </div>
                         <div class="detail_tier">
                             <div>
-                                Gold 3
+                                ${res.league[index][0].tier} ${res.league[index][0].rank}
                             </div>
                         </div>
                         <div class="detail_bjscore">
