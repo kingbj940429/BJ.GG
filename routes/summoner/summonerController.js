@@ -26,10 +26,12 @@ router.get('/summonerList', async (req, res, next)=>{
 
 router.post('/summonerList/detailGame', async (req, res, next)=>{
     const result = await summonerService.detailGame(req, res);
+    const league = await summonerService.league(result);
     res.json({
         message : '성공',
         game_id,
         result,
+        league
     })
 });
 
