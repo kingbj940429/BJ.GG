@@ -3,6 +3,10 @@
 # About BJ.GG
 This is a Node.js-based League of Legends information site.
 
+It is not completed yet, so there is no details.
+
+아직 미완성이므로 자세한 내용이 없습니다.
+
 ### Example Img
 
 ![롤이미지_01](https://user-images.githubusercontent.com/63000843/103537865-7f440a00-4ed8-11eb-80c5-9ffffe4431fa.png)
