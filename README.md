@@ -5,7 +5,7 @@ This is a Node.js-based League of Legends information site.
 
 ### Example Img
 
-![bjgg_sample](https://user-images.githubusercontent.com/63000843/102217824-7a66e880-3f20-11eb-87eb-ddbcff108977.PNG)
+![롤이미지_01](https://user-images.githubusercontent.com/63000843/103537865-7f440a00-4ed8-11eb-80c5-9ffffe4431fa.png)
 
 
 <!-- 비슷한 사이트로는 OP.GG가 있습니다.
