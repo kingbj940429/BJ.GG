@@ -2,6 +2,11 @@ const summonerDao = require('./summonerDao');
 const participantIdentities = require('../common/matchDto');
 const summonerUtil = require('../common/summonerUtil');
 
+/**
+ * 
+ * @param {*} req 
+ * @param {*} res 
+ */
 const summonerList = async (req, res) =>{
     const game_number = process.env.GAME_TIMES;
     const gameId = await summonerDao.summonerList(req, res);// get gameId
@@ -10,6 +15,11 @@ const summonerList = async (req, res) =>{
     return result;
 }
 
+/**
+ * 
+ * @param {*} req 
+ * @param {*} res 
+ */
 const detailGame = async (req, res) =>{
     const gameId = req.body.game_id;
     const summonerName = req.body.summoner_name;
@@ -18,21 +28,25 @@ const detailGame = async (req, res) =>{
     var summonersName = [];
 
     var newSummUtil = new summonerUtil();
-    
-    /**
-     * 각 정보가져오기
-     */
-    // for(var index in result){
-    //     var temp = await newSummUtil.getSummonerId(result[index].summonerName);
-    //     summonersName.push(temp);
-    // }
-    //console.log(summonersName);
-
     return result;
 }
 
+/**
+ * 10명의 소환사 정보를 더 자세하게 가져옵니다.
+ * @param {*} detailGame 
+ */
 const league = async (detailGame) =>{
     var result = await summonerDao.leagueDao(detailGame);
+
+    //언랭에 대한 예외처리
+    for(var index in result){
+        if(result[index].length < 2){
+            result[index][0] = {
+                tier : 'Unranked',
+                rank :  ''
+            }
+        }
+    }
     return result;
 }
 

@@ -71,12 +71,15 @@ $(() => {
                                 ${res.result[index].summonerName}
                             </div>
                         </div>
-                        <div class="detail_tier">
-                            <div>
+                        <div class="detail_tier" style="width:130px">
+                            <div style="float:left">
+                                <img src="../../images/ranked-emblems/${res.league[index][0].tier}.png" style="width:30px;height:30px">
+                            </div>
+                            <div style="float:left">
                                 ${res.league[index][0].tier} ${res.league[index][0].rank}
                             </div>
                         </div>
-                        <div class="detail_bjscore">
+                        <div class="detail_bjscore" style="width:50px">
                             <div>
                                 10
                             </div>
